@@ -1,0 +1,3309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>이재, 영어 — 수능영어 1등급 전문 | 대치동 영어학원</title>
+
+  <!-- SEO 기본 -->
+  <meta name="description" content="대치동 수능영어 전문 이재,영어. 경희고·청량고 내신 및 수능 1등급을 위한 체계적인 영어 강의. 대치에스·대치메카 입점. 강사 직강, 소수정예 관리.">
+  <meta name="keywords" content="이재영어, 대치동영어학원, 수능영어, 경희고영어, 청량고영어, 내신영어, 1등급영어, 대치에스, 대치메카, 강남영어학원">
+  <meta name="author" content="이재, 영어">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.real-englishjy.co.kr">
+
+  <!-- Open Graph (카카오·네이버 공유 시 미리보기) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.real-englishjy.co.kr">
+  <meta property="og:title" content="이재, 영어 — 수능영어 1등급 전문">
+  <meta property="og:description" content="대치동 수능영어 전문. 경희고·청량고 내신 및 수능 1등급을 위한 체계적인 영어 강의.">
+  <meta property="og:locale" content="ko_KR">
+
+  <!-- 구조화 데이터 (Google 검색 결과 강화) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "이재, 영어",
+    "url": "https://www.real-englishjy.co.kr",
+    "description": "대치동 수능영어 전문 학원. 경희고·청량고 내신 및 수능 1등급 전문.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "강남구",
+      "addressRegion": "서울특별시",
+      "addressCountry": "KR"
+    },
+    "telephone": "",
+    "sameAs": []
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a0e1a;
+      --navy2: #111827;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --white: #f5f3ee;
+      --gray: #8a8a8a;
+      --border: rgba(201,168,76,0.2);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ───── OVERLAY MODAL ───── */
+    .overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.active { display: flex; }
+
+    .modal {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top:16px; right:20px;
+      background: none; border: none;
+      color: var(--gray); font-size: 22px;
+      cursor: pointer;
+    }
+    .modal h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .modal p.sub {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+    }
+    .modal label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .modal input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 12px 14px;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal input:focus { border-color: var(--gold); }
+
+    .modal .btn-primary {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .modal .btn-primary:hover { background: var(--gold-light); }
+
+    .modal .toggle-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.83rem;
+      color: var(--gray);
+    }
+    .modal .toggle-link span {
+      color: var(--gold);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .modal .error-msg {
+      color: #ff6b6b;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .modal .error-msg.show { display: block; }
+
+    /* ───── NAVBAR ───── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(10,14,26,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: invert(1);
+    }
+    .nav-logo-text {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-menu li a {
+      display: block;
+      padding: 8px 14px;
+      color: rgba(245,243,238,0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-radius: 2px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-menu li a:hover {
+      color: var(--gold);
+      background: rgba(201,168,76,0.08);
+    }
+    .nav-menu li a.active {
+      color: var(--gold);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-login {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-login:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-signup {
+      background: var(--gold);
+      border: none;
+      color: var(--navy);
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-signup:hover { background: var(--gold-light); }
+
+    .user-info {
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+    .user-info.show { display: flex; }
+    .user-email {
+      font-size: 0.82rem;
+      color: var(--gray);
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .btn-logout {
+      background: none;
+      border: 1px solid rgba(138,138,138,0.3);
+      color: var(--gray);
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+    .btn-logout:hover { border-color: var(--gray); }
+
+    .auth-buttons { display: flex; gap: 8px; }
+    .auth-buttons.hidden { display: none; }
+
+    /* ───── PAGE SECTIONS ───── */
+    main { padding-top: 72px; }
+
+    section.page {
+      display: none;
+      min-height: calc(100vh - 72px);
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      animation: fadeIn 0.4s ease;
+    }
+    section.page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(12px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    /* ───── HERO (홈) ───── */
+    #home {
+      max-width: 100%;
+      padding: 0;
+      display: none;
+    }
+    #home.active { display: block; }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 48px;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: 6px 18px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(245,243,238,0.6);
+      line-height: 1.8;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-main {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 16px 40px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-main:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .cta-sub {
+      background: none;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 16px 40px;
+      font-size: 1rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-sub:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .hero-logo-img {
+      width: clamp(220px, 40vw, 480px);
+      height: auto;
+      object-fit: contain;
+    }
+    .hero-brand-sub {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 48px;
+    }
+
+    .hero-divider {
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--border), transparent);
+      margin: 64px auto 0;
+    }
+
+    /* ───── LOCATION ───── */
+    .location-section {
+      margin-top: 72px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+    .location-header { margin-bottom: 40px; }
+    .location-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .location-body {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .location-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .location-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .location-icon { font-size: 1.2rem; margin-top: 2px; }
+    .location-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .location-value {
+      font-size: 0.95rem;
+      color: var(--white);
+      line-height: 1.6;
+    }
+    .kakaomap-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 28px;
+      background: #FFCD00;
+      color: #3A1D1D;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+    .kakaomap-btn:hover { opacity: 0.85; }
+    .location-map {
+      height: 280px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    @media (max-width: 700px) {
+      .location-body { grid-template-columns: 1fr; }
+      .location-map { height: 220px; }
+    }
+
+    /* ───── SECTION HEADERS ───── */
+    .section-header {
+      margin-bottom: 56px;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--white);
+    }
+    .section-line {
+      width: 40px; height: 2px;
+      background: var(--gold);
+      margin-top: 20px;
+    }
+    .section-desc {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-top: 16px;
+      max-width: 600px;
+    }
+
+    /* ───── 이재,영어 소개 ───── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .intro-image {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .intro-image img {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      filter: drop-shadow(0 8px 32px rgba(201,168,76,0.18));
+    }
+    .intro-text p {
+      color: rgba(245,243,238,0.75);
+      font-size: 0.95rem;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .stat-box {
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      border-radius: 2px;
+      background: rgba(201,168,76,0.03);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ───── 수업안내 (소개글) ───── */
+    .class-info-wrap { display: flex; flex-direction: column; gap: 48px; }
+    .class-info-block { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .class-info-logo {
+      background: rgba(255,255,255,0.03);
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .class-info-logo img { height: 40px; width: auto; object-fit: contain; border-radius: 3px; }
+    .class-info-table { width: 100%; }
+    .class-info-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      padding: 12px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.88rem;
+      gap: 8px;
+    }
+    .class-info-row:last-child { border-bottom: none; }
+    .class-info-row.header {
+      background: rgba(201,168,76,0.06);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .class-info-row span { color: rgba(245,243,238,0.8); }
+    .class-info-notice {
+      margin-top: 8px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.88rem;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .class-info-kakao {
+      background: #FFCD00;
+      color: #3A1D1D;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 2px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    @media (max-width: 600px) {
+      .class-info-row { grid-template-columns: 1fr 1fr; font-size: 0.8rem; padding: 10px 16px; }
+      .class-info-row.header span:nth-child(3),
+      .class-info-row.header span:nth-child(4),
+      .class-info-row span:nth-child(3),
+      .class-info-row span:nth-child(4) { display: none; }
+    }
+
+    /* ───── 수업안내 탭 ───── */
+    .class-tab-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .class-tab-btn {
+      background: rgba(255,255,255,0.03);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 16px;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 100px;
+    }
+    .class-tab-btn::after {
+      content: '탭을 눌러 수업 확인';
+      position: absolute;
+      bottom: 8px;
+      left: 0; right: 0;
+      font-size: 0.68rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+      text-align: center;
+      opacity: 0.7;
+    }
+    .class-tab-btn:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.06);
+      transform: translateY(-2px);
+    }
+    .class-tab-btn.active {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      color: var(--gold);
+    }
+    .class-tab-btn.active::after {
+      content: '✓ 선택됨';
+      color: var(--gold);
+      opacity: 1;
+    }
+    .tab-logo {
+      width: 100%;
+      max-width: 180px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 4px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .class-tab-wrap { grid-template-columns: 1fr; gap: 10px; }
+      .class-tab-btn { min-height: 80px; padding: 16px; }
+      .tab-logo { height: 44px; }
+    }
+
+    .class-tab-panel { display: none; }
+    .class-tab-panel.active { display: block; }
+
+    .class-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .class-card {
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .class-card:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.04);
+    }
+    .class-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .class-name {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .class-schedule {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(245,243,238,0.6);
+      margin-bottom: 6px;
+    }
+    .schedule-row span:first-child { color: var(--gray); }
+
+    /* ───── 게시판 ───── */
+    .board-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 500;
+      overflow-y: auto;
+    }
+    .board-overlay.active { display: block; }
+
+    .board-container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 48px 40px;
+      position: relative;
+    }
+    .board-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none;
+      color: var(--gray); font-size: 22px;
+      cursor: pointer;
+    }
+    .board-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .board-subtitle {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    /* 글쓰기 */
+    .write-btn {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 10px 24px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .write-btn.show { display: inline-block; }
+    .write-btn:hover { background: var(--gold-light); }
+
+    .write-form {
+      display: none;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .write-form.show { display: block; }
+    .write-form input, .write-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 10px 14px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .write-form input:focus, .write-form textarea:focus {
+      border-color: var(--gold);
+    }
+    .write-form textarea { height: 120px; resize: vertical; }
+    .write-form-btns { display: flex; gap: 10px; }
+    .btn-submit {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 10px 24px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .btn-cancel {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      padding: 10px 24px;
+      font-size: 0.88rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    /* 게시글 목록 */
+    .post-list { display: flex; flex-direction: column; gap: 0; }
+    .post-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .post-item:hover .post-item-title { color: var(--gold); }
+    .post-item-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+    .post-item-meta {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+    .post-empty {
+      text-align: center;
+      padding: 60px 0;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* 게시글 상세 */
+    .post-detail { display: none; }
+    .post-detail.show { display: block; }
+    .post-list-view { display: block; }
+    .post-list-view.hide { display: none; }
+
+    .post-detail-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .post-detail-meta {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .post-detail-body {
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: rgba(245,243,238,0.85);
+      margin-bottom: 40px;
+      white-space: pre-wrap;
+    }
+    .back-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+    .back-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* 댓글 */
+    .comment-section { border-top: 1px solid var(--border); padding-top: 24px; }
+    .comment-title {
+      font-size: 0.85rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .comment-item {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .comment-author {
+      font-size: 0.78rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .comment-body {
+      font-size: 0.88rem;
+      color: rgba(245,243,238,0.75);
+      line-height: 1.7;
+    }
+    .comment-form { margin-top: 20px; display: flex; gap: 10px; }
+    .comment-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 10px 14px;
+      color: var(--white);
+      font-size: 0.88rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      outline: none;
+    }
+    .comment-input:focus { border-color: var(--gold); }
+    .comment-submit {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .class-card { cursor: pointer; }
+
+    /* ───── 자료실 ───── */
+    .data-notice {
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      border-radius: 2px;
+      background: rgba(201,168,76,0.03);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .data-notice-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .data-notice p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .data-notice p strong { color: var(--gold); }
+
+    .data-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .data-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.2s;
+    }
+    .data-item:hover { border-color: var(--gold); }
+    .data-item-left { display: flex; align-items: center; gap: 16px; }
+    .data-icon {
+      width: 36px; height: 36px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .data-title { font-size: 0.92rem; font-weight: 500; }
+    .data-date { font-size: 0.78rem; color: var(--gray); margin-top: 3px; }
+    .data-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      padding: 7px 16px;
+      font-size: 0.8rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .data-btn:hover { background: rgba(201,168,76,0.1); }
+
+    .data-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .data-link .data-icon { color: var(--gold); font-size: 0.8rem; font-weight: 700; }
+    .data-folder-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+    .data-folder-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--gray);
+      padding: 10px 20px;
+      font-size: 0.88rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .data-folder-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .data-folder-panel { display: none; }
+    .data-folder-panel.active { display: block; }
+    /* 학원 탭 */
+    .academy-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--gray);
+      padding: 8px 18px;
+      font-size: 0.82rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+    }
+    .academy-btn.active {
+      background: rgba(212,175,55,0.12);
+      border-color: var(--gold);
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .data-sub-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      margin-top: 8px;
+    }
+    .data-sub-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--gray);
+      padding: 9px 20px;
+      font-size: 0.85rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .data-sub-btn.active {
+      background: rgba(201,168,76,0.1);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .data-sub-panel { display: none; }
+    .data-sub-panel.active { display: block; }
+
+    .data-unit-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-unit-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--gray);
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .data-unit-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .data-unit-panel { display: none; }
+    .data-unit-panel.active { display: block; }
+
+    .login-required-msg {
+      text-align: center;
+      padding: 80px 0;
+      color: var(--gray);
+    }
+    .login-required-msg .icon { font-size: 3rem; margin-bottom: 16px; }
+    .login-required-msg h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .login-required-msg p { font-size: 0.9rem; margin-bottom: 24px; }
+    .login-required-msg button {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 12px 32px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    /* ───── Q&A ───── */
+    .qa-intro {
+      border-left: 3px solid var(--gold);
+      padding-left: 24px;
+      margin-bottom: 40px;
+    }
+    .qa-intro p {
+      color: rgba(245,243,238,0.7);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+    /* 익명 게시판 */
+    .qa-write-box {
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 32px;
+    }
+    .qa-write-box textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.9rem;
+      padding: 14px;
+      border-radius: 2px;
+      resize: vertical;
+      min-height: 100px;
+      box-sizing: border-box;
+      line-height: 1.7;
+    }
+    .qa-write-box textarea::placeholder { color: var(--gray); }
+    .qa-write-box textarea:focus { outline: none; border-color: var(--gold); }
+    .qa-write-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 10px;
+    }
+    .qa-write-footer input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 2px;
+      width: 130px;
+    }
+    .qa-write-footer input::placeholder { color: var(--gray); }
+    .qa-write-footer input:focus { outline: none; border-color: var(--gold); }
+    .qa-submit-btn {
+      background: var(--gold);
+      color: #1a1813;
+      border: none;
+      padding: 9px 22px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .qa-submit-btn:hover { opacity: 0.85; }
+    .qa-list { display: flex; flex-direction: column; gap: 16px; }
+    .qa-card {
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+    }
+    .qa-card-header {
+      padding: 16px 20px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .qa-card-meta {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+    .qa-card-nick {
+      font-weight: 700;
+      color: var(--gold);
+      margin-right: 8px;
+    }
+    .qa-card-body {
+      padding: 0 20px 16px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .qa-comment-area {
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.015);
+    }
+    .qa-comment-item {
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.87rem;
+      line-height: 1.75;
+    }
+    .qa-comment-item:last-child { border-bottom: none; }
+    .qa-comment-nick {
+      font-weight: 700;
+      margin-right: 8px;
+      font-size: 0.8rem;
+    }
+    .qa-comment-nick.teacher { color: var(--gold); }
+    .qa-comment-nick.student { color: rgba(245,243,238,0.5); }
+    .qa-comment-time { font-size: 0.75rem; color: var(--gray); margin-left: 6px; }
+    .qa-comment-text { margin-top: 4px; color: var(--text); white-space: pre-wrap; word-break: break-all; }
+    .qa-reply-box {
+      padding: 12px 20px;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .qa-reply-box input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.83rem;
+      padding: 7px 12px;
+      border-radius: 2px;
+    }
+    .qa-reply-box input:focus { outline: none; border-color: var(--gold); }
+    .qa-reply-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 7px 16px;
+      cursor: pointer;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .qa-reply-btn:hover { background: rgba(212,175,55,0.1); }
+    .qa-empty {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.88rem;
+      padding: 60px 0;
+    }
+    .qa-loading { text-align: center; color: var(--gray); font-size: 0.85rem; padding: 40px 0; }
+    .qa-delete-btn {
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 2px;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .qa-delete-btn:hover { color: #e05555; }
+
+    /* ───── 설명회 ───── */
+    .seminar-admin-bar { margin-bottom: 20px; }
+    .seminar-add-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      border-radius: 2px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .seminar-add-btn:hover { background: rgba(201,168,76,0.1); }
+    .seminar-write-form {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .seminar-input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .seminar-textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 100px;
+      resize: vertical;
+    }
+    .seminar-submit-btn {
+      background: var(--gold);
+      color: #0a0e1a;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .seminar-cancel-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      padding: 10px 20px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .seminar-video-list {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .seminar-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+    .video-responsive {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-responsive iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .seminar-card-body { padding: 24px; }
+    .seminar-card-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .seminar-card-date {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 14px;
+    }
+    .seminar-card-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      white-space: pre-wrap;
+    }
+    .seminar-comment-section { border-top: 1px solid var(--border); padding-top: 20px; }
+    .seminar-comment-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .seminar-comment-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+    .seminar-comment-item { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .seminar-comment-author { font-size: 0.75rem; color: var(--gold); margin-bottom: 4px; }
+    .seminar-comment-body { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+    .seminar-comment-form { display: none; gap: 8px; margin-top: 12px; }
+    .seminar-comment-form.show { display: flex; }
+    .seminar-comment-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 2px;
+      font-size: 0.88rem;
+    }
+    .seminar-comment-submit {
+      background: var(--gold);
+      color: #0a0e1a;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 2px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .seminar-login-notice {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-top: 8px;
+    }
+    .seminar-login-notice a {
+      color: var(--gold);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .seminar-card-body { padding: 16px; }
+    }
+
+    /* ───── 공지사항 ───── */
+    .notice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .notice-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .notice-item:hover .notice-title { color: var(--gold); }
+    .notice-left { display: flex; align-items: center; gap: 16px; }
+    .notice-badge {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .notice-title { font-size: 0.92rem; }
+    .notice-date { font-size: 0.8rem; color: var(--gray); white-space: nowrap; }
+
+    .notice-empty {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* ───── KAKAO FLOAT ───── */
+    .kakao-float {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      background: #FEE500;
+      border-radius: 50px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      z-index: 200;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kakao-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .kakao-float svg { width: 22px; height: 22px; }
+    .kakao-float span {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #3A1D1D;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    /* ───── FOOTER ───── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      text-align: center;
+    }
+    footer p {
+      color: rgba(138,138,138,0.6);
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+    footer p strong { color: var(--gray); }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-menu {
+        display: none;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: rgba(10,14,26,0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 16px 0;
+        z-index: 999;
+        gap: 0;
+      }
+      .nav-menu.open { display: flex; }
+      .nav-menu li { width: 100%; }
+      .nav-menu li a {
+        display: block;
+        padding: 14px 28px;
+        font-size: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        z-index: 1000;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .btn-signup { display: none; }
+      section.page { padding: 48px 20px; }
+      .hero { padding: 60px 20px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .class-cards { grid-template-columns: 1fr; }
+      footer { padding: 32px 20px; }
+    }
+    @media (min-width: 901px) {
+      .hamburger { display: none; }
+      .nav-right { display: contents; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───── LOGIN MODAL ───── -->
+<div class="overlay" id="loginOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('loginOverlay')">✕</button>
+    <h2>로그인</h2>
+    <p class="sub">이재, 영어 학원 회원 전용 공간입니다.</p>
+    <div class="error-msg" id="loginError"></div>
+    <label>이메일</label>
+    <input type="email" id="loginEmail" placeholder="email@example.com" />
+    <label>비밀번호</label>
+    <input type="password" id="loginPassword" placeholder="••••••••" />
+    <button class="btn-primary" onclick="doLogin()">로그인</button>
+    <div class="toggle-link">
+      계정이 없으신가요? <span onclick="switchModal('loginOverlay','signupOverlay')">회원가입</span>
+    </div>
+  </div>
+</div>
+
+<!-- ───── SIGNUP MODAL ───── -->
+<div class="overlay" id="signupOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('signupOverlay')">✕</button>
+    <h2>회원가입</h2>
+    <p class="sub">이재, 영어 수강생 전용입니다. 강사에게 받은 수강코드가 필요합니다.</p>
+    <div class="error-msg" id="signupError"></div>
+    <label>수강코드</label>
+    <input type="text" id="signupCode" placeholder="강사에게 받은 수강코드 입력" autocomplete="off" />
+    <label>이메일</label>
+    <input type="email" id="signupEmail" placeholder="email@example.com" />
+    <label>비밀번호</label>
+    <input type="password" id="signupPassword" placeholder="6자리 이상" />
+    <label>비밀번호 확인</label>
+    <input type="password" id="signupPassword2" placeholder="비밀번호 재입력" />
+    <button class="btn-primary" onclick="doSignup()">가입하기</button>
+    <div class="toggle-link">
+      이미 계정이 있으신가요? <span onclick="switchModal('signupOverlay','loginOverlay')">로그인</span>
+    </div>
+  </div>
+</div>
+
+<!-- ───── NAV ───── -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">
+    <img src="logo.png" alt="이재,영어 로고" id="logoImg" />
+    <span class="nav-logo-text">이재, 영어</span>
+  </a>
+
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#" onclick="showPage('about'); closeMobileMenu(); return false;" id="nav-about">이재, 영어</a></li>
+    <li><a href="#" onclick="showPage('classes'); closeMobileMenu(); return false;" id="nav-classes">수업안내</a></li>
+    <li><a href="#" onclick="showPage('student'); closeMobileMenu(); return false;" id="nav-student">수강생전용</a></li>
+    <li><a href="#" onclick="showPage('data'); closeMobileMenu(); return false;" id="nav-data">자료실</a></li>
+    <li><a href="#" onclick="showPage('qa'); closeMobileMenu(); return false;" id="nav-qa">질문은 항상 옳다</a></li>
+    <li><a href="#" onclick="showPage('seminar'); closeMobileMenu(); return false;" id="nav-seminar">설명회</a></li>
+    <li><a href="#" onclick="showPage('notice'); closeMobileMenu(); return false;" id="nav-notice">공지사항</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-actions">
+      <div class="auth-buttons" id="authButtons">
+        <button class="btn-login" onclick="openModal('loginOverlay')">로그인</button>
+        <button class="btn-signup" onclick="openModal('signupOverlay')">회원가입</button>
+      </div>
+      <div class="user-info" id="userInfo">
+        <span class="user-email" id="userEmailDisplay"></span>
+        <button class="btn-logout" onclick="doLogout()">로그아웃</button>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ───── MAIN ───── -->
+<main>
+
+  <!-- HOME -->
+  <div id="home" class="active" style="display:block; animation: fadeIn 0.4s ease;">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-logo-wrap">
+          <img src="logo.png" alt="이재, 영어 로고" class="hero-logo-img" />
+        </div>
+        <p class="hero-brand-sub">대치동 진짜영어 이재,영어</p>
+        <div class="hero-cta">
+          <a href="#" class="cta-main" onclick="showPage('classes'); return false;">수업 알아보기</a>
+          <a href="https://open.kakao.com/o/gq8jGyvi" class="cta-sub" target="_blank">카카오로 상담하기</a>
+        </div>
+        <div class="hero-divider"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 이재,영어 소개 -->
+  <section class="page" id="about">
+    <div class="section-header">
+      <div class="section-label">About</div>
+      <h2 class="section-title">이재, 영어</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p>
+          가르치는 일을 하면서 가장 중요하게 여기는 것은 <strong style="color:var(--gold);">진정성</strong>입니다.
+        </p>
+        <p>
+          성적은 기술만으로 오르지 않습니다. 아이들이 왜 틀렸는지, 어디서 막히는지,
+          무엇을 두려워하는지 — 그것을 함께 들여다보는 과정이 먼저입니다.
+          저는 학생들과 같은 방향을 바라보며 동행하는 강사가 되고 싶습니다.
+        </p>
+        <p>
+          수능 영어는 언어가 아니라 구조입니다. 문장이 왜 그렇게 읽히는지를
+          이해하는 순간, 1등급은 더 이상 막연한 목표가 아니게 됩니다.
+          그 순간을 함께 만들어가겠습니다.
+        </p>
+      </div>
+      <div class="intro-image">
+        <img src="Jay_Cari.png" alt="이재영어 강사 이재영" />
+      </div>
+      <div class="intro-stats">
+        <div class="stat-box">
+          <div class="stat-number">N년</div>
+          <div class="stat-label">강의 경력</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">N명</div>
+          <div class="stat-label">누적 수강생</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">N%</div>
+          <div class="stat-label">1등급 달성률</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">3반</div>
+          <div class="stat-label">운영 수업</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 오시는 길 -->
+    <div class="location-section">
+      <div class="location-header">
+        <div class="section-label" style="margin-bottom:12px;">Location</div>
+        <h3 class="location-title">오시는 길</h3>
+        <div class="section-line"></div>
+      </div>
+      <div class="location-body">
+        <div class="location-info">
+          <div class="location-item">
+            <span class="location-icon">📍</span>
+            <div>
+              <div class="location-label">주소</div>
+              <div class="location-value">서울시 강남구 대치동 912-5 1층</div>
+            </div>
+          </div>
+          <div class="location-item">
+            <span class="location-icon">📞</span>
+            <div>
+              <div class="location-label">전화</div>
+              <div class="location-value">010.3475.0519</div>
+            </div>
+          </div>
+          <div class="location-item">
+            <span class="location-icon">🚇</span>
+            <div>
+              <div class="location-label">지하철</div>
+              <div class="location-value">분당선 한티역 · 2호선 선릉역 인근</div>
+            </div>
+          </div>
+          <a class="kakaomap-btn"
+            href="https://map.kakao.com/link/map/이재,영어,37.501967,127.057079"
+            target="_blank">
+            카카오맵에서 길찾기 →
+          </a>
+        </div>
+        <div class="location-map">
+          <iframe
+            src="https://maps.google.com/maps?q=37.501967,127.057079&z=17&output=embed&hl=ko"
+            width="100%" height="100%"
+            style="border:0; border-radius:4px;"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 수업안내 -->
+  <section class="page" id="classes">
+    <div class="section-header">
+      <div class="section-label">Classes</div>
+      <h2 class="section-title">수업 안내</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">이재,영어 교습소의 수업 과정을 안내합니다.</p>
+    </div>
+
+    <div class="class-info-wrap">
+
+      <!-- 대치에스 -->
+      <div class="class-info-block">
+        <div class="class-info-logo"><img src="DCS.jpeg" alt="대치에스" /></div>
+        <div class="class-info-table">
+          <div class="class-info-row header">
+            <span>반</span><span>대상</span><span>요일</span><span>시간</span>
+          </div>
+          <div class="class-info-row">
+            <span>경희고 1학년 A</span><span>경희고 1학년</span><span>금 · 일</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>경희고 1학년 B</span><span>경희고 1학년</span><span>일</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>경희고 2학년 A</span><span>경희고 2학년</span><span>화</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>경희고 2학년 B</span><span>경희고 2학년</span><span>일</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>청량고 1학년</span><span>청량고 1학년</span><span>업데이트 예정</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>청량고 2학년</span><span>청량고 2학년</span><span>업데이트 예정</span><span>업데이트 예정</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이재,영어 -->
+      <div class="class-info-block">
+        <div class="class-info-logo"><img src="logo.png" alt="이재,영어" style="filter:invert(1);" /></div>
+        <div class="class-info-table">
+          <div class="class-info-row header">
+            <span>반</span><span>대상</span><span>요일</span><span>시간</span>
+          </div>
+          <div class="class-info-row">
+            <span>중등부</span><span>중학생</span><span>업데이트 예정</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>예비고1</span><span>중3 · 예비고1</span><span>업데이트 예정</span><span>업데이트 예정</span>
+          </div>
+          <div class="class-info-row">
+            <span>고등부</span><span>고1 · 고2 · 고3</span><span>업데이트 예정</span><span>업데이트 예정</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 대치메카 -->
+      <div class="class-info-block">
+        <div class="class-info-logo"><img src="meca.jpeg" alt="대치메카" /></div>
+        <div class="class-info-table">
+          <div class="class-info-row header">
+            <span>반</span><span>대상</span><span>요일</span><span>시간</span>
+          </div>
+          <div class="class-info-row">
+            <span colspan="4" style="text-align:center;color:var(--gray);">수업 정보 업데이트 예정</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="class-info-notice">
+        📌 상세 시간표 및 수업 문의는 카카오 오픈채팅으로 연락해 주세요.
+        <a href="https://open.kakao.com/o/gq8jGyvi" target="_blank" class="class-info-kakao">💬 오픈채팅 바로가기</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 수강생전용 -->
+  <section class="page" id="student">
+    <div class="section-header">
+      <div class="section-label">Student Only</div>
+      <h2 class="section-title">수강생전용</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">반을 선택하면 과제 및 진도를 확인할 수 있습니다.</p>
+    </div>
+
+    <!-- 탭 버튼 -->
+    <div class="class-tab-wrap">
+      <button class="class-tab-btn active" onclick="switchClassTab('daichi', this)">
+        <img src="DCS.jpeg" class="tab-logo" alt="대치에스" />
+      </button>
+      <button class="class-tab-btn" onclick="switchClassTab('leejae', this)">
+        <img src="logo.png" class="tab-logo" alt="이재, 영어" />
+      </button>
+      <button class="class-tab-btn" onclick="switchClassTab('meca', this)">
+        <img src="meca.jpeg" class="tab-logo" alt="대치메카" />
+      </button>
+    </div>
+
+    <!-- 대치에스 패널 -->
+    <div class="class-tab-panel active" id="tab-daichi">
+      <div class="class-cards">
+        <div class="class-card" onclick="openBoard('daichi-01','경희고 1학년 (금/일)','대치에스')">
+          <div class="class-name">경희고 1학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">금요일 · 일요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>학교</span><span>경희고</span></div>
+            <div class="schedule-row"><span>학년</span><span>1학년</span></div>
+            <div class="schedule-row"><span>요일</span><span>금 · 일</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('daichi-02','경희고 1학년 (일)','대치에스')">
+          <div class="class-tag">대치에스 · 02</div>
+          <div class="class-name">경희고 1학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">일요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>학교</span><span>경희고</span></div>
+            <div class="schedule-row"><span>학년</span><span>1학년</span></div>
+            <div class="schedule-row"><span>요일</span><span>일</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('daichi-03','경희고 2학년 (화)','대치에스')">
+          <div class="class-tag">대치에스 · 03</div>
+          <div class="class-name">경희고 2학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">화요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>학교</span><span>경희고</span></div>
+            <div class="schedule-row"><span>학년</span><span>2학년</span></div>
+            <div class="schedule-row"><span>요일</span><span>화</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('daichi-04','경희고 2학년 (일)','대치에스')">
+          <div class="class-tag">대치에스 · 04</div>
+          <div class="class-name">경희고 2학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">일요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>학교</span><span>경희고</span></div>
+            <div class="schedule-row"><span>학년</span><span>2학년</span></div>
+            <div class="schedule-row"><span>요일</span><span>일</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('daichi-05','청량고 1학년','대치에스')">
+          <div class="class-tag">대치에스 · 05</div>
+          <div class="class-name">청량고 1학년</div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>학교</span><span>청량고</span></div>
+            <div class="schedule-row"><span>학년</span><span>1학년</span></div>
+            <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('daichi-06','청량고 2학년','대치에스')">
+          <div class="class-tag">대치에스 · 06</div>
+          <div class="class-name">청량고 2학년</div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>학교</span><span>청량고</span></div>
+            <div class="schedule-row"><span>학년</span><span>2학년</span></div>
+            <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 이재,영어 패널 -->
+    <div class="class-tab-panel" id="tab-leejae">
+      <div class="class-cards">
+        <div class="class-card" onclick="openBoard('leejae-01','중등부','이재, 영어')">
+          <div class="class-tag">이재, 영어 · 01</div>
+          <div class="class-name">중등부</div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>중학생</span></div>
+            <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
+            <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('leejae-02','예비고1','이재, 영어')">
+          <div class="class-tag">이재, 영어 · 02</div>
+          <div class="class-name">예비고1</div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>중3 · 예비고1</span></div>
+            <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
+            <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
+        <div class="class-card" onclick="openBoard('leejae-03','고등부','이재, 영어')">
+          <div class="class-tag">이재, 영어 · 03</div>
+          <div class="class-name">고등부</div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>고1·고2·고3</span></div>
+            <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
+            <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 대치메카 패널 -->
+    <div class="class-tab-panel" id="tab-meca">
+      <div class="class-cards">
+        <div class="data-item" style="border:1px dashed var(--border);padding:60px;text-align:center;border-radius:2px;background:rgba(255,255,255,0.01);">
+          <div style="color:var(--gray);font-size:0.9rem;">수업 정보가 업데이트될 예정입니다.</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 자료실 -->
+  <section class="page" id="data">
+    <div class="section-header">
+      <div class="section-label">Resources</div>
+      <h2 class="section-title">자료실</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div id="dataLoggedOut" class="login-required-msg" style="display:block;">
+      <div class="icon">🔒</div>
+      <h3>로그인이 필요합니다</h3>
+      <p>자료실은 수강생 전용 공간입니다.<br>로그인 후 이용해 주세요.</p>
+      <button onclick="openModal('loginOverlay')">로그인하기</button>
+    </div>
+
+    <div id="dataNoAccess" class="login-required-msg" style="display:none;">
+      <div class="icon">⛔</div>
+      <h3>접근 권한이 없습니다</h3>
+      <p>현재 수강 중인 학생만 자료실을 이용할 수 있습니다.<br>강사에게 문의해 주세요.</p>
+    </div>
+
+    <div id="dataLoggedIn" style="display:none;">
+
+      <!-- 관리자 코드 관리 패널 -->
+      <div id="adminCodePanel" style="display:none;margin-bottom:32px;padding:24px;border:1px solid var(--gold);border-radius:4px;background:rgba(201,168,76,0.05);">
+        <div style="font-size:0.78rem;letter-spacing:0.1em;color:var(--gold);margin-bottom:16px;">🔑 수강코드 관리</div>
+        <div id="codeTableWrap" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;"></div>
+        <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div style="font-size:0.78rem;letter-spacing:0.1em;color:var(--gold);">👥 수강생 목록</div>
+            <div style="display:flex;gap:8px;">
+              <button onclick="toggleApprovedList()"
+                id="approvedListToggleBtn"
+                style="background:none;border:1px solid var(--border);color:var(--gray);padding:5px 12px;border-radius:2px;cursor:pointer;font-size:0.78rem;">펼치기 ▼</button>
+              <button onclick="loadApprovedUsers()"
+                style="background:none;border:1px solid var(--border);color:var(--gray);padding:5px 12px;border-radius:2px;cursor:pointer;font-size:0.78rem;">새로고침</button>
+            </div>
+          </div>
+          <div id="approvedUserList" style="display:none;flex-direction:column;gap:8px;">
+            <div style="color:var(--gray);font-size:0.82rem;">불러오는 중...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-notice">
+        <div class="data-notice-icon">📂</div>
+        <p>수강생 전용 자료실입니다. <strong>강의 영상, 프린트, 모의고사 해설</strong> 등이 업로드됩니다.</p>
+      </div>
+
+      <!-- 폴더 탭 -->
+      <!-- 학원 탭 (1단계) -->
+      <div class="data-academy-tabs" id="academyTabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;"></div>
+      <!-- 학교 탭 (2단계) -->
+      <div class="data-folder-tabs" id="schoolTabs" style="margin-bottom:12px;"></div>
+
+      <!-- 경희고 1학년 -->
+      <div class="data-folder-panel active" id="folder-gyeonghee1">
+        <div class="data-sub-tabs">
+          <button class="data-sub-btn active" onclick="switchDataSub('g1','textbook',this)">📖 교과서</button>
+          <button class="data-sub-btn" onclick="switchDataSub('g1','workbook',this)">📝 부교재</button>
+        </div>
+        <div class="data-sub-panel active" id="g1-textbook">
+          <div class="data-list">
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div>
+          </div>
+        </div>
+        <div class="data-sub-panel" id="g1-workbook">
+          <div class="data-unit-tabs">
+            <button class="data-unit-btn active" onclick="switchDataUnit('g1wb','11',this)">마더텅 11강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g1wb','06',this)">마더텅 06강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g1wb','07',this)">마더텅 07강</button>
+          </div>
+          <div class="data-unit-panel active" id="g1wb-11">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/RnuA5q6E_6w" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 21번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/-M9y5DVyuj4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 22번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/y1oIxRsFkbk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 23번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Sg8Jq6yleSs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 24번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/GTu1Jht2jA4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 25번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Dz3ZgFp6TOs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 26번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/c1kvz1aNxck" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 27번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/39OsE1uaIk8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 28번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/ofqonegZBFQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 29번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/oHKxTgkGPjE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 30번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/7GOMX13WsPQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 31번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/5gRqnE1Sck4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 32번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/XQPRPJ1pSFc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 33번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/rT6yWxHowjw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 34번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/XSwV_0yzOVk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 35번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/RadllOerP_4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 36번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Z2vGd8pnCZg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 37번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/U-s05WdpEDQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 38번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/f9gs6onEOoM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 39번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/z1JuW7FYj48" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 40번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g1wb-06">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/5clKKrCkarE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 01번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/vxHBStrsn6A" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 02번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/EV_BE2fIcIU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 03번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/bFr6kHMD9mQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 04번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/W9No-WOW7aM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 05번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/pZyASEvyYzg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/SNVPVBe0yAA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/gr7m2hNAzZQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 08번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/wH3wJbKHYTg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 09번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/OMmm0un0Avw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 10번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/s5TGFRolKZE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 11번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/geye3EGbN70" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 12번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/1Ru-TtY8BsA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 13번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/pXLbQIgrz-c" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 14번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/wji-EgQOGi4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 15번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/SmitSQ7gCu8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 16번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/ArZSudah4PE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 17번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/bI_HOVU6fnE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 18번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/4WMWP3AtJvc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 19번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/o1UIvj3saUc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 20번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/ZMfYYHARxwI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 21번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/on8mxKoY500" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 22번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Ibsr0whKBpY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 실전모의고사</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g1wb-07">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/b1m8jr8pnaY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 01번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/8ZmnOSqFW_c" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 02번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/xlpDeeiOXGk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 03번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/FrJbfGgwpNI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 04번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/GAVT8hSzIX8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 05번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/A4jaunxCgJU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/4noNppQlTjA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/hHSKiuAJvkU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 08번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/p70XVvdEtJo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 09번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/aE38q1KZR98" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 10번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/7aBayeAUKP0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 11번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/0R7o3KM_o-E" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 12번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/OVc41P_5duk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 13번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/AAoS_M1E5Hg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 14번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/TN2ZVxmoqAA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 15번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Oma-F4uk_cs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 16번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/xO21h1WykjY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 21번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/QlhDBcnLVCM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 22번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Iybn7FwZJag" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 24번</div></div></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 경희고 2학년 -->
+      <div class="data-folder-panel" id="folder-gyeonghee2">
+        <div class="data-sub-tabs">
+          <button class="data-sub-btn active" onclick="switchDataSub('g2','textbook',this)">📖 교과서</button>
+          <button class="data-sub-btn" onclick="switchDataSub('g2','workbook',this)">📝 부교재</button>
+        </div>
+        <div class="data-sub-panel active" id="g2-textbook">
+          <div class="data-list">
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div>
+          </div>
+        </div>
+        <div class="data-sub-panel" id="g2-workbook">
+          <div class="data-unit-tabs">
+            <button class="data-unit-btn active" onclick="switchDataUnit('g2wb','03',this)">마더텅 3강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g2wb','04',this)">마더텅 04강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g2wb','05',this)">마더텅 05강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g2wb','11',this)">마더텅 11강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g2wb','12',this)">마더텅 12강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g2wb','13',this)">마더텅 13강</button>
+            <button class="data-unit-btn" onclick="switchDataUnit('g2wb','mini2',this)">Mini TEST 2회</button>
+          </div>
+          <div class="data-unit-panel active" id="g2wb-03">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/gw6MYcCeTd0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/OMIy-ovtCXA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/I-dB1oM85w4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 08번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/2shIUmqXrz0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 09번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/_oFK92KAicA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 10번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g2wb-04">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/M1Sv8-hT0x0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 05번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/yD-WBn_pA3E" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/WKmJU3djm1U" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/PovarT-jRjU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 08번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g2wb-05">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/wW39yhOfHek" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/ap2rawX5lgs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/-TIa0S-wAgo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 08번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/3Ahc_nUjVGI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 09번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/VF_eygSK37Y" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 10번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g2wb-11">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/XWsMw865T8Q" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 31번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/7Cv1J5xL5OE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 32번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/7TG-y8sEUvM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 33번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/394DAWybdJM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 34번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/55QQPhwHwrA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 35번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/rw7BxxC4Cyg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 36번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/geJKvZ70KQg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 37번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/reH-O14K1Mk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 38번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/v97EByD0p90" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 39번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/olEEsOjkzA8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 40번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g2wb-12">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/uK5JKYeV-YI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/DFVddEuigR8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/F_6lfE0CJW8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 08번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/0znBGGn7JRU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 09번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/jH622ilyEvM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 10번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g2wb-13">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/mhmykyl73NE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 12번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/ebR2NEw3Hx8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 15번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/3SUvLUDWa_I" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 16번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/GbSMBlTqlB4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 17번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/SQlgsib-o68" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 18번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/NhcsI8taMqA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 19번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/IY0aCZVrPaA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 20번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/OK-AfINcGOs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 21번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/HzaSUgKvaWM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 22번</div></div></div></a>
+            </div>
+          </div>
+          <div class="data-unit-panel" id="g2wb-mini2">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/AnIfDW9FRvk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 01번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/9sPh2rdn9OU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 02번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/Ayqivrfuuz0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 03번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/zZScrw1ZhNQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 04번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/PVecGcMMv6k" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 05번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/g2A43RwYzpw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 06번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/N7HPGIQvuew" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 07번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/S62g2qAVauM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 08번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/RriOLfx7s0w" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 09번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/YFW7gCX92AY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 10-12번</div></div></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 청량고 2학년 -->
+      <!-- 청량고 1학년 -->
+      <div class="data-folder-panel" id="folder-cheongnyang1">
+        <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
+      </div>
+
+      <!-- 청량고 2학년 -->
+      <div class="data-folder-panel" id="folder-cheongnyang2">
+        <div class="data-sub-tabs">
+          <button class="data-sub-btn active" onclick="switchDataSub('cn2','mockup',this)">📝 모의고사</button>
+        </div>
+        <div class="data-sub-panel active" id="cn2-mockup">
+          <div class="data-unit-tabs">
+            <button class="data-unit-btn active" onclick="switchDataUnit('cn2mc','2603',this)">2026년 03월</button>
+          </div>
+          <div class="data-unit-panel active" id="cn2mc-2603">
+            <div class="data-list">
+              <a class="data-item data-link" href="https://youtu.be/QvQR9c0V-tw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 35번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/oVJmzp_fwa0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 36번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/1nOmwumK9Cw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 37번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/u1bWERtZ5_U" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 38번</div></div></div></a>
+              <a class="data-item data-link" href="https://youtu.be/2Rf3uC5cPRg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 39번</div></div></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이재,영어 패널 -->
+      <div class="data-folder-panel" id="folder-leejae_middle">
+        <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
+      </div>
+      <div class="data-folder-panel" id="folder-leejae_prehigh">
+        <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
+      </div>
+      <div class="data-folder-panel" id="folder-leejae_high">
+        <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
+      </div>
+
+      <!-- 대치메카 패널 -->
+      <div class="data-folder-panel" id="folder-meca_middle">
+        <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
+      </div>
+      <div class="data-folder-panel" id="folder-meca_high">
+        <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Q&A -->
+  <section class="page" id="qa">
+    <div class="section-header">
+      <div class="section-label">Q&A</div>
+      <h2 class="section-title">질문은 항상 옳다</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="qa-intro">
+      <p>
+        수업 내용, 문제 풀이, 영어 공부 방법 — 어떤 질문이든 환영합니다.<br>
+        익명으로 자유롭게 질문하세요. 선생님이 직접 댓글로 답변드립니다.
+      </p>
+    </div>
+
+    <!-- 질문 작성 -->
+    <div class="qa-write-box">
+      <textarea id="qaContent" placeholder="질문을 입력하세요. 문제 번호, 단원명 등을 함께 적어주면 빠른 답변에 도움이 됩니다."></textarea>
+      <div class="qa-write-footer">
+        <input type="text" id="qaNick" placeholder="닉네임 (선택)" maxlength="12" />
+        <button class="qa-submit-btn" onclick="submitQa()">질문 올리기</button>
+      </div>
+    </div>
+
+    <!-- 게시글 목록 -->
+    <div class="qa-list" id="qaList">
+      <div class="qa-loading">불러오는 중...</div>
+    </div>
+  </section>
+
+  <!-- 설명회 -->
+  <section class="page" id="seminar">
+    <div class="section-header">
+      <div class="section-label">Seminar</div>
+      <h2 class="section-title">설명회</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- 관리자 영상 추가 폼 -->
+    <div class="seminar-admin-bar" id="seminarAdminBar" style="display:none;">
+      <button class="seminar-add-btn" onclick="toggleSeminarForm()">+ 영상 추가</button>
+    </div>
+    <div class="seminar-write-form" id="seminarWriteForm" style="display:none;">
+      <input class="seminar-input" id="seminarVideoId" placeholder="유튜브 영상 ID (예: GEM6wGWNvEo)" />
+      <input class="seminar-input" id="seminarVideoTitle" placeholder="영상 제목" />
+      <textarea class="seminar-textarea" id="seminarVideoDesc" placeholder="영상 설명을 입력하세요"></textarea>
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="seminar-cancel-btn" onclick="toggleSeminarForm()">취소</button>
+        <button class="seminar-submit-btn" onclick="submitSeminarVideo()">등록</button>
+      </div>
+    </div>
+
+    <!-- 영상 목록 -->
+    <div class="seminar-video-list" id="seminarVideoList">
+      <div style="color:var(--gray);font-size:0.85rem;padding:40px 0;text-align:center;">불러오는 중...</div>
+    </div>
+  </section>
+
+  <!-- 공지사항 -->
+  <section class="page" id="notice">
+    <div class="section-header">
+      <div class="section-label">Notice</div>
+      <h2 class="section-title">공지사항</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="notice-list">
+      <div class="notice-empty">등록된 공지사항이 없습니다.</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ───── 게시판 오버레이 ───── -->
+<div class="board-overlay" id="boardOverlay">
+  <div class="board-container">
+    <button class="board-close" onclick="closeBoard()">✕</button>
+    <div class="board-title" id="boardTitle"></div>
+    <div class="board-subtitle" id="boardSubtitle"></div>
+
+    <!-- 글쓰기 버튼 (관리자만) -->
+    <button class="write-btn" id="writeBtn" onclick="toggleWriteForm()">✏️ 글쓰기</button>
+
+    <!-- 글쓰기 폼 -->
+    <div class="write-form" id="writeForm">
+      <input type="text" id="postTitleInput" placeholder="제목을 입력하세요" />
+      <textarea id="postBodyInput" placeholder="내용을 입력하세요"></textarea>
+      <div class="write-form-btns">
+        <button class="btn-submit" onclick="submitPost()">등록</button>
+        <button class="btn-cancel" onclick="toggleWriteForm()">취소</button>
+      </div>
+    </div>
+
+    <!-- 목록 뷰 -->
+    <div class="post-list-view" id="postListView">
+      <div class="post-list" id="postList">
+        <div class="post-empty">등록된 게시글이 없습니다.</div>
+      </div>
+    </div>
+
+    <!-- 상세 뷰 -->
+    <div class="post-detail" id="postDetail">
+      <button class="back-btn" onclick="backToList()">← 목록으로</button>
+      <div class="post-detail-title" id="detailTitle"></div>
+      <div class="post-detail-meta" id="detailMeta"></div>
+      <div class="post-detail-body" id="detailBody"></div>
+
+      <!-- 댓글 -->
+      <div class="comment-section">
+        <div class="comment-title">댓글</div>
+        <div id="commentList"></div>
+        <div class="comment-form" id="commentForm" style="display:none;">
+          <input class="comment-input" id="commentInput" placeholder="댓글을 입력하세요" />
+          <button class="comment-submit" onclick="submitComment()">등록</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KAKAO FLOAT -->
+<a href="https://open.kakao.com/o/gq8jGyvi" class="kakao-float" target="_blank">
+  <svg viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.552 1.527 4.8 3.875 6.188-.17.602-.615 2.186-.703 2.525-.107.412.152.407.32.296.132-.087 2.1-1.425 2.95-2.004.499.07 1.013.107 1.558.107 5.523 0 10-3.477 10-7.612C20 6.477 17.523 3 12 3z"/></svg>
+  <span>카카오 상담</span>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>이재,영어</strong><br>
+    대표 이재영 &nbsp;|&nbsp; 사업자등록번호 101-57-00398 &nbsp;|&nbsp; 학원신고 제 14205호<br>
+    주소 서울시 강남구 대치동 912-5 1층 &nbsp;|&nbsp; 전화 010.3475.0519
+  </p>
+</footer>
+
+<!-- ───── FIREBASE ───── -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy,
+    updateDoc,
+    serverTimestamp,
+    doc,
+    getDoc,
+    setDoc,
+    deleteDoc
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCjbopqpAFUTJoITIZ8YN2zNcZ3Syhoc0Q",
+    authDomain: "neverthelessjy-f21a0.firebaseapp.com",
+    projectId: "neverthelessjy-f21a0",
+    storageBucket: "neverthelessjy-f21a0.firebasestorage.app",
+    messagingSenderId: "851283821232",
+    appId: "1:851283821232:web:6b3af33c015684ce133175"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // ── 학원/학교 코드 정의 (전역) ──
+  const ACADEMY_MAP = {
+    daichi:  { label: '대치에스', schools: { gyeonghee1:'경희고 1학년', gyeonghee2:'경희고 2학년', cheongnyang1:'청량고 1학년', cheongnyang2:'청량고 2학년' } },
+    leejae:  { label: '이재,영어', schools: { leejae_middle:'중등부', leejae_prehigh:'예비고1', leejae_high:'고등부' } },
+    meca:    { label: '대치메카',  schools: { meca_middle:'중등부', meca_high:'고등부' } },
+  };
+
+  const ADMIN_EMAIL = 'kfbs7jy@naver.com';
+  let currentUser = null;
+  let currentClassId = null;
+  let currentPostId = null;
+
+  // ── 인증 상태 ──
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+    if (user) {
+      document.getElementById('authButtons').classList.add('hidden');
+      document.getElementById('userInfo').classList.add('show');
+      document.getElementById('userEmailDisplay').textContent = user.email;
+      // 관리자 글쓰기 버튼
+      if (user.email === ADMIN_EMAIL) {
+        window._isAdmin = true;
+        document.getElementById('writeBtn').classList.add('show');
+        document.getElementById('seminarAdminBar').style.display = 'block';
+        showDataSection(true, null); // 관리자: 전체 접근
+        showAdminCodePanel();
+      } else {
+        window._isAdmin = false;
+        // 수강 승인 여부 확인
+        const result = await checkUserApproved(user.email);
+        showDataSection(result.approved, result.data);
+      }
+      loadQaBoard();
+      // 댓글 폼
+      const cf = document.getElementById('commentForm');
+      if (cf) cf.style.display = 'flex';
+      // 설명회 댓글 폼 갱신
+      document.querySelectorAll('.seminar-comment-form').forEach(f => f.classList.add('show'));
+      document.querySelectorAll('.seminar-login-notice').forEach(n => n.style.display = 'none');
+    } else {
+      document.getElementById('authButtons').classList.remove('hidden');
+      document.getElementById('userInfo').classList.remove('show');
+      showDataSection(false);
+      window._isAdmin = false;
+      document.getElementById('writeBtn').classList.remove('show');
+      document.getElementById('seminarAdminBar').style.display = 'none';
+      loadQaBoard();
+      document.querySelectorAll('.seminar-comment-form').forEach(f => f.classList.remove('show'));
+      document.querySelectorAll('.seminar-login-notice').forEach(n => n.style.display = 'block');
+    }
+  });
+
+  // ── 자료실 표시 제어 ──
+  function showDataSection(approved, userData) {
+    const loggedOut = document.getElementById('dataLoggedOut');
+    const loggedIn = document.getElementById('dataLoggedIn');
+    const noAccess = document.getElementById('dataNoAccess');
+    if (!currentUser) {
+      loggedOut.style.display = 'block';
+      loggedIn.style.display = 'none';
+      noAccess.style.display = 'none';
+    } else if (approved) {
+      loggedOut.style.display = 'none';
+      loggedIn.style.display = 'block';
+      noAccess.style.display = 'none';
+      renderAcademyTabs(userData);
+    } else {
+      loggedOut.style.display = 'none';
+      loggedIn.style.display = 'none';
+      noAccess.style.display = 'block';
+    }
+  }
+
+  // ── 학원/학교 탭 렌더링 ──
+  function renderAcademyTabs(userData) {
+    const academyTabs = document.getElementById('academyTabs');
+    const schoolTabs = document.getElementById('schoolTabs');
+    if (!academyTabs || !schoolTabs) return;
+
+    // 기존 회원(academy 없음) → 전체 탭 표시
+    const isLegacy = !userData || !userData.academy;
+    const userAcademy = userData?.academy || null;
+    const userSchool = userData?.school || null;
+
+    // 보여줄 학원 목록 결정
+    const visibleAcademies = isLegacy
+      ? Object.keys(ACADEMY_MAP)
+      : [userAcademy];
+
+    // 학원 탭 버튼 생성
+    academyTabs.innerHTML = '';
+    visibleAcademies.forEach((aKey, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'academy-btn' + (i === 0 ? ' active' : '');
+      btn.textContent = ACADEMY_MAP[aKey]?.label || aKey;
+      btn.dataset.academy = aKey;
+      btn.onclick = () => switchAcademy(aKey, btn, isLegacy, userSchool);
+      academyTabs.appendChild(btn);
+    });
+
+    // 첫 학원의 학교 탭 렌더링
+    switchAcademy(visibleAcademies[0], academyTabs.children[0], isLegacy, userSchool);
+  }
+
+  function switchAcademy(aKey, btn, isLegacy, userSchool) {
+    document.querySelectorAll('.academy-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const schoolTabs = document.getElementById('schoolTabs');
+    schoolTabs.innerHTML = '';
+
+    const schools = ACADEMY_MAP[aKey]?.schools || {};
+    const visibleSchools = isLegacy ? Object.keys(schools) : (userSchool ? [userSchool] : Object.keys(schools));
+
+    // 모든 folder-panel 숨기기
+    document.querySelectorAll('.data-folder-panel').forEach(p => p.classList.remove('active'));
+
+    visibleSchools.forEach((sKey, i) => {
+      const folderId = `folder-${sKey}`;
+      const panel = document.getElementById(folderId);
+      if (!panel) return;
+      const btn2 = document.createElement('button');
+      btn2.className = 'data-folder-btn' + (i === 0 ? ' active' : '');
+      btn2.textContent = schools[sKey] || sKey;
+      btn2.onclick = () => switchDataFolder(sKey, btn2);
+      schoolTabs.appendChild(btn2);
+      if (i === 0) panel.classList.add('active');
+    });
+  }
+
+  // 페이지 로드 시 초기 상태 설정
+  showDataSection(false);
+
+  // ── 수강 승인 여부 확인 ──
+  async function checkUserApproved(email) {
+    try {
+      const key = email.replace(/\./g, '_');
+      const snap = await getDoc(doc(db, 'approvedUsers', key));
+      if (snap.exists()) return { approved: true, data: snap.data() };
+      return { approved: false, data: null };
+    } catch(e) { return { approved: false, data: null }; }
+  }
+
+  // ── 학원/학교 코드 정의 ──
+  // ── 관리자 코드 패널 표시 ──
+  async function showAdminCodePanel() {
+    const panel = document.getElementById('adminCodePanel');
+    if (!panel) return;
+    panel.style.display = 'block';
+    await renderCodeTable();
+    await loadApprovedUsers();
+  }
+
+  async function renderCodeTable() {
+    const wrap = document.getElementById('codeTableWrap');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    for (const [aKey, aVal] of Object.entries(ACADEMY_MAP)) {
+      const section = document.createElement('div');
+      section.style.cssText = 'margin-bottom:16px;';
+      section.innerHTML = `<div style="font-size:0.75rem;color:var(--gold);letter-spacing:0.08em;margin-bottom:8px;">📍 ${aVal.label}</div>`;
+      for (const [sKey, sLabel] of Object.entries(aVal.schools)) {
+        const codeKey = `${aKey}_${sKey}`;
+        let currentCode = '';
+        try {
+          const snap = await getDoc(doc(db, 'settings', `code_${codeKey}`));
+          if (snap.exists()) currentCode = snap.data().code || '';
+        } catch(e) {}
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;';
+        row.innerHTML = `
+          <span style="font-size:0.8rem;color:var(--gray);min-width:80px;">${sLabel}</span>
+          <input id="code-input-${codeKey}" type="text" value="${currentCode}" placeholder="코드 미설정"
+            style="background:rgba(255,255,255,0.07);border:1px solid var(--border);color:var(--white);padding:6px 10px;border-radius:2px;font-size:0.82rem;flex:1;min-width:120px;" />
+          <button onclick="saveOneCode('${codeKey}','${aKey}','${sKey}')"
+            style="background:var(--gold);color:#0a0e1a;border:none;padding:6px 14px;border-radius:2px;font-weight:700;cursor:pointer;font-size:0.8rem;white-space:nowrap;">저장</button>
+          <span id="code-saved-${codeKey}" style="font-size:0.75rem;color:#4caf50;display:none;">✓ 저장됨</span>
+        `;
+        section.appendChild(row);
+      }
+      wrap.appendChild(section);
+    }
+  }
+
+  window.saveOneCode = async (codeKey, academy, school) => {
+    const input = document.getElementById(`code-input-${codeKey}`);
+    const savedEl = document.getElementById(`code-saved-${codeKey}`);
+    const code = input.value.trim();
+    if (!code) { alert('코드를 입력해주세요.'); return; }
+    try {
+      await setDoc(doc(db, 'settings', `code_${codeKey}`), {
+        code, academy, school, updatedAt: serverTimestamp()
+      });
+      savedEl.style.display = 'inline';
+      setTimeout(() => savedEl.style.display = 'none', 2000);
+    } catch(e) { alert('저장 실패. 다시 시도해주세요.'); }
+  };
+
+  // ── 수강생 목록 로드 ──
+  window.loadApprovedUsers = async () => {
+    const listEl = document.getElementById('approvedUserList');
+    if (!listEl) return;
+    listEl.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;">불러오는 중...</div>';
+    try {
+      const snap = await getDocs(collection(db, 'approvedUsers'));
+      if (snap.empty) {
+        listEl.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;">등록된 수강생이 없습니다.</div>';
+        return;
+      }
+      listEl.innerHTML = '';
+      snap.forEach(d => {
+        const data = d.data();
+        const date = data.approvedAt ? new Date(data.approvedAt.seconds * 1000).toLocaleDateString('ko-KR') : '-';
+        const academy = data.academy ? (ACADEMY_MAP[data.academy]?.label || data.academy) : '기존회원(전체접근)';
+        const school = data.school ? (ACADEMY_MAP[data.academy]?.schools[data.school] || data.school) : '-';
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:2px;gap:12px;';
+        row.innerHTML = `
+          <div>
+            <div style="font-size:0.88rem;color:var(--white);">${data.email}</div>
+            <div style="font-size:0.72rem;color:var(--gray);margin-top:2px;">
+              ${academy} · ${school} &nbsp;|&nbsp; 가입일 ${date}
+            </div>
+          </div>
+          <button onclick="revokeUser('${d.id}', '${data.email}')"
+            style="background:none;border:1px solid #e05;color:#e05;padding:5px 12px;border-radius:2px;cursor:pointer;font-size:0.78rem;white-space:nowrap;flex-shrink:0;">
+            퇴원 처리
+          </button>
+        `;
+        listEl.appendChild(row);
+      });
+    } catch(e) {
+      listEl.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;">불러오기 실패. 다시 시도해 주세요.</div>';
+    }
+  };
+
+  // ── 수강생 삭제 (퇴원) ──
+  window.revokeUser = async (docId, email) => {
+    if (!confirm(`[${email}] 수강생을 퇴원 처리하시겠습니까?\n자료실 접근이 즉시 차단됩니다.`)) return;
+    try {
+      await deleteDoc(doc(db, 'approvedUsers', docId));
+      await loadApprovedUsers();
+    } catch(e) { alert('퇴원 처리에 실패했습니다.'); }
+  };
+
+  // updateAccessCode → saveOneCode 로 대체됨
+
+  // ── 로그인/회원가입/로그아웃 ──
+  window.doLogin = async () => {
+    const email = document.getElementById('loginEmail').value.trim();
+    const pw = document.getElementById('loginPassword').value;
+    const errEl = document.getElementById('loginError');
+    errEl.classList.remove('show');
+    try {
+      await signInWithEmailAndPassword(auth, email, pw);
+      closeModal('loginOverlay');
+    } catch(e) {
+      errEl.textContent = '이메일 또는 비밀번호를 확인해 주세요.';
+      errEl.classList.add('show');
+    }
+  };
+
+  window.doSignup = async () => {
+    const code = document.getElementById('signupCode').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const pw = document.getElementById('signupPassword').value;
+    const pw2 = document.getElementById('signupPassword2').value;
+    const errEl = document.getElementById('signupError');
+    errEl.classList.remove('show');
+
+    if (!code) { errEl.textContent = '수강코드를 입력해 주세요.'; errEl.classList.add('show'); return; }
+    if (pw !== pw2) { errEl.textContent = '비밀번호가 일치하지 않습니다.'; errEl.classList.add('show'); return; }
+    if (pw.length < 6) { errEl.textContent = '비밀번호는 6자리 이상이어야 합니다.'; errEl.classList.add('show'); return; }
+
+    // 학원별 코드 전체 조회 후 일치하는 코드 찾기
+    let matchedAcademy = null, matchedSchool = null;
+    try {
+      for (const [aKey, aVal] of Object.entries(ACADEMY_MAP)) {
+        for (const sKey of Object.keys(aVal.schools)) {
+          const codeKey = `${aKey}_${sKey}`;
+          const snap = await getDoc(doc(db, 'settings', `code_${codeKey}`));
+          if (snap.exists() && snap.data().code === code) {
+            matchedAcademy = aKey;
+            matchedSchool = sKey;
+            break;
+          }
+        }
+        if (matchedAcademy) break;
+      }
+      if (!matchedAcademy) {
+        // 기존 단일 코드(accessCode) fallback — 방학 후 제거 예정
+        try {
+          const legacySnap = await getDoc(doc(db, 'settings', 'accessCode'));
+          if (legacySnap.exists() && legacySnap.data().code === code) {
+            matchedAcademy = null;
+            matchedSchool = null;
+            // legacy 코드로 가입 허용 (academy/school 없이 저장 → 전체 접근)
+          } else {
+            errEl.textContent = '수강코드가 올바르지 않습니다. 강사에게 문의하세요.';
+            errEl.classList.add('show');
+            return;
+          }
+        } catch(e2) {
+          errEl.textContent = '수강코드가 올바르지 않습니다. 강사에게 문의하세요.';
+          errEl.classList.add('show');
+          return;
+        }
+      }
+    } catch(e) {
+      errEl.textContent = '코드 확인 중 오류가 발생했습니다. 다시 시도해 주세요.';
+      errEl.classList.add('show');
+      return;
+    }
+
+    // 가입 + 학원/학교 정보 저장
+    try {
+      await createUserWithEmailAndPassword(auth, email, pw);
+      const key = email.replace(/\./g, '_');
+      const userData = { email, approvedAt: serverTimestamp() };
+      if (matchedAcademy) { userData.academy = matchedAcademy; userData.school = matchedSchool; }
+      await setDoc(doc(db, 'approvedUsers', key), userData);
+      closeModal('signupOverlay');
+    } catch(e) {
+      if (e.code === 'auth/email-already-in-use') {
+        errEl.textContent = '이미 사용 중인 이메일입니다.';
+      } else {
+        errEl.textContent = '회원가입에 실패했습니다. 다시 시도해 주세요.';
+      }
+      errEl.classList.add('show');
+    }
+  };
+
+  window.doLogout = async () => { await signOut(auth); };
+
+  // ── 게시판 열기 ──
+  window.openBoard = async (classId, className, academy) => {
+    if (!currentUser) {
+      openModal('loginOverlay');
+      return;
+    }
+    currentClassId = classId;
+    document.getElementById('boardTitle').textContent = className;
+    document.getElementById('boardSubtitle').textContent = academy + ' · 게시판';
+    document.getElementById('boardOverlay').classList.add('active');
+    backToList();
+    await loadPosts(classId);
+  };
+
+  window.closeBoard = () => {
+    document.getElementById('boardOverlay').classList.remove('active');
+    currentClassId = null;
+    currentPostId = null;
+  };
+
+  // ── 게시글 목록 로드 ──
+  async function loadPosts(classId) {
+    const postList = document.getElementById('postList');
+    postList.innerHTML = '<div class="post-empty" style="color:var(--gray);font-size:0.85rem;">불러오는 중...</div>';
+    try {
+      const q = query(collection(db, 'classes', classId, 'posts'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        postList.innerHTML = '<div class="post-empty">등록된 게시글이 없습니다.</div>';
+        return;
+      }
+      postList.innerHTML = '';
+      snap.forEach(d => {
+        const data = d.data();
+        const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
+        const el = document.createElement('div');
+        el.className = 'post-item';
+        el.innerHTML = `
+          <div class="post-item-title">${data.title}</div>
+          <div class="post-item-meta">${data.authorEmail || ''} · ${date}</div>
+        `;
+        el.onclick = () => openPost(d.id, data);
+        postList.appendChild(el);
+      });
+    } catch(e) {
+      postList.innerHTML = '<div class="post-empty">불러오기 실패. 다시 시도해 주세요.</div>';
+    }
+  }
+
+  // ── 게시글 상세 ──
+  async function openPost(postId, data) {
+    currentPostId = postId;
+    document.getElementById('postListView').classList.add('hide');
+    document.getElementById('postDetail').classList.add('show');
+    document.getElementById('detailTitle').textContent = data.title;
+    const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
+    document.getElementById('detailMeta').textContent = `${data.authorEmail || ''} · ${date}`;
+    document.getElementById('detailBody').textContent = data.body;
+    // 댓글 폼
+    document.getElementById('commentForm').style.display = currentUser ? 'flex' : 'none';
+    await loadComments(postId);
+  }
+
+  window.backToList = () => {
+    document.getElementById('postListView').classList.remove('hide');
+    document.getElementById('postDetail').classList.remove('show');
+    document.getElementById('writeForm').classList.remove('show');
+    currentPostId = null;
+  };
+
+  // ── 글쓰기 토글 ──
+  window.toggleApprovedList = () => {
+    const list = document.getElementById('approvedUserList');
+    const btn = document.getElementById('approvedListToggleBtn');
+    if (list.style.display === 'none') {
+      list.style.display = 'flex';
+      btn.textContent = '접기 ▲';
+    } else {
+      list.style.display = 'none';
+      btn.textContent = '펼치기 ▼';
+    }
+  };
+
+  window.toggleWriteForm = () => {
+    document.getElementById('writeForm').classList.toggle('show');
+  };
+
+  // ── 게시글 등록 ──
+  window.submitPost = async () => {
+    if (!currentUser || currentUser.email !== ADMIN_EMAIL) return;
+    const title = document.getElementById('postTitleInput').value.trim();
+    const body = document.getElementById('postBodyInput').value.trim();
+    if (!title || !body) { alert('제목과 내용을 입력해 주세요.'); return; }
+    try {
+      await addDoc(collection(db, 'classes', currentClassId, 'posts'), {
+        title, body,
+        authorEmail: currentUser.email,
+        createdAt: serverTimestamp()
+      });
+      document.getElementById('postTitleInput').value = '';
+      document.getElementById('postBodyInput').value = '';
+      document.getElementById('writeForm').classList.remove('show');
+      await loadPosts(currentClassId);
+    } catch(e) {
+      alert('등록에 실패했습니다.');
+    }
+  };
+
+  // ── 댓글 로드 ──
+  async function loadComments(postId) {
+    const list = document.getElementById('commentList');
+    list.innerHTML = '';
+    try {
+      const q = query(
+        collection(db, 'classes', currentClassId, 'posts', postId, 'comments'),
+        orderBy('createdAt', 'asc')
+      );
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        list.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;padding:12px 0;">댓글이 없습니다.</div>';
+        return;
+      }
+      snap.forEach(d => {
+        const data = d.data();
+        const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
+        const el = document.createElement('div');
+        el.className = 'comment-item';
+        el.innerHTML = `
+          <div class="comment-author">${data.authorEmail || '익명'} · ${date}</div>
+          <div class="comment-body">${data.body}</div>
+        `;
+        list.appendChild(el);
+      });
+    } catch(e) {}
+  }
+
+  // ── 댓글 등록 ──
+  window.submitComment = async () => {
+    if (!currentUser || !currentPostId) return;
+    const input = document.getElementById('commentInput');
+    const body = input.value.trim();
+    if (!body) return;
+    try {
+      await addDoc(
+        collection(db, 'classes', currentClassId, 'posts', currentPostId, 'comments'),
+        { body, authorEmail: currentUser.email, createdAt: serverTimestamp() }
+      );
+      input.value = '';
+      await loadComments(currentPostId);
+    } catch(e) {
+      alert('댓글 등록에 실패했습니다.');
+    }
+  };
+
+  // ── 설명회 영상 로드 ──
+  async function loadSeminarVideos() {
+    const list = document.getElementById('seminarVideoList');
+    if (!list) return;
+    // 일단 기본 영상 먼저 표시
+    list.innerHTML = '';
+    renderSeminarCard(list, {
+      id: 'initial',
+      videoId: 'GEM6wGWNvEo',
+      title: '이재,영어 설명회',
+      desc: '2026년 겨울방학 문법설명회',
+      createdAt: null
+    }, true);
+    // Firestore에 추가 영상 있으면 덧붙임
+    try {
+      const q = query(collection(db, 'seminars'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      if (!snap.empty) {
+        list.innerHTML = '';
+        snap.forEach(d => {
+          const data = { id: d.id, ...d.data() };
+          renderSeminarCard(list, data, false);
+        });
+      }
+    } catch(e) {
+      // Firestore 실패해도 기본 영상은 이미 표시됨
+      console.warn('Seminar Firestore load failed:', e);
+    }
+  }
+
+  function renderSeminarCard(container, data, isStatic) {
+    const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
+    const card = document.createElement('div');
+    card.className = 'seminar-card';
+    card.dataset.vid = data.id;
+    card.innerHTML = `
+      <div class="video-responsive">
+        <iframe
+          src="https://www.youtube.com/embed/${data.videoId}"
+          title="${data.title}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="seminar-card-body">
+        <div class="seminar-card-title">${data.title}</div>
+        ${date ? `<div class="seminar-card-date">${date}</div>` : ''}
+        <div class="seminar-card-desc">${data.desc || ''}</div>
+        <div class="seminar-comment-section">
+          <div class="seminar-comment-title">COMMENTS</div>
+          <div class="seminar-comment-list" id="scl-${data.id}">
+            <div style="color:var(--gray);font-size:0.82rem;">불러오는 중...</div>
+          </div>
+          <div class="seminar-comment-form ${currentUser ? 'show' : ''}" id="scf-${data.id}">
+            <input class="seminar-comment-input" id="sci-${data.id}" placeholder="댓글을 입력하세요" onkeydown="if(event.key==='Enter') submitSeminarComment('${data.id}')" />
+            <button class="seminar-comment-submit" onclick="submitSeminarComment('${data.id}')">등록</button>
+          </div>
+          <div class="seminar-login-notice" id="sln-${data.id}" style="${currentUser ? 'display:none' : ''}">
+            <a onclick="openModal('loginOverlay')">로그인</a>하면 댓글을 달 수 있어요.
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+    if (!isStatic) loadSeminarComments(data.id);
+  }
+
+  async function loadSeminarComments(videoId) {
+    const list = document.getElementById('scl-' + videoId);
+    if (!list) return;
+    try {
+      const q = query(collection(db, 'seminars', videoId, 'comments'), orderBy('createdAt', 'asc'));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        list.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;">아직 댓글이 없어요. 첫 댓글을 남겨보세요!</div>';
+        return;
+      }
+      list.innerHTML = '';
+      snap.forEach(d => {
+        const c = d.data();
+        const cdate = c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
+        const el = document.createElement('div');
+        el.className = 'seminar-comment-item';
+        el.innerHTML = `
+          <div class="seminar-comment-author">${c.authorEmail || '익명'} · ${cdate}</div>
+          <div class="seminar-comment-body">${c.body}</div>
+        `;
+        list.appendChild(el);
+      });
+    } catch(e) {}
+  }
+
+  window.submitSeminarComment = async (videoId) => {
+    if (!currentUser) { openModal('loginOverlay'); return; }
+    const input = document.getElementById('sci-' + videoId);
+    const body = input.value.trim();
+    if (!body) return;
+    try {
+      await addDoc(collection(db, 'seminars', videoId, 'comments'), {
+        body, authorEmail: currentUser.email, createdAt: serverTimestamp()
+      });
+      input.value = '';
+      await loadSeminarComments(videoId);
+    } catch(e) { alert('댓글 등록에 실패했습니다.'); }
+  };
+
+  window.toggleSeminarForm = () => {
+    const form = document.getElementById('seminarWriteForm');
+    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+    if (form.style.display === 'flex') form.style.flexDirection = 'column';
+  };
+
+  window.submitSeminarVideo = async () => {
+    if (!currentUser || currentUser.email !== ADMIN_EMAIL) return;
+    const videoId = document.getElementById('seminarVideoId').value.trim();
+    const title = document.getElementById('seminarVideoTitle').value.trim();
+    const desc = document.getElementById('seminarVideoDesc').value.trim();
+    if (!videoId || !title) { alert('영상 ID와 제목을 입력해 주세요.'); return; }
+    try {
+      await addDoc(collection(db, 'seminars'), {
+        videoId, title, desc, createdAt: serverTimestamp()
+      });
+      document.getElementById('seminarVideoId').value = '';
+      document.getElementById('seminarVideoTitle').value = '';
+      document.getElementById('seminarVideoDesc').value = '';
+      toggleSeminarForm();
+      await loadSeminarVideos();
+    } catch(e) { alert('영상 등록에 실패했습니다.'); }
+  };
+
+  // 설명회 탭 진입 시 로드
+  document.querySelector('[id="nav-seminar"]')?.addEventListener('click', loadSeminarVideos);
+  // 페이지 최초 로드 시도
+  loadSeminarVideos();
+
+  // ── Q&A 익명 게시판 ──
+  const QA_COL = 'qaBoard';
+
+  function qaTimeStr(ts) {
+    if (!ts) return '';
+    const d = ts.toDate ? ts.toDate() : new Date(ts);
+    const pad = n => String(n).padStart(2,'0');
+    return `${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
+  function renderQaComments(comments, postId) {
+    if (!comments || comments.length === 0) return '';
+    return comments.map((c, i) => `
+      <div class="qa-comment-item">
+        <span class="qa-comment-nick ${c.isTeacher ? 'teacher' : 'student'}">${c.isTeacher ? '👨‍🏫 선생님' : (c.nick || '익명')}</span>
+        <span class="qa-comment-time">${qaTimeStr(c.createdAt)}</span>
+        <div class="qa-comment-text">${c.text.replace(/</g,'&lt;')}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderQaCard(postId, data) {
+    const isAdmin = window._isAdmin || false;
+    const comments = data.comments || [];
+    return `
+      <div class="qa-card" id="qa-card-${postId}">
+        <div class="qa-card-header">
+          <div>
+            <span class="qa-card-nick">${data.nick || '익명'}</span>
+            <span class="qa-card-meta">${qaTimeStr(data.createdAt)}</span>
+          </div>
+          ${isAdmin ? `<button class="qa-delete-btn" onclick="deleteQaPost('${postId}')">삭제</button>` : ''}
+        </div>
+        <div class="qa-card-body">${data.content.replace(/</g,'&lt;')}</div>
+        <div class="qa-comment-area">
+          <div id="qa-comments-${postId}">${renderQaComments(comments, postId)}</div>
+          ${isAdmin ? `
+          <div class="qa-reply-box">
+            <input type="text" id="qa-reply-input-${postId}" placeholder="선생님 답변 입력..." />
+            <button class="qa-reply-btn" onclick="submitQaReply('${postId}')">답변</button>
+          </div>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  window.loadQaBoard = async () => {
+    const list = document.getElementById('qaList');
+    if (!list) return;
+    list.innerHTML = '<div class="qa-loading">불러오는 중...</div>';
+    try {
+      const q = query(collection(db, QA_COL), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        list.innerHTML = '<div class="qa-empty">아직 질문이 없습니다. 첫 번째 질문을 남겨보세요!</div>';
+        return;
+      }
+      list.innerHTML = snap.docs.map(d => renderQaCard(d.id, d.data())).join('');
+    } catch(e) {
+      list.innerHTML = '<div class="qa-empty">불러오기 실패. 새로고침 해주세요.</div>';
+    }
+  };
+
+  window.submitQa = async () => {
+    const content = document.getElementById('qaContent').value.trim();
+    const nick = document.getElementById('qaNick').value.trim() || '익명';
+    if (!content) { alert('질문 내용을 입력해주세요.'); return; }
+    const btn = document.querySelector('.qa-submit-btn');
+    btn.disabled = true; btn.textContent = '등록 중...';
+    try {
+      await addDoc(collection(db, QA_COL), {
+        content, nick, comments: [],
+        createdAt: new Date()
+      });
+      document.getElementById('qaContent').value = '';
+      document.getElementById('qaNick').value = '';
+      await loadQaBoard();
+    } catch(e) {
+      alert('등록 실패. 다시 시도해주세요.');
+    }
+    btn.disabled = false; btn.textContent = '질문 올리기';
+  };
+
+  window.submitQaReply = async (postId) => {
+    const input = document.getElementById(`qa-reply-input-${postId}`);
+    const text = input.value.trim();
+    if (!text) return;
+    const btn = input.nextElementSibling;
+    btn.disabled = true;
+    try {
+      const ref = doc(db, QA_COL, postId);
+      const snap = await getDoc(ref);
+      const comments = snap.data().comments || [];
+      comments.push({ nick: '선생님', text, isTeacher: true, createdAt: new Date().toISOString() });
+      await updateDoc(ref, { comments });
+      input.value = '';
+      await loadQaBoard();
+    } catch(e) {
+      alert('답변 등록 실패.');
+    }
+    btn.disabled = false;
+  };
+
+  window.deleteQaPost = async (postId) => {
+    if (!confirm('이 질문을 삭제할까요?')) return;
+    try {
+      await deleteDoc(doc(db, QA_COL, postId));
+      await loadQaBoard();
+    } catch(e) { alert('삭제 실패.'); }
+  };
+
+  // Q&A 탭 진입 시 로드
+  document.querySelector('[id="nav-qa"]')?.addEventListener('click', loadQaBoard);
+  loadQaBoard();
+
+</script>
+
+<!-- ───── UI JS ───── -->
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+  }
+  function switchModal(from, to) {
+    closeModal(from);
+    openModal(to);
+  }
+
+  // close on backdrop click
+  document.querySelectorAll('.overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target === el) el.classList.remove('active');
+    });
+  });
+
+  // enter key on inputs
+  document.getElementById('loginPassword').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+  document.getElementById('signupPassword2').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSignup();
+  });
+
+  function switchDataFolder(folder, btn) {
+    document.querySelectorAll('.data-folder-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.data-folder-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('folder-' + folder).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function switchDataSub(prefix, sub, btn) {
+    btn.closest('.data-folder-panel').querySelectorAll('.data-sub-btn').forEach(b => b.classList.remove('active'));
+    btn.closest('.data-folder-panel').querySelectorAll('.data-sub-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(prefix + '-' + sub).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function switchDataUnit(prefix, unit, btn) {
+    btn.closest('.data-sub-panel').querySelectorAll('.data-unit-btn').forEach(b => b.classList.remove('active'));
+    btn.closest('.data-sub-panel').querySelectorAll('.data-unit-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(prefix + '-' + unit).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleMobileMenu() {
+    const menu = document.getElementById('navMenu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+
+  function closeMobileMenu() {
+    document.getElementById('navMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  function switchClassTab(tab, btn) {
+    document.querySelectorAll('.class-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.class-tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function showPage(name) {
+    // hide all
+    document.querySelectorAll('section.page, #home').forEach(s => {
+      s.classList.remove('active');
+      if (s.id === 'home') s.style.display = 'none';
+    });
+    document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+
+    if (name === 'home') {
+      const h = document.getElementById('home');
+      h.style.display = 'block';
+      h.classList.add('active');
+    } else {
+      const s = document.getElementById(name);
+      if (s) s.classList.add('active');
+      const navEl = document.getElementById('nav-' + name);
+      if (navEl) navEl.classList.add('active');
+    }
+  }
+
+  // logo fallback
+  const logoImg = document.getElementById('logoImg');
+  logoImg.onerror = () => {
+    logoImg.style.display = 'none';
+  };
+</script>
+
+</body>
+</html>
