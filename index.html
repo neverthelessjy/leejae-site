@@ -2367,14 +2367,22 @@
       <h2 class="section-title">공지사항</h2>
       <div class="section-line"></div>
     </div>
-    <div class="notice-list">
-      <div class="notice-item">
-        <div class="notice-left">
-          <div class="notice-badge">NEW</div>
-          <div class="notice-title">📹 [경희고 1학년] 부교재 마더텅 07강 17~20번 영상 업로드</div>
+
+    <!-- 관리자 글쓰기 버튼 -->
+    <div id="noticeWriteArea" style="display:none; margin-bottom:24px;">
+      <button class="write-btn" onclick="toggleNoticeForm()" id="noticeWriteBtn">✏️ 공지 작성</button>
+      <div id="noticeForm" style="display:none; margin-top:16px;">
+        <input type="text" id="noticeTitleInput" placeholder="공지 제목을 입력하세요"
+          style="width:100%; padding:10px 14px; background:var(--card); border:1px solid var(--border); color:var(--text); border-radius:4px; font-size:0.9rem; margin-bottom:10px; box-sizing:border-box;" />
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <button class="btn-submit" onclick="submitNotice()">등록</button>
+          <button class="btn-cancel" onclick="toggleNoticeForm()">취소</button>
         </div>
-        <div class="notice-date">2026.06.05</div>
       </div>
+    </div>
+
+    <div class="notice-list" id="noticeList">
+      <div class="notice-empty">불러오는 중...</div>
     </div>
   </section>
 
@@ -2505,6 +2513,7 @@
         window._isAdmin = true;
         document.getElementById('writeBtn').classList.add('show');
         document.getElementById('seminarAdminBar').style.display = 'block';
+        document.getElementById('noticeWriteArea').style.display = 'block';
         showDataSection(true, null); // 관리자: 전체 접근
         showAdminCodePanel();
       } else {
@@ -3197,6 +3206,78 @@
   // Q&A 탭 진입 시 로드
   document.querySelector('[id="nav-qa"]')?.addEventListener('click', loadQaBoard);
   loadQaBoard();
+
+  // ───── 공지사항 ─────
+  async function loadNotices() {
+    const list = document.getElementById('noticeList');
+    try {
+      const q = query(collection(db, 'notices'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        list.innerHTML = '<div class="notice-empty">등록된 공지사항이 없습니다.</div>';
+        return;
+      }
+      const today = new Date();
+      list.innerHTML = snap.docs.map(d => {
+        const data = d.data();
+        const date = data.createdAt?.toDate ? data.createdAt.toDate() : new Date();
+        const diffDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
+        const isNew = diffDays <= 3;
+        const dateStr = date.toLocaleDateString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }).replace(/\. /g,'.').replace('.','');
+        const adminBtn = window._isAdmin
+          ? `<button onclick="deleteNotice('${d.id}')" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.8rem;padding:2px 8px;margin-left:8px;">✕</button>`
+          : '';
+        return `
+        <div class="notice-item">
+          <div class="notice-left">
+            ${isNew ? '<div class="notice-badge">NEW</div>' : ''}
+            <div class="notice-title">${data.title}</div>
+            ${adminBtn}
+          </div>
+          <div class="notice-date">${dateStr}</div>
+        </div>`;
+      }).join('');
+    } catch(e) {
+      list.innerHTML = '<div class="notice-empty">불러오기 실패.</div>';
+    }
+  }
+
+  window.toggleNoticeForm = () => {
+    const form = document.getElementById('noticeForm');
+    const btn = document.getElementById('noticeWriteBtn');
+    const visible = form.style.display !== 'none';
+    form.style.display = visible ? 'none' : 'block';
+    btn.textContent = visible ? '✏️ 공지 작성' : '✕ 취소';
+  };
+
+  window.submitNotice = async () => {
+    if (!window._isAdmin) return;
+    const title = document.getElementById('noticeTitleInput').value.trim();
+    if (!title) { alert('제목을 입력해주세요.'); return; }
+    try {
+      await addDoc(collection(db, 'notices'), {
+        title,
+        createdAt: serverTimestamp()
+      });
+      document.getElementById('noticeTitleInput').value = '';
+      toggleNoticeForm();
+      await loadNotices();
+    } catch(e) { alert('등록 실패.'); }
+  };
+
+  window.deleteNotice = async (id) => {
+    if (!window._isAdmin) return;
+    if (!confirm('이 공지를 삭제할까요?')) return;
+    try {
+      await deleteDoc(doc(db, 'notices', id));
+      await loadNotices();
+    } catch(e) { alert('삭제 실패.'); }
+  };
+
+  // 공지사항 탭 진입 시 로드
+  document.querySelector('[id="nav-notice"]')?.addEventListener('click', loadNotices);
+  loadNotices();
+
 
 </script>
 
