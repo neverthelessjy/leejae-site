@@ -1618,6 +1618,9 @@
     <label>비밀번호</label>
     <input type="password" id="loginPassword" placeholder="••••••••" />
     <button class="btn-primary" onclick="doLogin()">로그인</button>
+    <div style="text-align:right;margin-top:-4px;margin-bottom:8px;">
+      <span onclick="doResetPassword()" style="font-size:0.78rem;color:var(--gray);cursor:pointer;text-decoration:underline;text-underline-offset:3px;">비밀번호를 잊으셨나요?</span>
+    </div>
     <div class="toggle-link">
       계정이 없으신가요? <span onclick="switchModal('loginOverlay','signupOverlay')">회원가입</span>
     </div>
@@ -2436,6 +2439,7 @@
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     signOut,
     onAuthStateChanged
   } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -2756,6 +2760,28 @@
   };
 
   window.doLogout = async () => { await signOut(auth); };
+
+  window.doResetPassword = async () => {
+    const email = document.getElementById('loginEmail').value.trim();
+    const errEl = document.getElementById('loginError');
+    errEl.classList.remove('show');
+    if (!email) {
+      errEl.textContent = '이메일을 입력한 후 비밀번호 찾기를 눌러주세요.';
+      errEl.classList.add('show');
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      errEl.style.color = '#4caf50';
+      errEl.textContent = `✓ ${email} 로 재설정 메일을 보냈습니다. 받은편지함을 확인해주세요.`;
+      errEl.classList.add('show');
+      setTimeout(() => { errEl.style.color = ''; errEl.classList.remove('show'); }, 5000);
+    } catch(e) {
+      errEl.style.color = '';
+      errEl.textContent = '등록되지 않은 이메일이거나 오류가 발생했습니다.';
+      errEl.classList.add('show');
+    }
+  };
 
   // ── 게시판 열기 ──
   window.openBoard = async (classId, className, academy) => {
