@@ -1835,7 +1835,7 @@
 
       <!-- 이재,영어 -->
       <div class="class-info-block">
-        <div class="class-info-logo" style="background:#000;"><img src="logo.png" alt="이재,영어" style="height:56px;width:56px;object-fit:cover;border-radius:50%;" /></div>
+        <div class="class-info-logo" style="background:#0a0e1a;display:flex;justify-content:center;align-items:center;"><img src="logo.png" alt="이재,영어" style="height:72px;width:72px;object-fit:cover;border-radius:50%;" /></div>
         <div class="class-info-table">
           <div class="class-info-row header">
             <span>반</span><span>대상</span><span>요일</span><span>시간</span>
@@ -2543,6 +2543,7 @@
         document.getElementById('writeBtn').classList.add('show');
         document.getElementById('seminarAdminBar').style.display = 'block';
         document.getElementById('noticeWriteArea').style.display = 'block';
+        document.getElementById('noticeWriteBtn').classList.add('show');
         showDataSection(true, null); // 관리자: 전체 접근
         showAdminCodePanel();
         loadNotices();
@@ -2566,6 +2567,8 @@
       window._isAdmin = false;
       document.getElementById('writeBtn').classList.remove('show');
       document.getElementById('seminarAdminBar').style.display = 'none';
+      document.getElementById('noticeWriteArea').style.display = 'none';
+      document.getElementById('noticeWriteBtn').classList.remove('show');
       loadQaBoard();
       document.querySelectorAll('.seminar-comment-form').forEach(f => f.classList.remove('show'));
       document.querySelectorAll('.seminar-login-notice').forEach(n => n.style.display = 'block');
@@ -3282,6 +3285,7 @@
     // 어드민이면 작성 버튼 항상 표시
     if (window._isAdmin) {
       document.getElementById('noticeWriteArea').style.display = 'block';
+      document.getElementById('noticeWriteBtn').classList.add('show');
     }
     const list = document.getElementById('noticeList');
     try {
@@ -3476,6 +3480,7 @@
     // 공지사항 탭 진입 시 어드민 버튼 표시
     if (name === 'notice' && window._isAdmin) {
       document.getElementById('noticeWriteArea').style.display = 'block';
+      document.getElementById('noticeWriteBtn').classList.add('show');
     }
   }
 
