@@ -3278,6 +3278,10 @@
 
   // ───── 공지사항 ─────
   async function loadNotices() {
+    // 어드민이면 작성 버튼 항상 표시
+    if (window._isAdmin) {
+      document.getElementById('noticeWriteArea').style.display = 'block';
+    }
     const list = document.getElementById('noticeList');
     try {
       const q = query(collection(db, 'notices'), orderBy('createdAt', 'desc'));
