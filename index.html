@@ -2428,10 +2428,22 @@
 
     <!-- 상세 뷰 -->
     <div class="post-detail" id="postDetail">
-      <button class="back-btn" onclick="backToList()">← 목록으로</button>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+        <button class="back-btn" onclick="backToList()" style="margin-bottom:0;">← 목록으로</button>
+        <button id="editPostBtn" onclick="toggleEditPostForm()" style="display:none; background:none; border:1px solid var(--border); color:var(--gray); cursor:pointer; font-size:0.8rem; padding:4px 12px; border-radius:4px;">✏️ 수정</button>
+      </div>
       <div class="post-detail-title" id="detailTitle"></div>
       <div class="post-detail-meta" id="detailMeta"></div>
       <div class="post-detail-body" id="detailBody"></div>
+      <!-- 수정 폼 (인라인) -->
+      <div id="editPostForm" style="display:none; margin-top:16px;">
+        <input type="text" id="editPostTitle" style="width:100%; padding:10px 14px; background:var(--card); border:1px solid var(--gold); color:var(--text); border-radius:4px; font-size:0.9rem; margin-bottom:10px; box-sizing:border-box;" />
+        <textarea id="editPostBody" style="width:100%; padding:10px 14px; background:var(--card); border:1px solid var(--gold); color:var(--text); border-radius:4px; font-size:0.9rem; min-height:120px; resize:vertical; box-sizing:border-box;"></textarea>
+        <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:10px;">
+          <button class="btn-submit" onclick="submitEditPost()">저장</button>
+          <button class="btn-cancel" onclick="cancelEditPost()">취소</button>
+        </div>
+      </div>
 
       <!-- 댓글 -->
       <div class="comment-section">
@@ -2863,14 +2875,22 @@
   }
 
   // ── 게시글 상세 ──
+  let currentPostAuthor = null;
   async function openPost(postId, data) {
     currentPostId = postId;
+    currentPostAuthor = data.authorEmail || null;
     document.getElementById('postListView').classList.add('hide');
     document.getElementById('postDetail').classList.add('show');
     document.getElementById('detailTitle').textContent = data.title;
     const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
     document.getElementById('detailMeta').textContent = `${data.authorEmail || ''} · ${date}`;
     document.getElementById('detailBody').textContent = data.body;
+    // 수정 버튼: 본인 글 또는 어드민만 표시
+    const editBtn = document.getElementById('editPostBtn');
+    const isOwner = currentUser && (currentUser.email === currentPostAuthor || window._isAdmin);
+    editBtn.style.display = isOwner ? 'inline-block' : 'none';
+    // 수정 폼 초기화
+    cancelEditPost();
     // 댓글 폼
     document.getElementById('commentForm').style.display = currentUser ? 'flex' : 'none';
     await loadComments(postId);
@@ -2898,6 +2918,38 @@
 
   window.toggleWriteForm = () => {
     document.getElementById('writeForm').classList.toggle('show');
+  };
+
+  // ── 게시글 수정 ──
+  window.toggleEditPostForm = () => {
+    const form = document.getElementById('editPostForm');
+    const isHidden = form.style.display === 'none';
+    if (isHidden) {
+      document.getElementById('editPostTitle').value = document.getElementById('detailTitle').textContent;
+      document.getElementById('editPostBody').value = document.getElementById('detailBody').textContent;
+    }
+    form.style.display = isHidden ? 'block' : 'none';
+  };
+
+  window.cancelEditPost = () => {
+    const form = document.getElementById('editPostForm');
+    if (form) form.style.display = 'none';
+  };
+
+  window.submitEditPost = async () => {
+    if (!currentUser || !currentPostId) return;
+    const isOwner = currentUser.email === currentPostAuthor || window._isAdmin;
+    if (!isOwner) return;
+    const title = document.getElementById('editPostTitle').value.trim();
+    const body = document.getElementById('editPostBody').value.trim();
+    if (!title || !body) { alert('제목과 내용을 입력해 주세요.'); return; }
+    try {
+      await updateDoc(doc(db, 'classes', currentClassId, 'posts', currentPostId), { title, body });
+      document.getElementById('detailTitle').textContent = title;
+      document.getElementById('detailBody').textContent = body;
+      cancelEditPost();
+      await loadPosts(currentClassId);
+    } catch(e) { alert('수정에 실패했습니다.'); }
   };
 
   // ── 게시글 등록 ──
@@ -3235,17 +3287,25 @@
         const diffDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
         const isNew = diffDays <= 3;
         const dateStr = date.toLocaleDateString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }).replace(/\. /g,'.').replace('.','');
-        const adminBtn = window._isAdmin
-          ? `<button onclick="deleteNotice('${d.id}')" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.8rem;padding:2px 8px;margin-left:8px;">✕</button>`
+        const adminBtns = window._isAdmin
+          ? `<button onclick="editNotice('${d.id}', this)" data-title="${data.title.replace(/"/g,'&quot;')}" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.8rem;padding:2px 6px;margin-left:8px;">✏️</button><button onclick="deleteNotice('${d.id}')" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.8rem;padding:2px 6px;">✕</button>`
           : '';
         return `
-        <div class="notice-item">
+        <div class="notice-item" id="notice-row-${d.id}">
           <div class="notice-left">
             ${isNew ? '<div class="notice-badge">NEW</div>' : ''}
-            <div class="notice-title">${data.title}</div>
-            ${adminBtn}
+            <div class="notice-title" id="notice-title-${d.id}">${data.title}</div>
+            ${adminBtns}
           </div>
           <div class="notice-date">${dateStr}</div>
+        </div>
+        <div id="notice-edit-${d.id}" style="display:none; padding:10px 0;">
+          <input type="text" id="notice-edit-input-${d.id}"
+            style="width:100%; padding:8px 12px; background:var(--card); border:1px solid var(--gold); color:var(--text); border-radius:4px; font-size:0.9rem; margin-bottom:8px; box-sizing:border-box;" />
+          <div style="display:flex; gap:8px; justify-content:flex-end;">
+            <button class="btn-submit" onclick="submitEditNotice('${d.id}')">저장</button>
+            <button class="btn-cancel" onclick="cancelEditNotice('${d.id}')">취소</button>
+          </div>
         </div>`;
       }).join('');
     } catch(e) {
@@ -3274,6 +3334,30 @@
       toggleNoticeForm();
       await loadNotices();
     } catch(e) { alert('등록 실패.'); }
+  };
+
+  window.editNotice = (id, btn) => {
+    const editDiv = document.getElementById('notice-edit-' + id);
+    const input = document.getElementById('notice-edit-input-' + id);
+    const titleEl = document.getElementById('notice-title-' + id);
+    input.value = titleEl.textContent;
+    editDiv.style.display = 'block';
+    input.focus();
+  };
+
+  window.cancelEditNotice = (id) => {
+    document.getElementById('notice-edit-' + id).style.display = 'none';
+  };
+
+  window.submitEditNotice = async (id) => {
+    if (!window._isAdmin) return;
+    const input = document.getElementById('notice-edit-input-' + id);
+    const newTitle = input.value.trim();
+    if (!newTitle) { alert('제목을 입력해주세요.'); return; }
+    try {
+      await updateDoc(doc(db, 'notices', id), { title: newTitle });
+      await loadNotices();
+    } catch(e) { alert('수정 실패.'); }
   };
 
   window.deleteNotice = async (id) => {
