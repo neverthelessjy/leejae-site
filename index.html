@@ -1835,7 +1835,7 @@
 
       <!-- 이재,영어 -->
       <div class="class-info-block">
-        <div class="class-info-logo"><img src="logo.png" alt="이재,영어" style="height:56px;width:56px;object-fit:cover;border-radius:50%;filter:invert(1);" /></div>
+        <div class="class-info-logo"><img src="logo.png" alt="이재,영어" style="height:56px;width:56px;object-fit:cover;border-radius:50%;" /></div>
         <div class="class-info-table">
           <div class="class-info-row header">
             <span>반</span><span>대상</span><span>요일</span><span>시간</span>
@@ -2545,6 +2545,7 @@
         document.getElementById('noticeWriteArea').style.display = 'block';
         showDataSection(true, null); // 관리자: 전체 접근
         showAdminCodePanel();
+        loadNotices();
       } else {
         window._isAdmin = false;
         // 수강 승인 여부 확인
