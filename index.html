@@ -2572,6 +2572,7 @@
         showDataSection(true, null); // 관리자: 전체 접근
         showAdminCodePanel();
         loadNotices();
+        initClasses(); // classes 문서 일괄 초기화
       } else {
         window._isAdmin = false;
         // 수강 승인 여부 확인
@@ -2859,6 +2860,27 @@
       errEl.classList.add('show');
     }
   };
+
+  // ── classes 문서 일괄 초기화 (관리자) ──
+  async function initClasses() {
+    const classList = [
+      { id: 'daichi-01', name: '경희고 1학년 (금/일)', academy: '대치에스' },
+      { id: 'daichi-02', name: '경희고 1학년 (일)',   academy: '대치에스' },
+      { id: 'daichi-03', name: '경희고 2학년 (화)',   academy: '대치에스' },
+      { id: 'daichi-04', name: '경희고 2학년 (일)',   academy: '대치에스' },
+      { id: 'daichi-05', name: '청량고 1학년 (금)',   academy: '대치에스' },
+      { id: 'daichi-06', name: '청량고 2학년 (화)',   academy: '대치에스' },
+      { id: 'leejae-01', name: '중등부',              academy: '이재, 영어' },
+      { id: 'leejae-02', name: '예비고1',             academy: '이재, 영어' },
+      { id: 'leejae-03', name: '고등부',              academy: '이재, 영어' },
+    ];
+    for (const c of classList) {
+      try {
+        await setDoc(doc(db, 'classes', c.id), { name: c.name, academy: c.academy }, { merge: true });
+      } catch(e) { console.warn('initClasses skip:', c.id, e?.code); }
+    }
+    console.log('✅ classes 문서 초기화 완료');
+  }
 
   // ── 게시판 열기 ──
   window.openBoard = async (classId, className, academy) => {
