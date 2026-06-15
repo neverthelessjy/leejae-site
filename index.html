@@ -2871,6 +2871,10 @@
     document.getElementById('boardSubtitle').textContent = academy + ' · 게시판';
     document.getElementById('boardOverlay').classList.add('active');
     backToList();
+    // classes 문서가 없으면 자동 생성 (posts 서브컬렉션 쿼리를 위해 필요)
+    try {
+      await setDoc(doc(db, 'classes', classId), { name: className, academy }, { merge: true });
+    } catch(e) { /* 권한 없으면 무시 */ }
     await loadPosts(classId);
   };
 
