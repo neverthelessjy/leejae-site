@@ -2905,7 +2905,8 @@
         postList.appendChild(el);
       });
     } catch(e) {
-      postList.innerHTML = '<div class="post-empty">불러오기 실패. 다시 시도해 주세요.</div>';
+      console.error('[loadPosts] error:', e?.code, e?.message, e);
+      postList.innerHTML = '<div class="post-empty">불러오기 실패. 다시 시도해 주세요.<br><small style="color:var(--gray);font-size:0.75rem;">' + (e?.code || e?.message || '알 수 없는 오류') + '</small></div>';
     }
   }
 
