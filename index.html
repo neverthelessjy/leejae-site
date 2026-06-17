@@ -626,6 +626,101 @@
       .class-info-row span:nth-child(4) { display: none; }
     }
 
+    /* ───── 여름방학 특강 ───── */
+    .summer-special-wrap {
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 32px;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.07), rgba(255,255,255,0.01));
+    }
+    .summer-special-header { text-align: center; margin-bottom: 32px; }
+    .summer-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .summer-special-header h3 {
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin: 8px 0;
+      letter-spacing: 0.02em;
+    }
+    .summer-special-header p { color: var(--gray); font-size: 0.88rem; margin: 0; }
+    .summer-course-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .summer-course-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+      background: rgba(255,255,255,0.02);
+    }
+    .summer-course-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .summer-course-card h4 { font-size: 1.1rem; color: rgba(245,243,238,0.95); margin: 0 0 4px; }
+    .summer-course-sub { font-size: 0.8rem; color: var(--gray); margin: 0 0 16px; }
+    .summer-course-meta {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .summer-meta-row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.82rem; }
+    .summer-meta-row span:first-child { color: var(--gray); white-space: nowrap; }
+    .summer-meta-row span:last-child { color: rgba(245,243,238,0.85); text-align: right; }
+    .summer-curriculum { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .summer-curriculum li { font-size: 0.85rem; color: rgba(245,243,238,0.8); padding-left: 14px; position: relative; }
+    .summer-curriculum li::before {
+      content: ''; position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
+    }
+    .summer-feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+    .summer-feature {
+      text-align: center; font-size: 0.8rem; color: rgba(245,243,238,0.8);
+      border: 1px solid var(--border); border-radius: 4px; padding: 14px 8px;
+      background: rgba(255,255,255,0.015);
+    }
+    .summer-aftercourse { margin-bottom: 8px; }
+    .summer-aftercourse-title { font-size: 0.78rem; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 10px; }
+    .summer-after-table { width: 100%; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .summer-after-row {
+      display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; padding: 10px 20px;
+      font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .summer-after-row:last-child { border-bottom: none; }
+    .summer-after-row.header {
+      background: rgba(201,168,76,0.06); font-size: 0.72rem; letter-spacing: 0.06em;
+      color: var(--gold); font-weight: 600;
+    }
+    .summer-after-row span { color: rgba(245,243,238,0.8); }
+    @media (max-width: 700px) {
+      .summer-special-wrap { padding: 20px; }
+      .summer-course-grid { grid-template-columns: 1fr; }
+      .summer-feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .summer-after-row { grid-template-columns: 1fr 0.8fr 1.2fr; font-size: 0.74rem; padding: 8px 12px; gap: 4px; }
+    }
+
     /* ───── 수업안내 탭 ───── */
     .class-tab-wrap {
       display: grid;
@@ -1804,6 +1899,76 @@
       <h2 class="section-title">수업 안내</h2>
       <div class="section-line"></div>
       <p class="section-desc">이재,영어 교습소의 수업 과정을 안내합니다.</p>
+    </div>
+
+    <!-- 2026 여름방학 특강 -->
+    <div class="summer-special-wrap">
+      <div class="summer-special-header">
+        <span class="summer-badge">2026 SUMMER</span>
+        <h3>여름방학 특강 — Half Grammar</h3>
+        <p>정규반 진입 전, 문법을 빠르게 정리하는 단기 완성반입니다.</p>
+      </div>
+
+      <div class="summer-course-grid">
+        <!-- Story Telling Grammar -->
+        <div class="summer-course-card">
+          <span class="summer-course-tag">예비고 · 주 1회</span>
+          <h4>Story Telling Grammar</h4>
+          <p class="summer-course-sub">개념 및 문제풀이 · 180분+α · 총 5회 완성</p>
+          <div class="summer-course-meta">
+            <div class="summer-meta-row"><span>요일 · 시간</span><span>수 · 토 PM 6:00 ~ PM 9:00</span></div>
+            <div class="summer-meta-row"><span>개강일</span><span>7/22(수) 이재,영어<br>7/25(토) 대치메카</span></div>
+          </div>
+          <ul class="summer-curriculum">
+            <li>1강 — 문장 전체보기 / 진짜동사 vs. 가짜동사</li>
+            <li>2강 — 접속사 / 관계사 / 의문사</li>
+            <li>3강 — 대명사</li>
+            <li>4강 — 형용사 / 부사 / 비교</li>
+          </ul>
+        </div>
+
+        <!-- Half Grammar 주2회 -->
+        <div class="summer-course-card">
+          <span class="summer-course-tag">주 2회</span>
+          <h4>Half Grammar (문법 기초·기본반)</h4>
+          <p class="summer-course-sub">개념 및 문제풀이 · 150분+α · 총 8회 완성</p>
+          <div class="summer-course-meta">
+            <div class="summer-meta-row"><span>요일 · 시간</span><span>월·금 / 화·목 AM 10:00 ~ PM 12:30 (+TEST)</span></div>
+            <div class="summer-meta-row"><span>개강일</span><span>월·금반 7/20(월) 이재,영어<br>화·목반 7/21(화) 대치메카</span></div>
+          </div>
+          <ul class="summer-curriculum">
+            <li>1강 — 품사 그리고 문장성분 (영문 Diagram)</li>
+            <li>2강 — 시제 (Tense)</li>
+            <li>3강 — 태 (Voice)</li>
+            <li>4강 — 부정사 (Infinitive)</li>
+            <li>5강 — 동명사 (Gerund)</li>
+            <li>6강 — 분사 (Participle)</li>
+            <li>7강 — 접속사 / 전치사 (Conjunction &amp; Preposition)</li>
+            <li>8강 — 관계사 (Relatives)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="summer-feature-grid">
+        <div class="summer-feature">📝 매시간 누적 TEST 실시</div>
+        <div class="summer-feature">📚 실전 적용문제 과제 제공</div>
+        <div class="summer-feature">🙋 강사가 직접 질의응답</div>
+        <div class="summer-feature">🔁 특강 후 정규반으로 연계</div>
+      </div>
+
+      <div class="summer-aftercourse">
+        <div class="summer-aftercourse-title">여름방학 이후 정규수업</div>
+        <div class="summer-after-table">
+          <div class="summer-after-row header"><span>수업과목</span><span>요일</span><span>시간표</span></div>
+          <div class="summer-after-row"><span>예비고1 정규반 (대치메카)</span><span>토요일</span><span>AM 10:00 ~ PM 1:00</span></div>
+          <div class="summer-after-row"><span>중등부 정규반 (이재,영어)</span><span>월요일</span><span>PM 5:00 ~ PM 8:00</span></div>
+        </div>
+      </div>
+
+      <div class="class-info-notice" style="margin-top:24px;">
+        📌 상담문의 — 대치메카학원 02.568.5202 (대치동 1023-4 웰리스빌딩 6층) · 이재,영어 010.3475.0519 (대치동 912-5 1층)
+        <a href="https://open.kakao.com/o/gq8jGyvi" target="_blank" class="class-info-kakao">💬 오픈채팅 바로가기</a>
+      </div>
     </div>
 
     <div class="class-info-wrap">
