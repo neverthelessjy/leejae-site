@@ -689,6 +689,30 @@
     .summer-meta-row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.82rem; }
     .summer-meta-row span:first-child { color: var(--gray); white-space: nowrap; }
     .summer-meta-row span:last-child { color: rgba(245,243,238,0.85); text-align: right; }
+    .summer-start-box { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .summer-start-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      padding: 10px 14px;
+    }
+    .summer-start-logo {
+      width: 34px; height: 34px;
+      object-fit: cover;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+    .summer-start-text { display: flex; flex-direction: column; gap: 2px; line-height: 1.3; }
+    .summer-start-academy { font-size: 0.74rem; color: var(--gold-light); letter-spacing: 0.04em; font-weight: 600; }
+    .summer-start-date { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    @media (max-width: 700px) {
+      .summer-start-date { font-size: 0.95rem; }
+    }
     .summer-curriculum { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
     .summer-curriculum li { font-size: 0.85rem; color: rgba(245,243,238,0.8); padding-left: 14px; position: relative; }
     .summer-curriculum li::before {
@@ -1915,9 +1939,24 @@
           <span class="summer-course-tag">예비고 · 주 1회</span>
           <h4>Story Telling Grammar</h4>
           <p class="summer-course-sub">개념 및 문제풀이 · 180분+α · 총 5회 완성</p>
+          <div class="summer-start-box">
+            <div class="summer-start-item">
+              <img src="logo.png" class="summer-start-logo" alt="이재,영어">
+              <div class="summer-start-text">
+                <span class="summer-start-academy">이재,영어 · 수요일반</span>
+                <span class="summer-start-date">7월 22일(수) 개강</span>
+              </div>
+            </div>
+            <div class="summer-start-item">
+              <img src="meca.jpeg" class="summer-start-logo" alt="대치메카">
+              <div class="summer-start-text">
+                <span class="summer-start-academy">대치메카 · 토요일반</span>
+                <span class="summer-start-date">7월 25일(토) 개강</span>
+              </div>
+            </div>
+          </div>
           <div class="summer-course-meta">
             <div class="summer-meta-row"><span>요일 · 시간</span><span>수 · 토 PM 6:00 ~ PM 9:00</span></div>
-            <div class="summer-meta-row"><span>개강일</span><span>7/22(수) 이재,영어<br>7/25(토) 대치메카</span></div>
           </div>
           <ul class="summer-curriculum">
             <li>1강 — 문장 전체보기 / 진짜동사 vs. 가짜동사</li>
@@ -1932,9 +1971,24 @@
           <span class="summer-course-tag">주 2회</span>
           <h4>Half Grammar (문법 기초·기본반)</h4>
           <p class="summer-course-sub">개념 및 문제풀이 · 150분+α · 총 8회 완성</p>
+          <div class="summer-start-box">
+            <div class="summer-start-item">
+              <img src="logo.png" class="summer-start-logo" alt="이재,영어">
+              <div class="summer-start-text">
+                <span class="summer-start-academy">이재,영어 · 월·금반</span>
+                <span class="summer-start-date">7월 20일(월) 개강</span>
+              </div>
+            </div>
+            <div class="summer-start-item">
+              <img src="meca.jpeg" class="summer-start-logo" alt="대치메카">
+              <div class="summer-start-text">
+                <span class="summer-start-academy">대치메카 · 화·목반</span>
+                <span class="summer-start-date">7월 21일(화) 개강</span>
+              </div>
+            </div>
+          </div>
           <div class="summer-course-meta">
             <div class="summer-meta-row"><span>요일 · 시간</span><span>월·금 / 화·목 AM 10:00 ~ PM 12:30 (+TEST)</span></div>
-            <div class="summer-meta-row"><span>개강일</span><span>월·금반 7/20(월) 이재,영어<br>화·목반 7/21(화) 대치메카</span></div>
           </div>
           <ul class="summer-curriculum">
             <li>1강 — 품사 그리고 문장성분 (영문 Diagram)</li>
