@@ -3569,21 +3569,19 @@
   async function loadSeminarVideos() {
     const list = document.getElementById('seminarVideoList');
     if (!list) return;
-    // 일단 기본 영상 먼저 표시
+    // 기본 영상들 먼저 표시
+    const staticSeminarVideos = [
+      { id: 'initial', videoId: 'GEM6wGWNvEo', title: '이재,영어 설명회', desc: '2026년 겨울방학 문법설명회', createdAt: null },
+      { id: 'static-g1-final-2026-1', videoId: 'ObO3hdSdZBQ', title: '2026년 경희고 1학년 1학기 기말고사 분석', desc: '', createdAt: null },
+      { id: 'static-g2-final-2026-1', videoId: 'KX3L9GCXkII', title: '2026년 경희고 2학년 1학기 기말고사 분석', desc: '', createdAt: null }
+    ];
     list.innerHTML = '';
-    renderSeminarCard(list, {
-      id: 'initial',
-      videoId: 'GEM6wGWNvEo',
-      title: '이재,영어 설명회',
-      desc: '2026년 겨울방학 문법설명회',
-      createdAt: null
-    }, true);
-    // Firestore에 추가 영상 있으면 덧붙임
+    staticSeminarVideos.forEach(v => renderSeminarCard(list, v, true));
+    // Firestore에 추가 영상 있으면 덧붙임 (기본 영상 아래에 이어서 표시)
     try {
       const q = query(collection(db, 'seminars'), orderBy('createdAt', 'desc'));
       const snap = await getDocs(q);
       if (!snap.empty) {
-        list.innerHTML = '';
         snap.forEach(d => {
           const data = { id: d.id, ...d.data() };
           renderSeminarCard(list, data, false);
