@@ -1751,7 +1751,7 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal('signupOverlay')">✕</button>
     <h2>회원가입</h2>
-    <p class="sub">이재, 영어 수강생 전용입니다.</p>
+    <p class="sub">이재, 영어 수강생 전용입니다.<br>가입코드는 수업 시간에 안내됩니다.</p>
     <div class="error-msg" id="signupError"></div>
     <label>이메일</label>
     <input type="email" id="signupEmail" placeholder="email@example.com" />
@@ -1759,6 +1759,8 @@
     <input type="password" id="signupPassword" placeholder="6자리 이상" />
     <label>비밀번호 확인</label>
     <input type="password" id="signupPassword2" placeholder="비밀번호 재입력" />
+    <label>가입코드</label>
+    <input type="text" id="signupCode" placeholder="반별 가입코드 입력" />
     <button class="btn-primary" onclick="doSignup()">가입하기</button>
     <div class="toggle-link">
       이미 계정이 있으신가요? <span onclick="switchModal('signupOverlay','loginOverlay')">로그인</span>
@@ -2400,9 +2402,15 @@
     </div>
 
     <div id="dataNoAccess" class="login-required-msg" style="display:none;">
-      <div class="icon">⛔</div>
-      <h3>접근 권한이 없습니다</h3>
-      <p>현재 수강 중인 학생만 자료실을 이용할 수 있습니다.<br>강사에게 문의해 주세요.</p>
+      <div class="icon">🔑</div>
+      <h3>반 등록이 필요합니다</h3>
+      <p>수강 중인 반의 가입코드를 입력하면 자료실을 이용할 수 있습니다.<br>가입코드는 수업 시간에 안내됩니다.</p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+        <input type="text" id="accessCodeInput" placeholder="가입코드 입력"
+          style="background:rgba(255,255,255,0.07);border:1px solid var(--border);color:var(--white);padding:10px 14px;border-radius:2px;font-size:0.9rem;min-width:180px;" />
+        <button onclick="registerClassCode()">등록하기</button>
+      </div>
+      <div id="accessCodeError" class="error-msg" style="margin-top:12px;"></div>
     </div>
 
     <div id="dataLoggedIn" style="display:none;">
@@ -2449,13 +2457,7 @@
         </div>
         <div class="data-sub-panel active" id="g1-textbook">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/GfRXQROeJnI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 공통영어1 비상 홍민표 2과</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/bcnW2NvNffs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년 개정 공통영어1 비상 홍 2과 문법정리</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/TJt9lvcrSEg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년 개정 공통영어1 비상 홍 2과 MoreCulture</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/QgyC8i0cbGo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 공통영어1 비상 홍 3과 1st</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/287c6a3Uqqk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 공통영어1 비상 홍 3과 2nd</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/YMspKfKIpYw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 공통영어1 비상 홍 3과 MoreRead</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/XGNCK53Dgc8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 공통영어1 비상 홍 2,3과 문법</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
         <div class="data-sub-panel" id="g1-workbook">
@@ -2467,87 +2469,23 @@
           </div>
           <div class="data-unit-panel" id="g1wb-06">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/5clKKrCkarE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 01번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/vxHBStrsn6A" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 02번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/EV_BE2fIcIU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 03번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/bFr6kHMD9mQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 04번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/W9No-WOW7aM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 05번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/pZyASEvyYzg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/SNVPVBe0yAA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/gr7m2hNAzZQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/wH3wJbKHYTg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/OMmm0un0Avw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 10번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/s5TGFRolKZE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 11번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/geye3EGbN70" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 12번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/1Ru-TtY8BsA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 13번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/pXLbQIgrz-c" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 14번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/wji-EgQOGi4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 15번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/SmitSQ7gCu8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 16번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/ArZSudah4PE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 17번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/bI_HOVU6fnE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 18번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/4WMWP3AtJvc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 19번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/o1UIvj3saUc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 20번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/ZMfYYHARxwI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 21번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/on8mxKoY500" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 22번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Ibsr0whKBpY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 06강 실전모의고사</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g1wb-07">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/b1m8jr8pnaY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 01번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/8ZmnOSqFW_c" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 02번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/xlpDeeiOXGk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 03번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/FrJbfGgwpNI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 04번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/GAVT8hSzIX8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 05번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/A4jaunxCgJU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/4noNppQlTjA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/hHSKiuAJvkU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/p70XVvdEtJo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/aE38q1KZR98" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 10번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/7aBayeAUKP0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 11번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/0R7o3KM_o-E" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 12번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/OVc41P_5duk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 13번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/AAoS_M1E5Hg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 14번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/TN2ZVxmoqAA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 15번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Oma-F4uk_cs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 16번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/K1DanZciuS0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 17번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/3mx1yavCSZQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 18번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/zcIL5U3SAi8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 19번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/T7vIouQvCl0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 20번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/xO21h1WykjY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 21번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/QlhDBcnLVCM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 22번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/B-eZvFq9L-k" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 23번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Iybn7FwZJag" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 07강 24번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g1wb-08">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/jUOGe44x7vk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 1학년 1학기 기말고사 마더텅 08강</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel active" id="g1wb-11">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/RnuA5q6E_6w" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 21번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/-M9y5DVyuj4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 22번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/y1oIxRsFkbk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 23번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Sg8Jq6yleSs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 24번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/GTu1Jht2jA4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 25번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Dz3ZgFp6TOs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 26번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/c1kvz1aNxck" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 27번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/39OsE1uaIk8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 28번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/ofqonegZBFQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 29번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/oHKxTgkGPjE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 30번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/7GOMX13WsPQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 31번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/5gRqnE1Sck4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 32번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/XQPRPJ1pSFc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 33번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/rT6yWxHowjw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 34번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/XSwV_0yzOVk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 35번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/RadllOerP_4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 36번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Z2vGd8pnCZg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 37번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/U-s05WdpEDQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 38번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/f9gs6onEOoM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 39번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/z1JuW7FYj48" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">26년 경희고 1학년 1학기 기말 마더텅 11강 40번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
         </div>
         <div class="data-sub-panel" id="g1-material">
@@ -2563,10 +2501,7 @@
         </div>
         <div class="data-sub-panel" id="g1-practicemock">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/MNuXMela2zw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[내신대비] 2026년 경희고 1학년 1학기 기말고사 실전모의고사</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/MdbE1QAHHuw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[내신대비] 2026년 경희고 1학년 1학기 기말고사 실전모의고사 2</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/hTaHcUqzEcI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[내신대비] 2026년 경희고 1학년 1학기 기말고사 실전모의고사 3</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/xhGaUZp-N5I" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[내신대비] 2026년 경희고 1학년 1학기 기말고사 실전모의고사 4</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
       </div>
@@ -2580,8 +2515,7 @@
         </div>
         <div class="data-sub-panel active" id="g2-textbook">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/2VocpiWfG-w" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년 개정 영어1 비상 홍 3과</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/GV6-m5ya5g4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 영어1 비상 홍 4과</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
         <div class="data-sub-panel" id="g2-workbook">
@@ -2601,133 +2535,63 @@
           </div>
           <div class="data-unit-panel active" id="g2wb-03">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/gw6MYcCeTd0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/OMIy-ovtCXA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/I-dB1oM85w4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/2shIUmqXrz0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/_oFK92KAicA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 3강 10번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-04">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/M1Sv8-hT0x0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 05번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/yD-WBn_pA3E" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/WKmJU3djm1U" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/PovarT-jRjU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 04강 08번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-05">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/wW39yhOfHek" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/ap2rawX5lgs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/-TIa0S-wAgo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/3Ahc_nUjVGI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/VF_eygSK37Y" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 05강 10번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-06">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/dcz2ncWmR1Y" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 06강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/F1nuO9mHxN8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 06강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/llAjH1rfjT0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 06강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/cHyvlZBrmhs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 06강 10번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-07">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/GVR5EBTU0CA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 07강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/zVD4kkprA8g" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 07강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/wkGoMPwtwus" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 07강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/0Z8fM_DEb_w" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 07강 10번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/76E9DG55wUc" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 07강 11번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/guhpkoyT_ms" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 07강 12번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-11">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/hEuqjYZ_ojQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 21번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/jyEk1K0xwZY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 22번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/G0N7ReRVHUg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 23번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/jYr9hU-OttI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 24번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/fIUv14FPfFY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 25번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/EdhL9e8yS-8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 26번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/POjYwqfd7ko" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 27번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/pJwTRmC4_Ds" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 28번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/JOx8ryuGLbI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 29번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/B6h8924FcBo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 11강 30번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/XWsMw865T8Q" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 31번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/7Cv1J5xL5OE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 32번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/7TG-y8sEUvM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 33번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/394DAWybdJM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 34번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/55QQPhwHwrA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 35번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/rw7BxxC4Cyg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 36번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/geJKvZ70KQg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 37번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/reH-O14K1Mk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 38번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/v97EByD0p90" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 39번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/olEEsOjkzA8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 11강 40번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-12">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/uK5JKYeV-YI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/DFVddEuigR8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/F_6lfE0CJW8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/0znBGGn7JRU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/jH622ilyEvM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 12강 10번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-13">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/mhmykyl73NE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 12번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/ebR2NEw3Hx8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 15번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/3SUvLUDWa_I" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 16번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/GbSMBlTqlB4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 17번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/SQlgsib-o68" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 18번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/NhcsI8taMqA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 19번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/IY0aCZVrPaA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 20번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/OK-AfINcGOs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 21번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/HzaSUgKvaWM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 13강 22번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-14">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/_VpGUv8UxuQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 14강 11번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/ZTnThbF5iNA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 14강 12번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/qivqP16ds-8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 14강 13번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/nOx0eCYuVL4" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 14강 14번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-15">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/c_EuB5vc3uY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 15강 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/SbsSJ0YMECE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 15강 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/lSuAjyHALTY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 15강 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/xTrSMABTiuM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 15강 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/fLeioAtqUNw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 15강 10번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-16">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/ySNpFIUCJ34" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 16강 11-12번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/nI03RuXrxu8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 16강 13-14번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/31eUDwSpBMs" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 16강 15-16번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/wGA6QrGh31I" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 16강 17-18번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/DIevNgvg3Ng" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 26년 경희고 2학년 1학기 기말고사 마더텅 16강 19-20번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
           <div class="data-unit-panel" id="g2wb-mini2">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/AnIfDW9FRvk" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 01번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/9sPh2rdn9OU" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 02번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/Ayqivrfuuz0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 03번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/zZScrw1ZhNQ" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 04번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/PVecGcMMv6k" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 05번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/g2A43RwYzpw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 06번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/N7HPGIQvuew" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 07번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/S62g2qAVauM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 08번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/RriOLfx7s0w" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 09번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/YFW7gCX92AY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[부교재] 경희고 2학년 1학기 기말고사 마더텅 Mini TEST 2회 10-12번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
         </div>
         <div class="data-sub-panel" id="g2-classmaterial">
@@ -2747,7 +2611,7 @@
         </div>
         <div class="data-sub-panel active" id="cn1-textbook">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/dCoFLi5VD8I" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 공통영어1 능률 오 4과</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
         <div class="data-sub-panel" id="cn1-mockup">
@@ -2756,16 +2620,13 @@
           </div>
           <div class="data-unit-panel active" id="cn1mc-2510">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/SDlhJK534k8" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2025년 고1 10월 35번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/hC65iAfMG2s" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2025년 고1 10월 37번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/BqDIvTiaN8g" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2025년 고1 10월 39번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/bvdLVo9j7_A" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2025년 고1 10월 40번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
         </div>
         <div class="data-sub-panel" id="cn1-practicemock">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/M4ErGNIrvEA" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[내신대비] 2026년 청량고 1학년 1학기 기말고사 실전모의고사</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
       </div>
@@ -2779,9 +2640,7 @@
         </div>
         <div class="data-sub-panel" id="cn2-textbook">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/NNJ4ccBOZnE" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 영어1 능률 오 2과 2nd</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/gD-ISwopsrI" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 영어1 능률 오 3과 1st</div></div></div></a>
-            <a class="data-item data-link" href="https://youtu.be/Tl-qHRA67Jo" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[교과서] 22년개정 영어1 능률 오 3과 2nd</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
         <div class="data-sub-panel active" id="cn2-mockup">
@@ -2790,19 +2649,13 @@
           </div>
           <div class="data-unit-panel active" id="cn2mc-2603">
             <div class="data-list">
-              <a class="data-item data-link" href="https://youtu.be/kK8ULgNfuAM" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 26년 고2 03월 29번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/w5CnlmfgPWY" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 26년 고2 03월 30번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/QvQR9c0V-tw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 35번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/oVJmzp_fwa0" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 36번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/1nOmwumK9Cw" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 37번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/u1bWERtZ5_U" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 38번</div></div></div></a>
-              <a class="data-item data-link" href="https://youtu.be/2Rf3uC5cPRg" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[모의고사] 2026년 고2 03월 39번</div></div></div></a>
-            </div>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
+          </div>
           </div>
         </div>
         <div class="data-sub-panel" id="cn2-practicemock">
           <div class="data-list">
-            <a class="data-item data-link" href="https://youtu.be/b_q2KJzVa9Q" target="_blank"><div class="data-item-left"><div class="data-icon">▶</div><div><div class="data-title">[내신대비] 2026년 청량고 2학년 1학기 기말고사 실전모의고사</div></div></div></a>
+            <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">2학기 중간고사 대비 자료가 업로드되면 표시됩니다.</div><div class="data-date">지난 학기 영상은 비공개 처리되었습니다</div></div></div></div>
           </div>
         </div>
       </div>
@@ -3167,14 +3020,65 @@
   showDataSection(false);
 
   // ── 수강 승인 여부 확인 ──
+  // 반(academy/school) 정보가 있는 계정만 승인으로 인정한다.
+  // 반 정보가 없는 계정(무단가입·구버전 가입)은 가입코드 등록을 거쳐야 한다.
   async function checkUserApproved(email) {
     try {
       const key = email.replace(/\./g, '_');
       const snap = await getDoc(doc(db, 'approvedUsers', key));
-      if (snap.exists()) return { approved: true, data: snap.data() };
+      if (snap.exists() && snap.data().academy && snap.data().school) {
+        return { approved: true, data: snap.data() };
+      }
       return { approved: false, data: null };
     } catch(e) { return { approved: false, data: null }; }
   }
+
+  // ── 가입코드 → 반 찾기 ──
+  // settings/code_{academy}_{school} 문서들과 대조. 일치하면 {academy, school} 반환.
+  async function findClassByCode(code) {
+    const entered = (code || '').trim();
+    if (!entered) return null;
+    for (const [aKey, aVal] of Object.entries(ACADEMY_MAP)) {
+      for (const sKey of Object.keys(aVal.schools)) {
+        try {
+          const snap = await getDoc(doc(db, 'settings', `code_${aKey}_${sKey}`));
+          if (snap.exists() && (snap.data().code || '').trim() !== '' && (snap.data().code || '').trim() === entered) {
+            return { academy: aKey, school: sKey };
+          }
+        } catch(e) { console.warn('code check failed:', aKey, sKey, e?.code); }
+      }
+    }
+    return null;
+  }
+
+  // ── 로그인 상태에서 가입코드 등록 (기존 계정용) ──
+  window.registerClassCode = async () => {
+    const errEl = document.getElementById('accessCodeError');
+    errEl.classList.remove('show');
+    if (!currentUser) { openModal('loginOverlay'); return; }
+    const code = document.getElementById('accessCodeInput').value;
+    const match = await findClassByCode(code);
+    if (!match) {
+      errEl.textContent = '가입코드가 올바르지 않습니다. 강사에게 문의해 주세요.';
+      errEl.classList.add('show');
+      return;
+    }
+    try {
+      const key = currentUser.email.replace(/\./g, '_');
+      await setDoc(doc(db, 'approvedUsers', key), {
+        email: currentUser.email,
+        academy: match.academy,
+        school: match.school,
+        usedCode: (code || '').trim(),
+        approvedAt: serverTimestamp()
+      }, { merge: true });
+      const result = await checkUserApproved(currentUser.email);
+      showDataSection(result.approved, result.data);
+    } catch(e) {
+      errEl.textContent = '등록에 실패했습니다. 다시 시도해 주세요.';
+      errEl.classList.add('show');
+    }
+  };
 
   // ── 학원/학교 코드 정의 ──
   // ── 관리자 코드 패널 표시 ──
@@ -3302,18 +3206,35 @@
     const errEl = document.getElementById('signupError');
     errEl.classList.remove('show');
 
+    const codeInput = document.getElementById('signupCode').value;
+
     if (pw !== pw2) { errEl.textContent = '비밀번호가 일치하지 않습니다.'; errEl.classList.add('show'); return; }
     if (pw.length < 6) { errEl.textContent = '비밀번호는 6자리 이상이어야 합니다.'; errEl.classList.add('show'); return; }
+    if (!codeInput.trim()) { errEl.textContent = '가입코드를 입력해 주세요. 가입코드는 수업 시간에 안내됩니다.'; errEl.classList.add('show'); return; }
 
-    // 가입 + 승인 등록 (코드 없이 자유 가입 — 추후 코드 체계 복원 예정)
+    // 가입코드 검증 후 가입 + 반별 승인 등록
     try {
       await createUserWithEmailAndPassword(auth, email, pw);
+      const match = await findClassByCode(codeInput);
+      if (!match) {
+        // 코드 불일치 → 방금 만든 계정 삭제 후 가입 거부
+        try { await auth.currentUser.delete(); } catch(e2) { await signOut(auth); }
+        errEl.textContent = '가입코드가 올바르지 않습니다. 강사에게 문의해 주세요.';
+        errEl.classList.add('show');
+        return;
+      }
       const key = email.replace(/\./g, '_');
-      await setDoc(doc(db, 'approvedUsers', key), { email, approvedAt: serverTimestamp() });
+      await setDoc(doc(db, 'approvedUsers', key), {
+        email,
+        academy: match.academy,
+        school: match.school,
+        usedCode: codeInput.trim(),
+        approvedAt: serverTimestamp()
+      });
       closeModal('signupOverlay');
     } catch(e) {
       if (e.code === 'auth/email-already-in-use') {
-        errEl.textContent = '이미 사용 중인 이메일입니다.';
+        errEl.textContent = '이미 사용 중인 이메일입니다. 로그인 후 자료실에서 가입코드를 등록해 주세요.';
       } else {
         errEl.textContent = '회원가입에 실패했습니다. 다시 시도해 주세요.';
       }
@@ -3948,6 +3869,12 @@
   // enter key on inputs
   document.getElementById('loginPassword').addEventListener('keydown', e => {
     if (e.key === 'Enter') doLogin();
+  });
+  document.getElementById('signupCode').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSignup();
+  });
+  document.getElementById('accessCodeInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') registerClassCode();
   });
   document.getElementById('signupPassword2').addEventListener('keydown', e => {
     if (e.key === 'Enter') doSignup();
