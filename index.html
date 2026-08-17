@@ -810,6 +810,23 @@
     .class-tab-panel { display: none; }
     .class-tab-panel.active { display: block; }
 
+    .new-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #0a0e1a;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+      animation: newPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes newPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
     .class-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -2267,7 +2284,7 @@
     <!-- 대치에스 패널 -->
     <div class="class-tab-panel active" id="tab-daichi">
       <div class="class-cards">
-        <div class="class-card" onclick="openBoard('daichi-01','경희고 1학년 (금/일)','대치에스')">
+        <div class="class-card" data-class-id="daichi-01" onclick="openBoard('daichi-01','경희고 1학년 (금/일)','대치에스')">
           <div class="class-tag">대치에스 · 01</div>
           <div class="class-name">경희고 1학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">금요일 · 일요일</small></div>
           <div class="class-schedule">
@@ -2276,7 +2293,7 @@
             <div class="schedule-row"><span>요일</span><span>금 · 일</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('daichi-02','경희고 1학년 (일)','대치에스')">
+        <div class="class-card" data-class-id="daichi-02" onclick="openBoard('daichi-02','경희고 1학년 (일)','대치에스')">
           <div class="class-tag">대치에스 · 02</div>
           <div class="class-name">경희고 1학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">일요일</small></div>
           <div class="class-schedule">
@@ -2285,7 +2302,7 @@
             <div class="schedule-row"><span>요일</span><span>일</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('daichi-03','경희고 2학년 (화)','대치에스')">
+        <div class="class-card" data-class-id="daichi-03" onclick="openBoard('daichi-03','경희고 2학년 (화)','대치에스')">
           <div class="class-tag">대치에스 · 03</div>
           <div class="class-name">경희고 2학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">화요일</small></div>
           <div class="class-schedule">
@@ -2294,7 +2311,7 @@
             <div class="schedule-row"><span>요일</span><span>화</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('daichi-04','경희고 2학년 (일)','대치에스')">
+        <div class="class-card" data-class-id="daichi-04" onclick="openBoard('daichi-04','경희고 2학년 (일)','대치에스')">
           <div class="class-tag">대치에스 · 04</div>
           <div class="class-name">경희고 2학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">일요일</small></div>
           <div class="class-schedule">
@@ -2303,7 +2320,7 @@
             <div class="schedule-row"><span>요일</span><span>일</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('daichi-05','청량고 1학년 (금)','대치에스')">
+        <div class="class-card" data-class-id="daichi-05" onclick="openBoard('daichi-05','청량고 1학년 (금)','대치에스')">
           <div class="class-tag">대치에스 · 05</div>
           <div class="class-name">청량고 1학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">금요일</small></div>
           <div class="class-schedule">
@@ -2312,7 +2329,7 @@
             <div class="schedule-row"><span>요일</span><span>금</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('daichi-06','청량고 2학년 (화)','대치에스')">
+        <div class="class-card" data-class-id="daichi-06" onclick="openBoard('daichi-06','청량고 2학년 (화)','대치에스')">
           <div class="class-tag">대치에스 · 06</div>
           <div class="class-name">청량고 2학년<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">화요일</small></div>
           <div class="class-schedule">
@@ -2327,7 +2344,7 @@
     <!-- 이재,영어 패널 -->
     <div class="class-tab-panel" id="tab-leejae">
       <div class="class-cards">
-        <div class="class-card" onclick="openBoard('leejae-01','중등부','이재, 영어')">
+        <div class="class-card" data-class-id="leejae-01" onclick="openBoard('leejae-01','중등부','이재, 영어')">
           <div class="class-tag">이재, 영어 · 01</div>
           <div class="class-name">중등부</div>
           <div class="class-schedule">
@@ -2336,7 +2353,7 @@
             <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('leejae-02','예비고1','이재, 영어')">
+        <div class="class-card" data-class-id="leejae-02" onclick="openBoard('leejae-02','예비고1','이재, 영어')">
           <div class="class-tag">이재, 영어 · 02</div>
           <div class="class-name">예비고1</div>
           <div class="class-schedule">
@@ -2345,7 +2362,7 @@
             <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
           </div>
         </div>
-        <div class="class-card" onclick="openBoard('leejae-03','고등부','이재, 영어')">
+        <div class="class-card" data-class-id="leejae-03" onclick="openBoard('leejae-03','고등부','이재, 영어')">
           <div class="class-tag">이재, 영어 · 03</div>
           <div class="class-name">고등부</div>
           <div class="class-schedule">
@@ -2835,6 +2852,7 @@
     getDocs,
     query,
     orderBy,
+    limit,
     updateDoc,
     serverTimestamp,
     doc,
@@ -2893,6 +2911,7 @@
         showDataSection(result.approved, result.data);
       }
       loadQaBoard();
+      checkClassNewBadges();
       // 댓글 폼
       const cf = document.getElementById('commentForm');
       if (cf) cf.style.display = 'flex';
@@ -3288,6 +3307,37 @@
   };
 
   // ── 게시글 목록 로드 ──
+  // ── NEW 배지: 최근 3일 이내 글 ──
+  const NEW_BADGE_MS = 3 * 24 * 60 * 60 * 1000;
+  function isNewPost(createdAt) {
+    if (!createdAt || !createdAt.seconds) return false;
+    return (Date.now() - createdAt.seconds * 1000) < NEW_BADGE_MS;
+  }
+
+  // 수강생전용 반 카드에 NEW 배지 표시 (반별 최신 글 1건씩 확인)
+  async function checkClassNewBadges() {
+    const cards = document.querySelectorAll('.class-card[data-class-id]');
+    for (const card of cards) {
+      const classId = card.dataset.classId;
+      try {
+        const q = query(collection(db, 'classes', classId, 'posts'), orderBy('createdAt', 'desc'), limit(1));
+        const snap = await getDocs(q);
+        let hasNew = false;
+        snap.forEach(d => { if (isNewPost(d.data().createdAt)) hasNew = true; });
+        const tag = card.querySelector('.class-tag');
+        const existing = tag ? tag.querySelector('.new-badge') : null;
+        if (hasNew && tag && !existing) {
+          const b = document.createElement('span');
+          b.className = 'new-badge';
+          b.textContent = 'NEW';
+          tag.appendChild(b);
+        } else if (!hasNew && existing) {
+          existing.remove();
+        }
+      } catch(e) { /* 권한 없음(비로그인 등) 시 무시 */ }
+    }
+  }
+
   async function loadPosts(classId) {
     const postList = document.getElementById('postList');
     postList.innerHTML = '<div class="post-empty" style="color:var(--gray);font-size:0.85rem;">불러오는 중...</div>';
@@ -3304,8 +3354,9 @@
         const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ko-KR') : '';
         const el = document.createElement('div');
         el.className = 'post-item';
+        const newBadge = isNewPost(data.createdAt) ? ' <span class="new-badge">NEW</span>' : '';
         el.innerHTML = `
-          <div class="post-item-title">${data.title}</div>
+          <div class="post-item-title">${data.title}${newBadge}</div>
           <div class="post-item-meta">${data.authorEmail || ''} · ${date}</div>
         `;
         el.onclick = () => openPost(d.id, data);
@@ -3411,6 +3462,7 @@
       document.getElementById('postBodyInput').value = '';
       document.getElementById('writeForm').classList.remove('show');
       await loadPosts(currentClassId);
+      checkClassNewBadges();
     } catch(e) {
       alert('등록에 실패했습니다.');
     }
