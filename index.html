@@ -2315,6 +2315,15 @@
             <div class="schedule-row"><span>요일</span><span>화</span></div>
           </div>
         </div>
+        <div class="class-card" data-class-id="daichi-07" onclick="openBoard('daichi-07','예비고1','대치에스')">
+          <div class="class-tag">대치에스 · 07</div>
+          <div class="class-name">예비고1</div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>중3 · 예비고1</span></div>
+            <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
+            <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2646,6 +2655,13 @@
         </div>
       </div>
 
+      <!-- 대치에스 예비고1 -->
+      <div class="data-folder-panel" id="folder-daichi_prehigh">
+        <div class="data-list">
+          <div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">예비고1 · 준비 중</div></div></div></div>
+        </div>
+      </div>
+
       <!-- 이재,영어 패널 -->
       <div class="data-folder-panel" id="folder-leejae_middle">
         <div class="data-list"><div class="data-item"><div class="data-item-left"><div class="data-icon">📄</div><div><div class="data-title">자료가 업로드되면 이곳에 표시됩니다.</div><div class="data-date">준비 중</div></div></div></div></div>
@@ -2869,7 +2885,7 @@
 
   // ── 학원/학교 코드 정의 (전역) ──
   const ACADEMY_MAP = {
-    daichi:  { label: '대치에스', schools: { gyeonghee1:'경희고 1학년', gyeonghee2:'경희고 2학년', cheongnyang1:'청량고 1학년', cheongnyang2:'청량고 2학년' } },
+    daichi:  { label: '대치에스', schools: { gyeonghee1:'경희고 1학년', gyeonghee2:'경희고 2학년', cheongnyang1:'청량고 1학년', cheongnyang2:'청량고 2학년', daichi_prehigh:'예비고1' } },
     leejae:  { label: '이재,영어', schools: { leejae_middle:'중등부', leejae_prehigh:'예비고1', leejae_high:'고등부' } },
     meca:    { label: '대치메카',  schools: { meca_middle:'중등부', meca_high:'고등부' } },
   };
@@ -3263,6 +3279,7 @@
       { id: 'daichi-04', name: '경희고 2학년 (일)',   academy: '대치에스' },
       { id: 'daichi-05', name: '청량고 1학년 (금)',   academy: '대치에스' },
       { id: 'daichi-06', name: '청량고 2학년 (화)',   academy: '대치에스' },
+      { id: 'daichi-07', name: '예비고1',             academy: '대치에스' },
       { id: 'leejae-01', name: '중등부',              academy: '이재, 영어' },
       { id: 'leejae-02', name: '예비고1',             academy: '이재, 영어' },
       { id: 'leejae-03', name: '고등부',              academy: '이재, 영어' },
