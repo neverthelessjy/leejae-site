@@ -749,7 +749,7 @@
     /* ───── 수업안내 탭 ───── */
     .class-tab-wrap {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-bottom: 48px;
     }
@@ -803,13 +803,87 @@
       display: block;
     }
     @media (max-width: 600px) {
-      .class-tab-wrap { grid-template-columns: 1fr; gap: 10px; }
+      .class-tab-wrap { grid-template-columns: 1fr 1fr; gap: 10px; }
       .class-tab-btn { min-height: 80px; padding: 16px; }
       .tab-logo { height: 44px; }
     }
 
     .class-tab-panel { display: none; }
     .class-tab-panel.active { display: block; }
+
+    /* ───── 수업 안내: 학원 탭 · 반 탭 (initCourseTabs가 자동으로 만든다) ───── */
+    .course-acad-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .course-acad-btn {
+      background: rgba(255,255,255,0.03);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-family: inherit;
+      color: rgba(245,243,238,0.85);
+      text-align: left;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .course-acad-btn img {
+      width: 44px; height: 44px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .course-acad-text { display: flex; flex-direction: column; gap: 3px; line-height: 1.3; }
+    .course-acad-name { font-size: 1rem; font-weight: 700; }
+    .course-acad-sub { font-size: 0.76rem; color: var(--gray); }
+    .course-acad-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); transform: translateY(-2px); }
+    .course-acad-btn.active { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+    .course-acad-btn.active .course-acad-name { color: var(--gold-light); }
+
+    #classes.course-tabbed .summer-special-wrap { display: none; margin-top: 0 !important; }
+    #classes.course-tabbed .summer-special-wrap.course-acad-active { display: block; animation: fadeIn 0.3s ease; }
+
+    .course-sub-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px; }
+    .course-sub-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      color: rgba(245,243,238,0.75);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .course-sub-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+    .course-sub-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 700; }
+
+    #classes.course-tabbed .summer-course-grid { grid-template-columns: 1fr; }
+    #classes.course-tabbed .summer-course-card { display: none; }
+    #classes.course-tabbed .summer-course-card.course-sub-active {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 0 40px;
+      align-items: start;
+      animation: fadeIn 0.3s ease;
+    }
+    #classes.course-tabbed .course-card-right > div:first-child { margin-top: 0 !important; }
+    @media (max-width: 800px) {
+      .course-acad-tabs { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .course-acad-btn { flex-direction: column; text-align: center; gap: 8px; padding: 12px 8px; }
+      .course-acad-btn img { width: 36px; height: 36px; }
+      .course-acad-name { font-size: 0.9rem; }
+      .course-sub-btn { padding: 7px 14px; font-size: 0.8rem; }
+      #classes.course-tabbed .summer-course-card.course-sub-active { grid-template-columns: 1fr; }
+      #classes.course-tabbed .course-card-right > div:first-child { margin-top: 18px !important; }
+    }
 
     .new-badge {
       display: inline-block;
@@ -2155,6 +2229,7 @@
 
       <div class="class-info-notice" style="margin-top:24px;">
         📌 상담문의 — 새움학원 02.558.1060 (강남구 도곡로 503, 2·3층) · 이재,영어 010.3475.0519 (대치동 912-5 1층)
+        <a href="https://youtu.be/tCEqbdPCcQs" target="_blank" class="class-info-kakao">▶ 설명회 영상 보기</a>
         <a href="https://open.kakao.com/o/gq8jGyvi" target="_blank" class="class-info-kakao">💬 오픈채팅 바로가기</a>
       </div>
     </div>
@@ -2517,6 +2592,9 @@
       <button class="class-tab-btn active" onclick="switchClassTab('daichi', this)">
         <img src="DCS.jpeg" class="tab-logo" alt="대치에스" />
       </button>
+      <button class="class-tab-btn" onclick="switchClassTab('saeum', this)">
+        <img src="saeum.jpg" class="tab-logo" alt="새움학원" />
+      </button>
       <button class="class-tab-btn" onclick="switchClassTab('leejae', this)">
         <img src="logo.png" alt="이재, 영어" style="width:56px !important;height:56px !important;object-fit:cover !important;border-radius:50% !important;max-width:none !important;display:block;" />
       </button>
@@ -2589,6 +2667,30 @@
             <div class="schedule-row"><span>대상</span><span>중3 · 예비고1</span></div>
             <div class="schedule-row"><span>요일</span><span>업데이트 예정</span></div>
             <div class="schedule-row"><span>시간</span><span>업데이트 예정</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 새움학원 패널 -->
+    <div class="class-tab-panel" id="tab-saeum">
+      <div class="class-cards">
+        <div class="class-card" data-class-id="saeum-01" onclick="openBoard('saeum-01','예비고1 Season 2 (토)','새움학원')">
+          <div class="class-tag">새움학원 · 01</div>
+          <div class="class-name">예비고1 Season 2<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">수능 독해 · 토요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>중3 · 예비고1</span></div>
+            <div class="schedule-row"><span>요일</span><span>토</span></div>
+            <div class="schedule-row"><span>시간</span><span>PM 6:00 ~ 9:30</span></div>
+          </div>
+        </div>
+        <div class="class-card" data-class-id="saeum-02" onclick="openBoard('saeum-02','예비고1 Season 1 (토)','새움학원')">
+          <div class="class-tag">새움학원 · 02</div>
+          <div class="class-name">예비고1 Season 1<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">고등영문법 · 토요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>중3 · 예비고1</span></div>
+            <div class="schedule-row"><span>요일</span><span>토</span></div>
+            <div class="schedule-row"><span>시간</span><span>PM 2:00 ~ 5:00</span></div>
           </div>
         </div>
       </div>
@@ -3801,6 +3903,8 @@
       { id: 'daichi-05', name: '청량고 1학년 (금)',   academy: '대치에스' },
       { id: 'daichi-06', name: '청량고 2학년 (화)',   academy: '대치에스' },
       { id: 'daichi-07', name: '예비고1',             academy: '대치에스' },
+      { id: 'saeum-01',  name: '예비고1 Season 2 (토)', academy: '새움학원' },
+      { id: 'saeum-02',  name: '예비고1 Season 1 (토)', academy: '새움학원' },
       { id: 'leejae-01', name: '중등부',              academy: '이재, 영어' },
       { id: 'leejae-02', name: '예비고1',             academy: '이재, 영어' },
       { id: 'leejae-03', name: '고등부',              academy: '이재, 영어' },
@@ -4051,6 +4155,7 @@
     if (!list) return;
     // 기본 영상들 먼저 표시
     const staticSeminarVideos = [
+      { id: 'static-saeum-2026-11', videoId: 'tCEqbdPCcQs', title: '새움학원 설명회', desc: '', createdAt: null },
       { id: 'static-g2-final-2026-1', videoId: 'KX3L9GCXkII', title: '2026년 경희고 2학년 1학기 기말고사 분석', desc: '', createdAt: null },
       { id: 'static-g1-final-2026-1', videoId: 'ObO3hdSdZBQ', title: '2026년 경희고 1학년 1학기 기말고사 분석', desc: '', createdAt: null },
       { id: 'initial', videoId: 'GEM6wGWNvEo', title: '이재,영어 설명회', desc: '2026년 겨울방학 문법설명회', createdAt: null }
@@ -4478,6 +4583,93 @@
     document.getElementById('tab-' + tab).classList.add('active');
     btn.classList.add('active');
   }
+
+  // 수업 안내: 화면에 보이는 학원 블록(.summer-special-wrap)마다 학원 탭을,
+  // 블록 안의 반(.summer-course-card)마다 반 탭을 자동으로 만든다.
+  // 숨김 클래스(midterm-hidden, final-draft)가 붙은 블록과 반은 탭에서도 빠진다.
+  (function initCourseTabs() {
+    const sec = document.getElementById('classes');
+    if (!sec) return;
+    const shown = el => getComputedStyle(el).display !== 'none';
+    const wraps = [...sec.querySelectorAll('.summer-special-wrap')].filter(shown);
+    if (!wraps.length) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'course-acad-tabs';
+    const acadBtns = [];
+    const selectAcad = i => {
+      wraps.forEach((w, k) => w.classList.toggle('course-acad-active', k === i));
+      acadBtns.forEach((b, k) => b.classList.toggle('active', k === i));
+    };
+
+    wraps.forEach((w, i) => {
+      const img = w.querySelector('.summer-special-header img');
+      const h3 = w.querySelector('.summer-special-header h3');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'course-acad-btn';
+      if (img) {
+        const logo = document.createElement('img');
+        logo.src = img.getAttribute('src');
+        logo.alt = '';
+        btn.appendChild(logo);
+      }
+      const text = document.createElement('span');
+      text.className = 'course-acad-text';
+      const name = document.createElement('span');
+      name.className = 'course-acad-name';
+      name.textContent = (img && img.alt) || '수업';
+      const sub = document.createElement('span');
+      sub.className = 'course-acad-sub';
+      sub.textContent = h3 ? h3.textContent : '';
+      text.append(name, sub);
+      btn.appendChild(text);
+      btn.addEventListener('click', () => selectAcad(i));
+      acadBtns.push(btn);
+      bar.appendChild(btn);
+
+      const cards = [...w.querySelectorAll('.summer-course-card')].filter(shown);
+      const grid = w.querySelector('.summer-course-grid');
+      const subBtns = [];
+      const selectCard = j => {
+        cards.forEach((c, k) => c.classList.toggle('course-sub-active', k === j));
+        subBtns.forEach((b, k) => b.classList.toggle('active', k === j));
+      };
+      cards.forEach(card => {
+        // 반 카드를 좌(개요·시간) / 우(커리큘럼·반 운영)로 나눈다
+        const left = document.createElement('div');
+        left.className = 'course-card-left';
+        const right = document.createElement('div');
+        right.className = 'course-card-right';
+        let target = left;
+        [...card.children].forEach(child => {
+          target.appendChild(child);
+          if (child.classList.contains('summer-course-meta')) target = right;
+        });
+        card.append(left, right);
+      });
+      if (cards.length > 1 && grid) {
+        const subBar = document.createElement('div');
+        subBar.className = 'course-sub-tabs';
+        cards.forEach((card, j) => {
+          const tag = card.querySelector('.summer-course-tag');
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'course-sub-btn';
+          b.textContent = tag ? tag.textContent : (j + 1) + '반';
+          b.addEventListener('click', () => selectCard(j));
+          subBtns.push(b);
+          subBar.appendChild(b);
+        });
+        grid.parentNode.insertBefore(subBar, grid);
+      }
+      selectCard(0);
+    });
+
+    if (wraps.length > 1) wraps[0].parentNode.insertBefore(bar, wraps[0]);
+    sec.classList.add('course-tabbed');
+    selectAcad(0);
+  })();
 
   function showPage(name) {
     // hide all
