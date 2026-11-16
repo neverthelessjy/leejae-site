@@ -3920,6 +3920,14 @@
   // ── 수강 승인 여부 확인 ──
   // 반(academy/school) 정보가 있는 계정만 승인으로 인정한다.
   // 반 정보가 없는 계정(무단가입·구버전 가입)은 가입코드 등록을 거쳐야 한다.
+  // 승인제 시작 시각(2026-11-17 02:35 KST). 이 뒤에 status 없이 만들어진 문서는
+  // 새로고침하지 않은 옛 화면에서 가입한 것이므로 승인 대기로 본다.
+  const APPROVAL_START_SEC = Date.UTC(2026, 10, 16, 17, 35) / 1000;
+  function isPendingDoc(d) {
+    if (!d) return false;
+    if (d.status) return d.status === 'pending';
+    return !!(d.approvedAt && d.approvedAt.seconds > APPROVAL_START_SEC);
+  }
   // 가입 승인제: 가입코드를 등록하면 status가 'pending'이 되고, 강사가 승인해야 'approved'가 된다.
   // status가 없는 문서는 승인제 이전에 가입한 수강생이므로 승인된 것으로 본다.
   async function checkUserApproved(email) {
@@ -3927,7 +3935,7 @@
       const key = email.replace(/\./g, '_');
       const snap = await getDoc(doc(db, 'approvedUsers', key));
       if (snap.exists() && snap.data().academy && snap.data().school) {
-        const pending = snap.data().status === 'pending';
+        const pending = isPendingDoc(snap.data());
         return { approved: !pending, pending, data: snap.data() };
       }
       return { approved: false, pending: false, data: null };
@@ -4101,7 +4109,7 @@
           school: sc ? (ACADEMY_MAP[a]?.schools[sc] || sc) : '-'
         };
       };
-      const isPending = u => u.data.status === 'pending';
+      const isPending = u => isPendingDoc(u.data);
       users.sort((x, y) => {
         const lx = labelOf(x), ly = labelOf(y);
         return (isPending(x) ? 0 : 1) - (isPending(y) ? 0 : 1)
