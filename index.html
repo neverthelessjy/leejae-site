@@ -2017,7 +2017,7 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal('signupOverlay')">✕</button>
     <h2>회원가입</h2>
-    <p class="sub">이재, 영어 수강생 전용입니다.<br>가입코드는 수업 시간에 안내됩니다.</p>
+    <p class="sub">이재, 영어 수강생 전용입니다.<br>가입코드는 수업 시간에 안내됩니다.<br>가입 후 강사가 승인하면 자료실을 이용할 수 있습니다.</p>
     <div class="error-msg" id="signupError"></div>
     <label>이름 (실명)</label>
     <input type="text" id="signupName" placeholder="예: 홍길동" maxlength="20" autocomplete="name" />
@@ -3025,6 +3025,15 @@
       <div id="accessCodeError" class="error-msg" style="margin-top:12px;"></div>
     </div>
 
+    <!-- 가입코드는 등록했지만 강사 승인을 기다리는 수강생에게 보인다 -->
+    <div id="dataPending" class="login-required-msg" style="display:none;">
+      <div class="icon">⏳</div>
+      <h3>승인 대기 중입니다</h3>
+      <p>가입 신청이 접수되었습니다.<br>강사가 확인한 뒤 자료실을 이용할 수 있습니다.</p>
+      <p id="dataPendingClass" style="margin-top:10px;color:var(--gold-light);font-size:0.86rem;"></p>
+      <button onclick="recheckApproval()">승인 여부 다시 확인</button>
+    </div>
+
     <div id="dataLoggedIn" style="display:none;">
 
       <!-- 관리자 코드 관리 패널 -->
@@ -3033,7 +3042,7 @@
         <div id="codeTableWrap" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;"></div>
         <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border);">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-            <div style="font-size:0.78rem;letter-spacing:0.1em;color:var(--gold);">👥 수강생 목록</div>
+            <div style="font-size:0.78rem;letter-spacing:0.1em;color:var(--gold);">👥 수강생 목록 <span id="pendingBadge" style="display:none;margin-left:8px;background:#e05;color:#fff;font-size:0.72rem;letter-spacing:0;padding:2px 9px;border-radius:10px;"></span></div>
             <div style="display:flex;gap:8px;">
               <button onclick="toggleApprovedList()"
                 id="approvedListToggleBtn"
@@ -3800,7 +3809,7 @@
         window._isAdmin = false;
         // 수강 승인 여부 확인
         const result = await checkUserApproved(user.email);
-        showDataSection(result.approved, result.data);
+        showDataSection(result.approved, result.data, result.pending);
         askNameIfMissing(result);
       }
       loadQaBoard();
@@ -3827,23 +3836,24 @@
   });
 
   // ── 자료실 표시 제어 ──
-  function showDataSection(approved, userData) {
+  function showDataSection(approved, userData, pending) {
     const loggedOut = document.getElementById('dataLoggedOut');
     const loggedIn = document.getElementById('dataLoggedIn');
     const noAccess = document.getElementById('dataNoAccess');
+    const pendingEl = document.getElementById('dataPending');
+    const show = el => [loggedOut, loggedIn, noAccess, pendingEl].forEach(x => { x.style.display = x === el ? 'block' : 'none'; });
     if (!currentUser) {
-      loggedOut.style.display = 'block';
-      loggedIn.style.display = 'none';
-      noAccess.style.display = 'none';
+      show(loggedOut);
     } else if (approved) {
-      loggedOut.style.display = 'none';
-      loggedIn.style.display = 'block';
-      noAccess.style.display = 'none';
+      show(loggedIn);
       renderAcademyTabs(userData);
+    } else if (pending) {
+      show(pendingEl);
+      const a = userData?.academy, sc = userData?.school;
+      const label = a ? `${ACADEMY_MAP[a]?.label || a} · ${ACADEMY_MAP[a]?.schools?.[sc] || sc || ''}` : '';
+      document.getElementById('dataPendingClass').textContent = label ? `신청한 반: ${label}` : '';
     } else {
-      loggedOut.style.display = 'none';
-      loggedIn.style.display = 'none';
-      noAccess.style.display = 'block';
+      show(noAccess);
     }
   }
 
@@ -3910,16 +3920,24 @@
   // ── 수강 승인 여부 확인 ──
   // 반(academy/school) 정보가 있는 계정만 승인으로 인정한다.
   // 반 정보가 없는 계정(무단가입·구버전 가입)은 가입코드 등록을 거쳐야 한다.
+  // 가입 승인제: 가입코드를 등록하면 status가 'pending'이 되고, 강사가 승인해야 'approved'가 된다.
+  // status가 없는 문서는 승인제 이전에 가입한 수강생이므로 승인된 것으로 본다.
   async function checkUserApproved(email) {
     try {
       const key = email.replace(/\./g, '_');
       const snap = await getDoc(doc(db, 'approvedUsers', key));
       if (snap.exists() && snap.data().academy && snap.data().school) {
-        return { approved: true, data: snap.data() };
+        const pending = snap.data().status === 'pending';
+        return { approved: !pending, pending, data: snap.data() };
       }
-      return { approved: false, data: null };
-    } catch(e) { return { approved: false, data: null }; }
+      return { approved: false, pending: false, data: null };
+    } catch(e) { return { approved: false, pending: false, data: null }; }
   }
+  window.recheckApproval = async () => {
+    if (!currentUser) return;
+    const result = await checkUserApproved(currentUser.email);
+    showDataSection(result.approved, result.data, result.pending);
+  };
 
   // ── 가입코드 → 반 찾기 ──
   // settings/code_{academy}_{school} 문서들과 대조. 일치하면 {academy, school} 반환.
@@ -3958,10 +3976,11 @@
         academy: match.academy,
         school: match.school,
         usedCode: (code || '').trim(),
-        approvedAt: serverTimestamp()
+        status: 'pending',
+        requestedAt: serverTimestamp()
       }, { merge: true });
       const result = await checkUserApproved(currentUser.email);
-      showDataSection(result.approved, result.data);
+      showDataSection(result.approved, result.data, result.pending);
       askNameIfMissing(result);
     } catch(e) {
       errEl.textContent = '등록에 실패했습니다. 다시 시도해 주세요.';
@@ -3975,9 +3994,9 @@
     const name = (raw || '').replace(/\s+/g, ' ').trim();
     return /^[가-힣a-zA-Z ]{2,20}$/.test(name) ? name : null;
   }
-  // 승인된 수강생인데 이름이 없으면 이름 입력 창을 띄운다
+  // 승인됐거나 승인 대기 중인 수강생인데 이름이 없으면 이름 입력 창을 띄운다(강사가 누구인지 알아야 승인할 수 있다)
   function askNameIfMissing(result) {
-    if (!result || !result.approved || !result.data || result.data.name) return;
+    if (!result || !(result.approved || result.pending) || !result.data || result.data.name) return;
     document.getElementById('nameError').classList.remove('show');
     document.getElementById('nameLaterBtn').style.display = 'none';
     document.getElementById('studentNameInput').value = '';
@@ -4082,9 +4101,11 @@
           school: sc ? (ACADEMY_MAP[a]?.schools[sc] || sc) : '-'
         };
       };
+      const isPending = u => u.data.status === 'pending';
       users.sort((x, y) => {
         const lx = labelOf(x), ly = labelOf(y);
-        return lx.academy.localeCompare(ly.academy, 'ko') || lx.school.localeCompare(ly.school, 'ko')
+        return (isPending(x) ? 0 : 1) - (isPending(y) ? 0 : 1)
+          || lx.academy.localeCompare(ly.academy, 'ko') || lx.school.localeCompare(ly.school, 'ko')
           || (x.data.name ? 0 : 1) - (y.data.name ? 0 : 1)
           || (x.data.name || x.data.email || '').localeCompare(y.data.name || y.data.email || '', 'ko');
       });
@@ -4092,25 +4113,40 @@
       listEl.innerHTML = '';
       const summary = document.createElement('div');
       summary.style.cssText = 'font-size:0.78rem;color:var(--gray);margin-bottom:4px;';
-      summary.textContent = `전체 ${users.length}명 · 이름 미입력 ${unnamed}명`;
+      const pendingCount = users.filter(isPending).length;
+      summary.textContent = `전체 ${users.length}명 · 승인 대기 ${pendingCount}명 · 이름 미입력 ${unnamed}명`;
       listEl.appendChild(summary);
+      // 승인 대기가 있으면 제목 옆에 인원을 표시하고 목록을 펼쳐 둔다
+      const badge = document.getElementById('pendingBadge');
+      if (badge) {
+        badge.textContent = `승인 대기 ${pendingCount}`;
+        badge.style.display = pendingCount ? 'inline-block' : 'none';
+      }
+      if (pendingCount) {
+        listEl.style.display = 'flex';
+        const tb = document.getElementById('approvedListToggleBtn');
+        if (tb) tb.textContent = '접기 ▲';
+      }
       users.forEach(u => {
         const data = u.data;
-        const date = data.approvedAt ? new Date(data.approvedAt.seconds * 1000).toLocaleDateString('ko-KR') : '-';
+        const pending = isPending(u);
+        const stamp = pending ? (data.requestedAt || data.approvedAt) : (data.approvedAt || data.requestedAt);
+        const date = stamp ? new Date(stamp.seconds * 1000).toLocaleDateString('ko-KR') : '-';
         const { academy, school } = labelOf(u);
         const row = document.createElement('div');
-        row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:2px;gap:12px;';
+        row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:2px;gap:12px;'
+          + (pending ? 'background:rgba(201,168,76,0.1);border:1px solid var(--gold);' : 'background:rgba(255,255,255,0.03);border:1px solid var(--border);');
         const info = document.createElement('div');
         info.style.minWidth = '0';
         const nameEl = document.createElement('div');
         nameEl.style.cssText = 'font-size:0.92rem;font-weight:700;color:' + (data.name ? 'var(--white)' : '#e8a33d') + ';';
-        nameEl.textContent = data.name || '이름 미입력';
+        nameEl.textContent = (data.name || '이름 미입력') + (pending ? '  · 승인 대기' : '');
         const emailEl = document.createElement('div');
         emailEl.style.cssText = 'font-size:0.8rem;color:rgba(245,243,238,0.75);margin-top:2px;word-break:break-all;';
         emailEl.textContent = data.email || u.id;
         const metaEl = document.createElement('div');
         metaEl.style.cssText = 'font-size:0.72rem;color:var(--gray);margin-top:2px;';
-        metaEl.textContent = `${academy} · ${school}  |  가입일 ${date}`;
+        metaEl.textContent = `${academy} · ${school}  |  ${pending ? '신청일' : '가입일'} ${date}`;
         info.append(nameEl, emailEl, metaEl);
         const btns = document.createElement('div');
         btns.style.cssText = 'display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;';
@@ -4119,17 +4155,45 @@
         editBtn.style.cssText = btnCss + 'border:1px solid var(--border);color:var(--gray);';
         editBtn.textContent = data.name ? '이름 수정' : '이름 입력';
         editBtn.onclick = () => editUserName(u.id, data.email || u.id, data.name || '');
+        const who = data.name ? `${data.name} · ${data.email}` : data.email;
         const revokeBtn = document.createElement('button');
         revokeBtn.style.cssText = btnCss + 'border:1px solid #e05;color:#e05;';
-        revokeBtn.textContent = '퇴원 처리';
-        revokeBtn.onclick = () => revokeUser(u.id, data.name ? `${data.name} · ${data.email}` : data.email);
-        btns.append(editBtn, revokeBtn);
+        if (pending) {
+          const approveBtn = document.createElement('button');
+          approveBtn.style.cssText = btnCss + 'border:1px solid var(--gold);background:var(--gold);color:var(--navy);font-weight:700;';
+          approveBtn.textContent = '승인';
+          approveBtn.onclick = () => approveUser(u.id, who);
+          revokeBtn.textContent = '거절';
+          revokeBtn.onclick = () => rejectUser(u.id, who);
+          btns.append(approveBtn, editBtn, revokeBtn);
+        } else {
+          revokeBtn.textContent = '퇴원 처리';
+          revokeBtn.onclick = () => revokeUser(u.id, who);
+          btns.append(editBtn, revokeBtn);
+        }
         row.append(info, btns);
         listEl.appendChild(row);
       });
     } catch(e) {
       listEl.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;">불러오기 실패. 다시 시도해 주세요.</div>';
     }
+  };
+
+  // ── 가입 승인·거절 (관리자) ──
+  window.approveUser = async (docId, who) => {
+    if (!window._isAdmin) return;
+    try {
+      await setDoc(doc(db, 'approvedUsers', docId), { status: 'approved', approvedAt: serverTimestamp() }, { merge: true });
+      await loadApprovedUsers();
+    } catch(e) { alert('승인에 실패했습니다.'); }
+  };
+  window.rejectUser = async (docId, who) => {
+    if (!window._isAdmin) return;
+    if (!confirm(`[${who}] 가입 신청을 거절하시겠습니까?\n신청 내역이 삭제됩니다.`)) return;
+    try {
+      await deleteDoc(doc(db, 'approvedUsers', docId));
+      await loadApprovedUsers();
+    } catch(e) { alert('거절 처리에 실패했습니다.'); }
   };
 
   // ── 수강생 이름 입력·수정 (관리자) ──
@@ -4205,12 +4269,14 @@
         academy: match.academy,
         school: match.school,
         usedCode: codeInput.trim(),
-        approvedAt: serverTimestamp()
+        status: 'pending',
+        requestedAt: serverTimestamp()
       });
       closeModal('signupOverlay');
-      // 가입 직후 바로 자료실이 열리도록 승인 상태를 다시 읽는다
+      // 가입 직후 승인 상태를 다시 읽고, 승인 대기 안내가 보이도록 자료실로 옮긴다
       const result = await checkUserApproved(email);
-      showDataSection(result.approved, result.data);
+      showDataSection(result.approved, result.data, result.pending);
+      if (result.pending) showPage('data');
     } catch(e) {
       if (e.code === 'auth/email-already-in-use') {
         errEl.textContent = '이미 사용 중인 이메일입니다. 로그인 후 자료실에서 가입코드를 등록해 주세요.';
