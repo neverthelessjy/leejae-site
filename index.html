@@ -85,6 +85,8 @@
       width: 100%;
       max-width: 420px;
       position: relative;
+      max-height: calc(100vh - 24px);
+      overflow-y: auto;
     }
     /* ───── 첫 화면 안내 팝업 ───── */
     /* 팝업 여러 개를 PC에서는 나란히, 좁은 화면에서는 겹쳐서 띄운다(위의 것을 닫으면 다음 것이 보인다) */
@@ -198,6 +200,8 @@
       color: var(--gold);
       margin-bottom: 8px;
     }
+    .name-privacy-note { font-size: 0.74rem; color: var(--gray); margin: -10px 0 16px; }
+    #nameOverlay .toggle-link span + span { margin-left: 16px; }
     .modal p.sub {
       color: var(--gray);
       font-size: 0.85rem;
@@ -2015,6 +2019,9 @@
     <h2>회원가입</h2>
     <p class="sub">이재, 영어 수강생 전용입니다.<br>가입코드는 수업 시간에 안내됩니다.</p>
     <div class="error-msg" id="signupError"></div>
+    <label>이름 (실명)</label>
+    <input type="text" id="signupName" placeholder="예: 홍길동" maxlength="20" autocomplete="name" />
+    <div class="name-privacy-note">이름은 수강 확인용이며 강사만 볼 수 있습니다.</div>
     <label>이메일</label>
     <input type="email" id="signupEmail" placeholder="email@example.com" />
     <label>비밀번호</label>
@@ -2026,6 +2033,24 @@
     <button class="btn-primary" onclick="doSignup()">가입하기</button>
     <div class="toggle-link">
       이미 계정이 있으신가요? <span onclick="switchModal('signupOverlay','loginOverlay')">로그인</span>
+    </div>
+  </div>
+</div>
+
+<!-- ───── 이름 입력 MODAL (이름 없이 가입한 기존 수강생이 로그인하면 한 번 뜬다) ─────
+     data-required: 바깥을 눌러도 닫히지 않는다. -->
+<div class="overlay" id="nameOverlay" data-required="1">
+  <div class="modal">
+    <h2>이름 입력</h2>
+    <p class="sub">수강 확인을 위해 실명을 한 번만 입력해 주세요.<br>이름은 강사만 볼 수 있습니다.</p>
+    <div class="error-msg" id="nameError"></div>
+    <label>이름 (실명)</label>
+    <input type="text" id="studentNameInput" placeholder="예: 홍길동" maxlength="20" autocomplete="name"
+      onkeydown="if(event.key==='Enter') submitStudentName()" />
+    <button class="btn-primary" onclick="submitStudentName()">저장</button>
+    <div class="toggle-link">
+      <span id="nameLaterBtn" style="display:none;" onclick="closeModal('nameOverlay')">나중에 입력하기</span>
+      <span onclick="closeModal('nameOverlay'); doLogout();">로그아웃</span>
     </div>
   </div>
 </div>
@@ -3776,6 +3801,7 @@
         // 수강 승인 여부 확인
         const result = await checkUserApproved(user.email);
         showDataSection(result.approved, result.data);
+        askNameIfMissing(result);
       }
       loadQaBoard();
       checkClassNewBadges();
@@ -3936,9 +3962,47 @@
       }, { merge: true });
       const result = await checkUserApproved(currentUser.email);
       showDataSection(result.approved, result.data);
+      askNameIfMissing(result);
     } catch(e) {
       errEl.textContent = '등록에 실패했습니다. 다시 시도해 주세요.';
       errEl.classList.add('show');
+    }
+  };
+
+  // ── 수강생 실명 ──
+  // 이름은 approvedUsers 문서의 name 필드에 저장한다. 강사가 수강생 목록에서 누구인지 알아보기 위한 것이다.
+  function cleanStudentName(raw) {
+    const name = (raw || '').replace(/\s+/g, ' ').trim();
+    return /^[가-힣a-zA-Z ]{2,20}$/.test(name) ? name : null;
+  }
+  // 승인된 수강생인데 이름이 없으면 이름 입력 창을 띄운다
+  function askNameIfMissing(result) {
+    if (!result || !result.approved || !result.data || result.data.name) return;
+    document.getElementById('nameError').classList.remove('show');
+    document.getElementById('nameLaterBtn').style.display = 'none';
+    document.getElementById('studentNameInput').value = '';
+    document.getElementById('nameOverlay').classList.add('active');
+  }
+  window.submitStudentName = async () => {
+    const errEl = document.getElementById('nameError');
+    errEl.classList.remove('show');
+    if (!currentUser) { document.getElementById('nameOverlay').classList.remove('active'); return; }
+    const name = cleanStudentName(document.getElementById('studentNameInput').value);
+    if (!name) {
+      errEl.textContent = '이름을 한글 또는 영문 2자 이상으로 입력해 주세요.';
+      errEl.classList.add('show');
+      return;
+    }
+    try {
+      const key = currentUser.email.replace(/\./g, '_');
+      await setDoc(doc(db, 'approvedUsers', key), { name }, { merge: true });
+      document.getElementById('nameOverlay').classList.remove('active');
+    } catch(e) {
+      // 저장이 막혀도 수업 자료 이용은 막지 않는다
+      console.warn('name save failed:', e?.code);
+      errEl.textContent = '저장에 실패했습니다. 잠시 후 다시 시도하거나 강사에게 알려 주세요.';
+      errEl.classList.add('show');
+      document.getElementById('nameLaterBtn').style.display = 'inline';
     }
   };
 
@@ -4008,26 +4072,59 @@
         listEl.innerHTML = '<div style="color:var(--gray);font-size:0.82rem;">등록된 수강생이 없습니다.</div>';
         return;
       }
+      // 학원 → 학교 → 이름 순으로 정렬하고, 이름을 입력하지 않은 수강생은 각 반의 맨 뒤에 둔다
+      const users = [];
+      snap.forEach(d => users.push({ id: d.id, data: d.data() }));
+      const labelOf = u => {
+        const a = u.data.academy, sc = u.data.school;
+        return {
+          academy: a ? (ACADEMY_MAP[a]?.label || a) : '기존회원(전체접근)',
+          school: sc ? (ACADEMY_MAP[a]?.schools[sc] || sc) : '-'
+        };
+      };
+      users.sort((x, y) => {
+        const lx = labelOf(x), ly = labelOf(y);
+        return lx.academy.localeCompare(ly.academy, 'ko') || lx.school.localeCompare(ly.school, 'ko')
+          || (x.data.name ? 0 : 1) - (y.data.name ? 0 : 1)
+          || (x.data.name || x.data.email || '').localeCompare(y.data.name || y.data.email || '', 'ko');
+      });
+      const unnamed = users.filter(u => !u.data.name).length;
       listEl.innerHTML = '';
-      snap.forEach(d => {
-        const data = d.data();
+      const summary = document.createElement('div');
+      summary.style.cssText = 'font-size:0.78rem;color:var(--gray);margin-bottom:4px;';
+      summary.textContent = `전체 ${users.length}명 · 이름 미입력 ${unnamed}명`;
+      listEl.appendChild(summary);
+      users.forEach(u => {
+        const data = u.data;
         const date = data.approvedAt ? new Date(data.approvedAt.seconds * 1000).toLocaleDateString('ko-KR') : '-';
-        const academy = data.academy ? (ACADEMY_MAP[data.academy]?.label || data.academy) : '기존회원(전체접근)';
-        const school = data.school ? (ACADEMY_MAP[data.academy]?.schools[data.school] || data.school) : '-';
+        const { academy, school } = labelOf(u);
         const row = document.createElement('div');
         row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:2px;gap:12px;';
-        row.innerHTML = `
-          <div>
-            <div style="font-size:0.88rem;color:var(--white);">${data.email}</div>
-            <div style="font-size:0.72rem;color:var(--gray);margin-top:2px;">
-              ${academy} · ${school} &nbsp;|&nbsp; 가입일 ${date}
-            </div>
-          </div>
-          <button onclick="revokeUser('${d.id}', '${data.email}')"
-            style="background:none;border:1px solid #e05;color:#e05;padding:5px 12px;border-radius:2px;cursor:pointer;font-size:0.78rem;white-space:nowrap;flex-shrink:0;">
-            퇴원 처리
-          </button>
-        `;
+        const info = document.createElement('div');
+        info.style.minWidth = '0';
+        const nameEl = document.createElement('div');
+        nameEl.style.cssText = 'font-size:0.92rem;font-weight:700;color:' + (data.name ? 'var(--white)' : '#e8a33d') + ';';
+        nameEl.textContent = data.name || '이름 미입력';
+        const emailEl = document.createElement('div');
+        emailEl.style.cssText = 'font-size:0.8rem;color:rgba(245,243,238,0.75);margin-top:2px;word-break:break-all;';
+        emailEl.textContent = data.email || u.id;
+        const metaEl = document.createElement('div');
+        metaEl.style.cssText = 'font-size:0.72rem;color:var(--gray);margin-top:2px;';
+        metaEl.textContent = `${academy} · ${school}  |  가입일 ${date}`;
+        info.append(nameEl, emailEl, metaEl);
+        const btns = document.createElement('div');
+        btns.style.cssText = 'display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;';
+        const btnCss = 'background:none;padding:5px 12px;border-radius:2px;cursor:pointer;font-size:0.78rem;white-space:nowrap;font-family:inherit;';
+        const editBtn = document.createElement('button');
+        editBtn.style.cssText = btnCss + 'border:1px solid var(--border);color:var(--gray);';
+        editBtn.textContent = data.name ? '이름 수정' : '이름 입력';
+        editBtn.onclick = () => editUserName(u.id, data.email || u.id, data.name || '');
+        const revokeBtn = document.createElement('button');
+        revokeBtn.style.cssText = btnCss + 'border:1px solid #e05;color:#e05;';
+        revokeBtn.textContent = '퇴원 처리';
+        revokeBtn.onclick = () => revokeUser(u.id, data.name ? `${data.name} · ${data.email}` : data.email);
+        btns.append(editBtn, revokeBtn);
+        row.append(info, btns);
         listEl.appendChild(row);
       });
     } catch(e) {
@@ -4035,9 +4132,23 @@
     }
   };
 
+  // ── 수강생 이름 입력·수정 (관리자) ──
+  window.editUserName = async (docId, email, currentName) => {
+    if (!window._isAdmin) return;
+    const input = prompt(`[${email}] 수강생의 이름을 입력하세요.`, currentName);
+    if (input === null) return;
+    const name = cleanStudentName(input);
+    if (!name) { alert('이름을 한글 또는 영문 2자 이상으로 입력해 주세요.'); return; }
+    try {
+      await setDoc(doc(db, 'approvedUsers', docId), { name }, { merge: true });
+      await loadApprovedUsers();
+    } catch(e) { alert('이름 저장에 실패했습니다.'); }
+  };
+
   // ── 수강생 삭제 (퇴원) ──
   window.revokeUser = async (docId, email) => {
-    if (!confirm(`[${email}] 수강생을 퇴원 처리하시겠습니까?\n자료실 접근이 즉시 차단됩니다.`)) return;
+    if (!confirm(`[${email}] 수강생을 퇴원 처리하시겠습니까?
+자료실 접근이 즉시 차단됩니다.`)) return;
     try {
       await deleteDoc(doc(db, 'approvedUsers', docId));
       await loadApprovedUsers();
@@ -4069,7 +4180,9 @@
     errEl.classList.remove('show');
 
     const codeInput = document.getElementById('signupCode').value;
+    const name = cleanStudentName(document.getElementById('signupName').value);
 
+    if (!name) { errEl.textContent = '이름(실명)을 한글 또는 영문 2자 이상으로 입력해 주세요.'; errEl.classList.add('show'); return; }
     if (pw !== pw2) { errEl.textContent = '비밀번호가 일치하지 않습니다.'; errEl.classList.add('show'); return; }
     if (pw.length < 6) { errEl.textContent = '비밀번호는 6자리 이상이어야 합니다.'; errEl.classList.add('show'); return; }
     if (!codeInput.trim()) { errEl.textContent = '가입코드를 입력해 주세요. 가입코드는 수업 시간에 안내됩니다.'; errEl.classList.add('show'); return; }
@@ -4088,12 +4201,16 @@
       const key = email.replace(/\./g, '_');
       await setDoc(doc(db, 'approvedUsers', key), {
         email,
+        name,
         academy: match.academy,
         school: match.school,
         usedCode: codeInput.trim(),
         approvedAt: serverTimestamp()
       });
       closeModal('signupOverlay');
+      // 가입 직후 바로 자료실이 열리도록 승인 상태를 다시 읽는다
+      const result = await checkUserApproved(email);
+      showDataSection(result.approved, result.data);
     } catch(e) {
       if (e.code === 'auth/email-already-in-use') {
         errEl.textContent = '이미 사용 중인 이메일입니다. 로그인 후 자료실에서 가입코드를 등록해 주세요.';
@@ -4793,7 +4910,7 @@
   // close on backdrop click
   document.querySelectorAll('.overlay').forEach(el => {
     el.addEventListener('click', (e) => {
-      if (e.target === el) el.classList.remove('active');
+      if (e.target === el && !el.dataset.required) el.classList.remove('active');
     });
   });
 

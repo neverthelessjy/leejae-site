@@ -28,6 +28,7 @@ www.real-englishjy.co.kr 의 원본 저장소. 맥북 2대, 맥 1대, 윈도우 
 - **수강생전용에 반 추가**: `student` 섹션의 탭 순서는 대치에스 → 새움학원 → 이재,영어 → 대치메카다. 반 카드를 추가할 때는 `data-class-id`(예: `saeum-01`)를 새로 정하고 `initClasses()`의 목록에도 같은 아이디를 넣는다.
 - **설명회 영상 추가**: `loadSeminarVideos()`의 `staticSeminarVideos` 배열 맨 위에 유튜브 영상 ID와 제목을 넣는다.
 - **첫 화면 팝업**: `<body>` 맨 위의 `#homePopup` 안에서 `.home-popup` 하나가 독립된 팝업 하나다(넘겨 보는 방식은 쓰지 않는다 — 사용자가 팝업 역할이 줄어든다고 판단함). PC에서는 나란히, 좁은 화면에서는 겹쳐서 뜨고 위의 것을 닫으면 다음 것이 보인다. 팝업마다 `data-popup-id`가 따로 있어 "오늘 하루 보지 않기"도 따로 적용된다. 내용을 바꾸면 그 팝업의 `data-popup-id`도 바꾸고, 팝업을 내릴 때는 그 `.home-popup`에 `final-draft` 클래스를 붙인다.
+- **수강생 실명**: 수강생 이름은 Firestore `approvedUsers` 문서의 `name` 필드다. 회원가입 때 필수로 받고, 이름 없는 기존 수강생은 로그인하면 `#nameOverlay` 창에서 한 번 입력한다(`askNameIfMissing`). 관리자는 자료실의 수강생 목록에서 이름을 보고 고치거나 퇴원 처리한다. 퇴원 처리는 자료실 승인만 지우며 로그인 계정은 Firebase 콘솔에서만 지울 수 있다.
 - **자료실에 영상·PDF 추가**: `data` 섹션의 `data-item data-link` 한 줄이 자료 하나다. 학교·학년·시험별 탭 안에 넣는다.
 - **지난 내용 숨기기**: 지우지 않고 클래스로 숨긴다. `midterm-hidden`은 지난 중간고사 내용, `final-draft`는 아직 공개하지 않은 기말고사 초안(【입력 필요】 표시를 채운 뒤 클래스를 뗀다).
 
