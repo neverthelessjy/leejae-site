@@ -87,16 +87,36 @@
       position: relative;
     }
     /* ───── 첫 화면 안내 팝업 ───── */
+    /* 팝업 여러 개를 PC에서는 나란히, 좁은 화면에서는 겹쳐서 띄운다(위의 것을 닫으면 다음 것이 보인다) */
+    .home-popup-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-height: 100vh;
+      padding: 16px;
+      pointer-events: none;
+    }
     .home-popup {
       background: var(--navy2);
       border: 1px solid var(--gold);
       border-radius: 8px;
-      width: calc(100% - 32px);
-      max-width: 440px;
+      width: 100%;
+      max-width: 420px;
       max-height: calc(100vh - 32px);
       overflow-y: auto;
       position: relative;
+      pointer-events: auto;
       animation: fadeIn 0.3s ease;
+    }
+    .home-popup.closed { display: none; }
+    @media (max-width: 920px) {
+      .home-popup-row { display: grid; justify-items: center; align-items: start; }
+      .home-popup { grid-area: 1 / 1; }
+      .home-popup:nth-child(1) { z-index: 3; }
+      .home-popup:nth-child(2) { z-index: 2; }
+      .home-popup:nth-child(3) { z-index: 1; }
     }
     .home-popup-body { padding: 36px 28px 24px; text-align: center; }
     .home-popup-logo {
@@ -148,23 +168,6 @@
     }
     .home-popup-main { background: var(--gold); color: var(--navy); border: 1px solid var(--gold); }
     .home-popup-sub { background: transparent; color: var(--gold-light); border: 1px solid var(--gold); }
-    .home-popup.multi .home-popup-body { display: none; padding-bottom: 14px; }
-    .home-popup.multi .home-popup-body.active { display: block; animation: fadeIn 0.3s ease; }
-    .home-popup-nav { display: none; align-items: center; justify-content: center; gap: 14px; padding: 0 0 16px; }
-    .home-popup.multi .home-popup-nav { display: flex; }
-    .home-popup-nav button {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      color: var(--gold-light);
-      font-size: 1rem;
-      line-height: 1;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .home-popup-nav button:hover { border-color: var(--gold); }
-    .home-popup-count { font-size: 0.8rem; color: var(--gray); letter-spacing: 0.08em; min-width: 40px; text-align: center; }
     .home-popup-footer { display: flex; border-top: 1px solid var(--border); }
     .home-popup-footer button {
       flex: 1;
@@ -930,14 +933,15 @@
       text-align: left;
       transition: border-color 0.2s, background 0.2s, transform 0.15s;
     }
+    /* 로고는 원래 비율대로 보여 준다(정사각형 칸에 넣으면 가로로 긴 로고에 흰 여백이 생긴다) */
     .course-acad-btn img {
-      width: 44px; height: 44px;
+      height: 44px; width: auto;
+      max-width: 130px;
       object-fit: contain;
-      background: #fff;
       border-radius: 6px;
       flex-shrink: 0;
     }
-    .course-acad-btn img.course-acad-logo-round { object-fit: cover; border-radius: 50%; background: #0a0e1a; }
+    .course-acad-btn img.course-acad-logo-round { width: 44px; object-fit: cover; border-radius: 50%; background: #0a0e1a; }
     .course-acad-text { display: flex; flex-direction: column; gap: 3px; line-height: 1.3; }
     .course-acad-name { font-size: 1rem; font-weight: 700; }
     .course-acad-sub { font-size: 0.76rem; color: var(--gray); }
@@ -976,7 +980,8 @@
     @media (max-width: 800px) {
       .course-acad-tabs { grid-template-columns: 1fr 1fr; gap: 10px; }
       .course-acad-btn { flex-direction: column; text-align: center; gap: 8px; padding: 12px 8px; }
-      .course-acad-btn img { width: 36px; height: 36px; }
+      .course-acad-btn img { height: 36px; max-width: 110px; }
+      .course-acad-btn img.course-acad-logo-round { width: 36px; }
       .course-acad-name { font-size: 0.9rem; }
       .course-sub-btn { padding: 7px 14px; font-size: 0.8rem; }
       #classes.course-tabbed .summer-course-card.course-sub-active { grid-template-columns: 1fr; }
@@ -1918,11 +1923,12 @@
 <body>
 
 <!-- ───── 첫 화면 안내 팝업 ─────
-     내용을 바꿀 때는 data-popup-id도 새 값으로 바꾼다("오늘 하루 보지 않기"를 누른 사람에게도 새 팝업이 보이도록).
-     팝업을 내릴 때는 이 블록에 final-draft 클래스를 붙이거나 블록을 지운다. -->
-<div class="overlay" id="homePopup" data-popup-id="meca-winter-saeum-2026-11">
-  <div class="home-popup" role="dialog" aria-modal="true" aria-labelledby="homePopupTitle">
-    <!-- 안내 하나가 .home-popup-body 하나다. 여러 개면 넘겨 보는 버튼이 자동으로 생긴다. -->
+     .home-popup 하나가 독립된 팝업 하나다. PC에서는 나란히, 휴대폰에서는 겹쳐서 뜬다(위의 것을 닫으면 다음 것이 보인다).
+     내용을 바꿀 때는 그 팝업의 data-popup-id도 새 값으로 바꾼다("오늘 하루 보지 않기"를 누른 사람에게도 다시 보이도록).
+     팝업 하나를 내릴 때는 그 .home-popup에 final-draft 클래스를 붙인다. -->
+<div class="overlay" id="homePopup">
+ <div class="home-popup-row">
+  <div class="home-popup" role="dialog" aria-label="대치메카학원 Winter 문법 특강 안내" data-popup-id="meca-winter-2026">
     <div class="home-popup-body">
       <img src="meca.jpeg" alt="대치메카학원" class="home-popup-logo" />
       <span class="home-popup-badge">대치메카학원 · Winter 특강</span>
@@ -1941,14 +1947,20 @@
         </div>
       </div>
       <div class="home-popup-actions">
-        <a class="home-popup-main" href="#" onclick="closeHomePopup(); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('대치메카학원'); return false;">수업 자세히 보기</a>
+        <a class="home-popup-main" href="#" onclick="closeModal('homePopup'); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('대치메카학원'); return false;">수업 자세히 보기</a>
         <a class="home-popup-sub" href="https://open.kakao.com/o/gq8jGyvi" target="_blank">💬 카카오 상담</a>
       </div>
     </div>
+    <div class="home-popup-footer">
+      <button type="button" onclick="closeHomePopup(this, true)">오늘 하루 보지 않기</button>
+      <button type="button" onclick="closeHomePopup(this)">닫기</button>
+    </div>
+  </div>
+  <div class="home-popup" role="dialog" aria-label="새움학원 예비고1 과정 안내" data-popup-id="saeum-2026-11">
     <div class="home-popup-body">
       <img src="saeum.jpg" alt="새움학원" class="home-popup-logo" />
       <span class="home-popup-badge">새움학원 × 이재,영어</span>
-      <h2 id="homePopupTitle">예비고1 과정 개강</h2>
+      <h2>예비고1 과정 개강</h2>
       <p class="home-popup-desc">새움학원에서 예비고1 과정을 개강했습니다.<br>고등학교 입학 전에 수능 독해와 고등영문법을 완성합니다.</p>
       <div class="home-popup-courses">
         <div class="home-popup-course">
@@ -1963,16 +1975,16 @@
         </div>
       </div>
       <div class="home-popup-actions">
-        <a class="home-popup-main" href="#" onclick="closeHomePopup(); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('새움학원'); return false;">수업 자세히 보기</a>
+        <a class="home-popup-main" href="#" onclick="closeModal('homePopup'); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('새움학원'); return false;">수업 자세히 보기</a>
         <a class="home-popup-sub" href="https://youtu.be/tCEqbdPCcQs" target="_blank">▶ 설명회 영상</a>
       </div>
     </div>
-    <div class="home-popup-nav" id="homePopupNav"></div>
     <div class="home-popup-footer">
-      <button type="button" onclick="closeHomePopup(true)">오늘 하루 보지 않기</button>
-      <button type="button" onclick="closeHomePopup()">닫기</button>
+      <button type="button" onclick="closeHomePopup(this, true)">오늘 하루 보지 않기</button>
+      <button type="button" onclick="closeHomePopup(this)">닫기</button>
     </div>
   </div>
+ </div>
 </div>
 
 <!-- ───── LOGIN MODAL ───── -->
@@ -2947,8 +2959,14 @@
     <!-- 대치메카 패널 -->
     <div class="class-tab-panel" id="tab-meca">
       <div class="class-cards">
-        <div class="data-item" style="border:1px dashed var(--border);padding:60px;text-align:center;border-radius:2px;background:rgba(255,255,255,0.01);">
-          <div style="color:var(--gray);font-size:0.9rem;">수업 정보가 업데이트될 예정입니다.</div>
+        <div class="class-card" data-class-id="meca-01" onclick="openBoard('meca-01','A to Z 문법특강 (화/목)','대치메카')">
+          <div class="class-tag">대치메카 · 01</div>
+          <div class="class-name">A to Z 문법특강<br><small style="font-size:0.85rem;color:var(--gray);font-weight:400;">Winter 특강 · 화요일 · 목요일</small></div>
+          <div class="class-schedule">
+            <div class="schedule-row"><span>대상</span><span>중등부</span></div>
+            <div class="schedule-row"><span>요일</span><span>화 · 목</span></div>
+            <div class="schedule-row"><span>시간</span><span>AM 10:00 ~ 12:30 + α</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -4123,6 +4141,7 @@
       { id: 'leejae-01', name: '중등부',              academy: '이재, 영어' },
       { id: 'leejae-02', name: '예비고1',             academy: '이재, 영어' },
       { id: 'leejae-03', name: '고등부',              academy: '이재, 영어' },
+      { id: 'meca-01',   name: 'A to Z 문법특강 (화/목)', academy: '대치메카' },
     ];
     for (const c of classList) {
       try {
@@ -4738,55 +4757,35 @@
     openModal(to);
   }
 
-  // 첫 화면 안내 팝업: "오늘 하루 보지 않기"를 누르면 자정까지 다시 띄우지 않는다
-  function homePopupKey() {
-    const el = document.getElementById('homePopup');
-    return el ? 'homePopupHide:' + (el.dataset.popupId || 'default') : null;
+  // 첫 화면 안내 팝업: 팝업마다 따로 닫힌다. "오늘 하루 보지 않기"를 누르면 그 팝업만 자정까지 다시 띄우지 않는다
+  function homePopupKey(popup) {
+    return 'homePopupHide:' + (popup.dataset.popupId || 'default');
   }
-  function closeHomePopup(hideToday) {
-    closeModal('homePopup');
-    if (!hideToday) return;
-    try {
-      const midnight = new Date();
-      midnight.setHours(24, 0, 0, 0);
-      localStorage.setItem(homePopupKey(), String(midnight.getTime()));
-    } catch (e) { /* 저장이 막힌 브라우저에서는 다음 방문 때 다시 보인다 */ }
-  }
-  (function showHomePopup() {
-    const el = document.getElementById('homePopup');
-    if (!el || el.classList.contains('final-draft')) return;
-
-    // 안내가 여러 개면 한 번에 하나씩 보여 주고 넘겨 보는 버튼을 만든다
-    const box = el.querySelector('.home-popup');
-    const slides = [...el.querySelectorAll('.home-popup-body')].filter(s => !s.classList.contains('final-draft'));
-    const nav = document.getElementById('homePopupNav');
-    if (slides.length > 1 && nav) {
-      let cur = 0;
-      const count = document.createElement('span');
-      count.className = 'home-popup-count';
-      const go = i => {
-        cur = (i + slides.length) % slides.length;
-        slides.forEach((s, k) => s.classList.toggle('active', k === cur));
-        count.textContent = (cur + 1) + ' / ' + slides.length;
-        box.scrollTop = 0;
-      };
-      const mk = (label, aria, step) => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.textContent = label;
-        b.setAttribute('aria-label', aria);
-        b.addEventListener('click', () => go(cur + step));
-        return b;
-      };
-      nav.append(mk('‹', '이전 안내', -1), count, mk('›', '다음 안내', 1));
-      box.classList.add('multi');
-      go(0);
+  function closeHomePopup(btn, hideToday) {
+    const popup = btn.closest('.home-popup');
+    if (!popup) return;
+    popup.classList.add('closed');
+    if (hideToday) {
+      try {
+        const midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+        localStorage.setItem(homePopupKey(popup), String(midnight.getTime()));
+      } catch (e) { /* 저장이 막힌 브라우저에서는 다음 방문 때 다시 보인다 */ }
     }
-
-    let hideUntil = 0;
-    try { hideUntil = Number(localStorage.getItem(homePopupKey())) || 0; } catch (e) {}
-    if (Date.now() < hideUntil) return;
-    openModal('homePopup');
+    // 남은 팝업이 없으면 어두운 배경도 닫는다
+    if (!document.querySelector('#homePopup .home-popup:not(.closed)')) closeModal('homePopup');
+  }
+  (function showHomePopups() {
+    const el = document.getElementById('homePopup');
+    if (!el) return;
+    let open = 0;
+    el.querySelectorAll('.home-popup').forEach(popup => {
+      let hideUntil = 0;
+      try { hideUntil = Number(localStorage.getItem(homePopupKey(popup))) || 0; } catch (e) {}
+      if (popup.classList.contains('final-draft') || Date.now() < hideUntil) popup.classList.add('closed');
+      else open++;
+    });
+    if (open) openModal('homePopup');
   })();
 
   // close on backdrop click
