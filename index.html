@@ -148,6 +148,23 @@
     }
     .home-popup-main { background: var(--gold); color: var(--navy); border: 1px solid var(--gold); }
     .home-popup-sub { background: transparent; color: var(--gold-light); border: 1px solid var(--gold); }
+    .home-popup.multi .home-popup-body { display: none; padding-bottom: 14px; }
+    .home-popup.multi .home-popup-body.active { display: block; animation: fadeIn 0.3s ease; }
+    .home-popup-nav { display: none; align-items: center; justify-content: center; gap: 14px; padding: 0 0 16px; }
+    .home-popup.multi .home-popup-nav { display: flex; }
+    .home-popup-nav button {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      color: var(--gold-light);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .home-popup-nav button:hover { border-color: var(--gold); }
+    .home-popup-count { font-size: 0.8rem; color: var(--gray); letter-spacing: 0.08em; min-width: 40px; text-align: center; }
     .home-popup-footer { display: flex; border-top: 1px solid var(--border); }
     .home-popup-footer button {
       flex: 1;
@@ -1903,8 +1920,31 @@
 <!-- ───── 첫 화면 안내 팝업 ─────
      내용을 바꿀 때는 data-popup-id도 새 값으로 바꾼다("오늘 하루 보지 않기"를 누른 사람에게도 새 팝업이 보이도록).
      팝업을 내릴 때는 이 블록에 final-draft 클래스를 붙이거나 블록을 지운다. -->
-<div class="overlay" id="homePopup" data-popup-id="saeum-2026-11">
+<div class="overlay" id="homePopup" data-popup-id="meca-winter-saeum-2026-11">
   <div class="home-popup" role="dialog" aria-modal="true" aria-labelledby="homePopupTitle">
+    <!-- 안내 하나가 .home-popup-body 하나다. 여러 개면 넘겨 보는 버튼이 자동으로 생긴다. -->
+    <div class="home-popup-body">
+      <img src="meca.jpeg" alt="대치메카학원" class="home-popup-logo" />
+      <span class="home-popup-badge">대치메카학원 · Winter 특강</span>
+      <h2>Winter 문법 특강</h2>
+      <p class="home-popup-desc">대치메카학원에서 중등부 문법 특강을 진행합니다.<br>품사와 문장성분부터 도치까지 모든 문법을 1회독합니다.</p>
+      <div class="home-popup-courses">
+        <div class="home-popup-course">
+          <div class="home-popup-course-tag">중등부 · 12회 수업 완성</div>
+          <div class="home-popup-course-name">A to Z 문법특강</div>
+          <div class="home-popup-course-time">화 · 목 AM 10:00 ~ 12:30 + α</div>
+        </div>
+        <div class="home-popup-course">
+          <div class="home-popup-course-tag">교재 · 관리</div>
+          <div class="home-popup-course-name">Grammar Advanced (자체교재)</div>
+          <div class="home-popup-course-time">매 시간 문법 확인 TEST · 수업 후 질의응답 및 클리닉</div>
+        </div>
+      </div>
+      <div class="home-popup-actions">
+        <a class="home-popup-main" href="#" onclick="closeHomePopup(); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('대치메카학원'); return false;">수업 자세히 보기</a>
+        <a class="home-popup-sub" href="https://open.kakao.com/o/gq8jGyvi" target="_blank">💬 카카오 상담</a>
+      </div>
+    </div>
     <div class="home-popup-body">
       <img src="saeum.jpg" alt="새움학원" class="home-popup-logo" />
       <span class="home-popup-badge">새움학원 × 이재,영어</span>
@@ -1927,6 +1967,7 @@
         <a class="home-popup-sub" href="https://youtu.be/tCEqbdPCcQs" target="_blank">▶ 설명회 영상</a>
       </div>
     </div>
+    <div class="home-popup-nav" id="homePopupNav"></div>
     <div class="home-popup-footer">
       <button type="button" onclick="closeHomePopup(true)">오늘 하루 보지 않기</button>
       <button type="button" onclick="closeHomePopup()">닫기</button>
@@ -2345,6 +2386,65 @@
       <div class="class-info-notice" style="margin-top:24px;">
         📌 상담문의 — 새움학원 02.558.1060 (강남구 도곡로 503, 2·3층) · 이재,영어 010.3475.0519 (대치동 912-5 1층)
         <a href="https://youtu.be/tCEqbdPCcQs" target="_blank" class="class-info-kakao">▶ 설명회 영상 보기</a>
+        <a href="https://open.kakao.com/o/gq8jGyvi" target="_blank" class="class-info-kakao">💬 오픈채팅 바로가기</a>
+      </div>
+    </div>
+
+    <!-- 2026 Winter 대치메카학원 문법 특강 -->
+    <div class="summer-special-wrap" style="margin-top:48px;">
+      <div class="summer-special-header">
+        <img src="meca.jpeg" alt="대치메카학원" style="height:56px;width:auto;object-fit:contain;border-radius:3px;display:block;margin:0 auto 14px;" />
+        <span class="summer-badge">2026 Winter · 대치메카학원</span>
+        <h3>Winter 문법 특강</h3>
+        <p>대치메카학원에서 진행하는 중등부 문법 특강입니다. 품사와 문장성분부터 도치까지 모든 문법을 12회에 1회독합니다.</p>
+      </div>
+
+      <div class="summer-course-grid">
+        <!-- 중등부 · A to Z 문법특강 -->
+        <div class="summer-course-card">
+          <span class="summer-course-tag">중등부 · Winter 특강</span>
+          <h4>A to Z 문법특강</h4>
+          <p class="summer-course-sub">모든 문법 1회독 · 12회 수업 완성</p>
+          <div class="summer-course-meta">
+            <div class="summer-meta-row"><span>선생님</span><span>이재영 T.</span></div>
+            <div class="summer-meta-row"><span>대상</span><span>중등부</span></div>
+            <div class="summer-meta-row"><span>요일 · 시간</span><span>화 · 목 AM 10:00 ~ 12:30 + α</span></div>
+            <div class="summer-meta-row"><span>교재</span><span>Grammar Advanced (자체교재) · 과제유인물</span></div>
+          </div>
+          <div style="font-size:0.72rem;letter-spacing:0.08em;color:var(--gold);margin:18px 0 6px;">CURRICULUM</div>
+          <ul class="summer-curriculum">
+            <li>1회차 — 영문 Diagram (품사와 문장성분 / 문장형식)</li>
+            <li>2회차 — 시제</li>
+            <li>3회차 — 태</li>
+            <li>4회차 — 부정사와 동명사</li>
+            <li>5회차 — 분사와 분사구문</li>
+            <li>6회차 — 전치사와 접속사</li>
+            <li>7회차 — 관계사</li>
+            <li>8회차 — 명사 · 관사 · 대명사</li>
+            <li>9회차 — 조동사 · 가정법</li>
+            <li>10회차 — 형용사 · 부사 · 비교</li>
+            <li>11회차 — 일치 · 화법</li>
+            <li>12회차 — 강조 · 도치</li>
+          </ul>
+          <div style="font-size:0.72rem;letter-spacing:0.08em;color:var(--gold);margin:18px 0 6px;">수업 목표 및 특징</div>
+          <ul class="summer-curriculum">
+            <li>품사와 문장성분부터 도치까지 <strong>모든 문법 1회독</strong></li>
+            <li>개념정리부터 문제풀이에 대한 적용까지</li>
+            <li>12회 수업 완성</li>
+            <li>매 시간 문법 확인 TEST</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="summer-feature-grid">
+        <div class="summer-feature">📝 매 시간 문법 확인 TEST</div>
+        <div class="summer-feature">🧠 마인드맵 형식의 TEST 실시</div>
+        <div class="summer-feature">🙋 수업 후 질의응답 및 클리닉</div>
+        <div class="summer-feature">💬 온라인 질의응답</div>
+      </div>
+
+      <div class="class-info-notice" style="margin-top:24px;">
+        📌 상담문의 — 이재,영어 010.3475.0519
         <a href="https://open.kakao.com/o/gq8jGyvi" target="_blank" class="class-info-kakao">💬 오픈채팅 바로가기</a>
       </div>
     </div>
@@ -4655,6 +4755,34 @@
   (function showHomePopup() {
     const el = document.getElementById('homePopup');
     if (!el || el.classList.contains('final-draft')) return;
+
+    // 안내가 여러 개면 한 번에 하나씩 보여 주고 넘겨 보는 버튼을 만든다
+    const box = el.querySelector('.home-popup');
+    const slides = [...el.querySelectorAll('.home-popup-body')].filter(s => !s.classList.contains('final-draft'));
+    const nav = document.getElementById('homePopupNav');
+    if (slides.length > 1 && nav) {
+      let cur = 0;
+      const count = document.createElement('span');
+      count.className = 'home-popup-count';
+      const go = i => {
+        cur = (i + slides.length) % slides.length;
+        slides.forEach((s, k) => s.classList.toggle('active', k === cur));
+        count.textContent = (cur + 1) + ' / ' + slides.length;
+        box.scrollTop = 0;
+      };
+      const mk = (label, aria, step) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = label;
+        b.setAttribute('aria-label', aria);
+        b.addEventListener('click', () => go(cur + step));
+        return b;
+      };
+      nav.append(mk('‹', '이전 안내', -1), count, mk('›', '다음 안내', 1));
+      box.classList.add('multi');
+      go(0);
+    }
+
     let hideUntil = 0;
     try { hideUntil = Number(localStorage.getItem(homePopupKey())) || 0; } catch (e) {}
     if (Date.now() < hideUntil) return;
