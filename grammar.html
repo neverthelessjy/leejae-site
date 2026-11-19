@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A to Z 문법 특강 — 이재, 영어</title>
+  <meta name="description" content="이재영T.의 A to Z 문법 특강. 품사와 문장성분부터 도치까지, 12회 수업으로 문법 전 범위를 1회독합니다. 이재,영어 · 대치메카 · 새움학원.">
+  <link rel="icon" href="favicon_circle.png" type="image/png">
+  <link rel="canonical" href="https://www.real-englishjy.co.kr/grammar.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.real-englishjy.co.kr/grammar.html">
+  <meta property="og:title" content="A to Z 문법 특강 — 이재, 영어">
+  <meta property="og:description" content="12회 완성 · 문법 전 범위 1회독 · 매 시간 문법 확인 TEST">
+  <meta property="og:image" content="https://www.real-englishjy.co.kr/logo.png">
+  <meta property="og:locale" content="ko_KR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=Noto+Sans+KR:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a0e1a;
+      --navy2: #111827;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --white: #f5f3ee;
+      --muted: rgba(245,243,238,0.72);
+      --border: rgba(201,168,76,0.22);
+      --c-own: #2f6fe0;
+      --c-meca: #f5f3ee;
+      --c-saeum: #9cc0ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: 'Noto Sans KR', sans-serif; line-height: 1.7; }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* 상단 바 */
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(10,14,26,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Noto Serif KR', serif; font-weight: 700; }
+    .brand img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .topbar-cta { font-size: 0.85rem; text-decoration: none; border: 1px solid var(--gold); color: var(--gold-light); padding: 7px 14px; border-radius: 3px; }
+    .topbar-cta:hover { background: var(--gold); color: var(--navy); }
+
+    /* 첫 화면 */
+    .hero { padding: 88px 0 72px; text-align: center; border-bottom: 1px solid var(--border); background: radial-gradient(ellipse at top, rgba(201,168,76,0.12), transparent 60%); }
+    .hero-eyebrow { color: var(--gold); letter-spacing: 0.3em; font-size: 0.8rem; font-weight: 700; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 11vw, 6.2rem); line-height: 1.05; margin: 18px 0 6px; }
+    .hero h1 em { font-style: italic; font-weight: 400; color: var(--gold-light); }
+    .hero h2 { font-family: 'Noto Serif KR', serif; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; }
+    .hero p { color: var(--muted); margin-top: 18px; }
+    .hero-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+    .chip { border: 1px solid var(--border); padding: 8px 16px; border-radius: 999px; font-size: 0.9rem; }
+    .chip strong { color: var(--gold-light); }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-block; text-decoration: none; padding: 13px 26px; border-radius: 3px; font-weight: 700; font-size: 0.95rem; }
+    .btn-main { background: var(--gold); color: var(--navy); }
+    .btn-main:hover { background: var(--gold-light); }
+    .btn-sub { border: 1px solid var(--border); }
+    .btn-sub:hover { border-color: var(--gold); }
+
+    /* 공통 섹션 */
+    section { padding: 72px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 60px; }
+    .label { color: var(--gold); letter-spacing: 0.25em; font-size: 0.78rem; font-weight: 700; }
+    .title { font-family: 'Noto Serif KR', serif; font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.4; margin: 10px 0 32px; }
+
+    /* 인사 */
+    .greet { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); margin-bottom: 32px; }
+    .stat { padding: 20px; }
+    .stat + .stat { border-left: 1px solid var(--border); }
+    .stat b { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold-light); }
+    .stat b small { font-family: 'Noto Sans KR', sans-serif; font-size: 1rem; margin-left: 2px; }
+    .stat span { display: block; color: var(--muted); font-size: 0.9rem; }
+    .teacher { display: grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: end; }
+    .teacher img { width: 100%; display: block; }
+    .teacher h3 { font-family: 'Noto Serif KR', serif; font-size: 1.6rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 12px; }
+    .career { display: grid; grid-template-columns: 44px 1fr; gap: 4px 8px; font-size: 0.9rem; color: var(--muted); }
+    .career dt { color: var(--gold); font-weight: 700; }
+    .career dd { margin-bottom: 10px; }
+
+    /* 수업 방식 */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .step { border-top: 2px solid var(--gold); padding-top: 18px; }
+    .step b { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold-light); }
+    .step h4 { font-size: 1.1rem; margin: 6px 0 8px; }
+    .step p { color: var(--muted); font-size: 0.93rem; }
+
+    /* 커리큘럼 */
+    .curri { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; list-style: none; }
+    .curri li { border: 1px solid var(--border); padding: 16px; border-radius: 3px; background: var(--navy2); }
+    .curri li span { display: block; font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
+    .info-rows { margin-top: 28px; border-top: 1px solid var(--border); }
+    .info-row { display: grid; grid-template-columns: 120px 1fr; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .info-row dt { color: var(--gold); font-weight: 700; }
+
+    /* 시간표 */
+    .time-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .time-head strong { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .time-head strong em { color: var(--gold-light); font-style: normal; }
+    .week { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .day { text-align: center; padding: 18px 4px; border-radius: 3px; font-weight: 700; font-size: 1.1rem; }
+    .day small { display: block; font-weight: 500; font-size: 0.75rem; margin-top: 4px; }
+    .own { background: var(--c-own); color: #fff; }
+    .meca { background: var(--c-meca); color: var(--navy); }
+    .saeum { background: var(--c-saeum); color: var(--navy); }
+    .legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; font-size: 0.9rem; color: var(--muted); }
+    .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+    /* 약속 + 1회 구성 */
+    .two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+    .promise { list-style: none; }
+    .promise li { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .promise h4 { font-size: 1.05rem; }
+    .promise h4 span { color: var(--gold-light); margin-right: 8px; font-family: 'Playfair Display', serif; }
+    .promise p { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
+    .flow { list-style: none; }
+    .flow li { display: grid; grid-template-columns: 76px 1fr; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .flow b { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+    .flow p { color: var(--muted); font-size: 0.9rem; }
+    .sub-title { font-weight: 700; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+
+    /* 상담 */
+    .contact { text-align: center; border-bottom: none; }
+    .phones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 8px 0 28px; }
+    .phones a { text-decoration: none; font-family: 'Playfair Display', serif; font-size: 1.35rem; border: 1px solid var(--border); padding: 10px 20px; border-radius: 3px; }
+    .phones a:hover { border-color: var(--gold); color: var(--gold-light); }
+    footer { text-align: center; color: var(--muted); font-size: 0.82rem; padding: 28px 0 40px; }
+
+    @media (max-width: 800px) {
+      .greet, .two { grid-template-columns: 1fr; gap: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .curri { grid-template-columns: repeat(2, 1fr); }
+      .week { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .teacher { grid-template-columns: 120px 1fr; gap: 16px; }
+      .info-row { grid-template-columns: 84px 1fr; }
+      .topbar-cta { padding: 6px 10px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="favicon_circle.png" alt="">이재, 영어</a>
+    <a class="topbar-cta" href="#contact">상담 및 등록</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">이재,영어 · 문법 특강</div>
+    <h1>A to Z <em>Grammar</em></h1>
+    <h2>개념부터 문제 적용까지, 문법 한 바퀴</h2>
+    <p>품사와 문장성분부터 도치까지, 12회 수업으로 문법 전 범위를 한 번에 정리합니다.</p>
+    <div class="hero-chips">
+      <span class="chip"><strong>12회</strong> 완성</span>
+      <span class="chip">매 시간 <strong>문법 확인 TEST</strong></span>
+      <span class="chip">AM 10:00 – 12:30 <strong>+α</strong></span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="#contact">상담 및 등록</a>
+      <a class="btn btn-sub" href="#curriculum">커리큘럼 보기</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap greet">
+    <div>
+      <div class="label">GREETING</div>
+      <p class="title">제 손을 잡은<br>단 한 아이도 혼자<br>남겨두지 않겠습니다.</p>
+      <div class="stats">
+        <div class="stat"><b>15<small>년</small></b><span>대치동 중·고등부<br>강의 경력</span></div>
+        <div class="stat"><b>12<small>회</small></b><span>문법 전 범위<br>1회독 완성</span></div>
+      </div>
+    </div>
+    <div class="teacher">
+      <img src="Jay_Cari.png" alt="이재영 선생님">
+      <div>
+        <h3>이재영 T.</h3>
+        <dl class="career">
+          <dt>現</dt><dd>이재,영어 원장<br>대치에스학원 휘경<br>대치 새움학원<br>대치 메카학원</dd>
+          <dt>前</dt><dd>꿈틀 인터넷강의<br>대치 현탑학원 · 대치 이강학원<br>대치 예섬학원 · 세종 이솔학원</dd>
+          <dt>학력</dt><dd>한국외국어대학교<br>동 대학원 석사</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">HOW WE TEACH</div>
+    <p class="title">개념부터 문제 적용까지, 문법 한 바퀴</p>
+    <div class="steps">
+      <div class="step"><b>01</b><h4>모든 문법 1회독</h4><p>품사와 문장성분부터 도치까지, 12회 수업으로 문법 전 범위를 한 번에 정리합니다.</p></div>
+      <div class="step"><b>02</b><h4>개념에서 문제로</h4><p>개념 정리에서 끝내지 않고, 문제 풀이에 적용하는 연습까지 함께합니다.</p></div>
+      <div class="step"><b>03</b><h4>확인하고, 메웁니다</h4><p>매 시간 문법 확인 TEST로 점검하고, 휴강 기간에는 개별 클리닉으로 빈틈을 메웁니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum">
+  <div class="wrap">
+    <div class="label">CURRICULUM</div>
+    <p class="title">12회 커리큘럼</p>
+    <ol class="curri">
+      <li><span>01</span>영문 Diagram</li>
+      <li><span>02</span>시제</li>
+      <li><span>03</span>태</li>
+      <li><span>04</span>부정사와 동명사</li>
+      <li><span>05</span>분사와 분사구문</li>
+      <li><span>06</span>전치사와 접속사</li>
+      <li><span>07</span>관계사</li>
+      <li><span>08</span>명사 · 관사 · 대명사</li>
+      <li><span>09</span>조동사 · 가정법</li>
+      <li><span>10</span>형용사 · 부사 · 비교</li>
+      <li><span>11</span>일치 · 화법</li>
+      <li><span>12</span>강조 · 도치</li>
+    </ol>
+    <dl class="info-rows">
+      <div class="info-row"><dt>교재</dt><dd>Grammar Advanced (자체 교재) · 과제 유인물</dd></div>
+      <div class="info-row"><dt>수업</dt><dd>12회 완성 · 매 시간 문법 확인 TEST</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">SCHEDULE</div>
+    <div class="time-head">
+      <p class="title" style="margin-bottom:0;">수업 시간표</p>
+      <strong>AM 10:00 – 12:30 <em>+α</em></strong>
+    </div>
+    <div class="week">
+      <div class="day own">월<small>이재,영어</small></div>
+      <div class="day meca">화<small>대치메카</small></div>
+      <div class="day saeum">수<small>새움학원</small></div>
+      <div class="day meca">목<small>대치메카</small></div>
+      <div class="day own">금<small>이재,영어</small></div>
+      <div class="day saeum">토<small>새움학원</small></div>
+    </div>
+    <div class="legend">
+      <span><i class="own"></i>이재,영어 (월·금)</span>
+      <span><i class="meca"></i>대치메카 (화·목)</span>
+      <span><i class="saeum"></i>새움학원 (수·토)</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two">
+    <div>
+      <div class="label">PROGRAM</div>
+      <p class="title">재영샘's Promise</p>
+      <ul class="promise">
+        <li><h4><span>1</span>학생별 Mentoring System</h4><p>단 한 학생까지도 꼼꼼하게 챙기는 특화된 멘토링 시스템 · 낮과 밤을 가리지 않는 200% 질의응답</p></li>
+        <li><h4><span>2</span>Stamp Quiz</h4><p>반복, 반복, 또 반복하는 주간·단원별 테스트 · 오답노트 제작</p></li>
+        <li><h4><span>3</span>학원, 학생 그리고 가정</h4><p>출결부터 과제, 테스트 결과까지 모든 정보를 함께 공유</p></li>
+        <li><h4><span>4</span>한 몸 같은 강의와 교재</h4><p>직접 제작·편집한 자체 교재 사용</p></li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">ONE CLASS</div>
+      <p class="title">수업 1회 구성</p>
+      <ul class="flow">
+        <li><b>20분</b><div><strong>Stamp Quiz</strong><p>이전 시간 내용 복습 TEST</p></div></li>
+        <li><b>120분</b><div><strong>본 수업 (문법)</strong><p>개념 설명 및 문제 풀이</p></div></li>
+        <li><b>15분+</b><div><strong>질의응답</strong><p>수업 내용 개별 질문</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="label">CONTACT</div>
+    <p class="title">상담 및 등록</p>
+    <div class="phones">
+      <a href="tel:01034750519">010.3475.0519</a>
+      <a href="tel:025685202">02.568.5202</a>
+      <a href="tel:025581060">02.558.1060</a>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="https://open.kakao.com/o/gq8jGyvi" target="_blank" rel="noopener">💬 카카오 상담</a>
+      <a class="btn btn-sub" href="https://www.youtube.com/results?search_query=%EB%8C%80%EC%B9%98%EB%8F%99+%EC%A7%84%EC%A7%9C%EC%98%81%EC%96%B4+%EC%9D%B4%EC%9E%AC%EC%98%81" target="_blank" rel="noopener">▶ 유튜브 · 대치동 진짜영어 이재영</a>
+      <a class="btn btn-sub" href="/">홈페이지로</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 이재, 영어 · www.real-englishjy.co.kr</footer>
+
+</body>
+</html>

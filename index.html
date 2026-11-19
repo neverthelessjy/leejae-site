@@ -1933,6 +1933,37 @@
      팝업 하나를 내릴 때는 그 .home-popup에 final-draft 클래스를 붙인다. -->
 <div class="overlay" id="homePopup">
  <div class="home-popup-row">
+  <div class="home-popup" role="dialog" aria-label="대치에스학원 경희고·청량고 기말고사 내신대비 안내" data-popup-id="dcs-final-2026">
+    <div class="home-popup-body">
+      <img src="DCS.jpeg" alt="대치에스학원" class="home-popup-logo" />
+      <span class="home-popup-badge">대치에스학원 · 2학기 기말</span>
+      <h2>경희고 · 청량고 내신대비</h2>
+      <p class="home-popup-desc">학교 시험범위에 맞춘 진도와 실전모의고사로<br>기말고사 직전까지 함께합니다. (현재 진행 중)</p>
+      <div class="home-popup-courses">
+        <div class="home-popup-course">
+          <div class="home-popup-course-tag">경희고 1학년</div>
+          <div class="home-popup-course-time">주 1회 일 PM 7:00 ~ 10:00<br>주 2회 금 PM 8:00 ~ 10:00 · 일 PM 4:00 ~ 7:00</div>
+        </div>
+        <div class="home-popup-course">
+          <div class="home-popup-course-tag">경희고 2학년</div>
+          <div class="home-popup-course-time">화 PM 7:00 ~ 10:00 · 일 AM 9:30 ~ PM 1:00 (택1)</div>
+        </div>
+        <div class="home-popup-course">
+          <div class="home-popup-course-tag">청량고 1학년 · 2학년</div>
+          <div class="home-popup-course-time">1학년 금 PM 5:00 ~ 8:00 · 2학년 화 PM 4:00 ~ 7:00</div>
+        </div>
+      </div>
+      <p class="home-popup-desc" style="margin-top:12px;">상담 · 이재,영어 010.3475.0519 · 대치에스학원 02.2244.8878</p>
+      <div class="home-popup-actions">
+        <a class="home-popup-main" href="#" onclick="closeModal('homePopup'); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('대치에스학원'); return false;">수업 자세히 보기</a>
+        <a class="home-popup-sub" href="https://open.kakao.com/o/gq8jGyvi" target="_blank">💬 카카오 상담</a>
+      </div>
+    </div>
+    <div class="home-popup-footer">
+      <button type="button" onclick="closeHomePopup(this, true)">오늘 하루 보지 않기</button>
+      <button type="button" onclick="closeHomePopup(this)">닫기</button>
+    </div>
+  </div>
   <div class="home-popup" role="dialog" aria-label="대치메카학원 Winter 문법 특강 안내" data-popup-id="meca-winter-2026-v2">
     <div class="home-popup-body">
       <img src="meca.jpeg" alt="대치메카학원" class="home-popup-logo" />
@@ -1952,7 +1983,7 @@
         </div>
       </div>
       <div class="home-popup-actions">
-        <a class="home-popup-main" href="#" onclick="closeModal('homePopup'); showPage('classes'); if (window.showCourseAcademy) showCourseAcademy('대치메카학원'); return false;">수업 자세히 보기</a>
+        <a class="home-popup-main" href="grammar.html">특강 자세히 보기</a>
         <a class="home-popup-sub" href="https://open.kakao.com/o/gq8jGyvi" target="_blank">💬 카카오 상담</a>
       </div>
     </div>
@@ -2482,7 +2513,7 @@
         <img src="meca.jpeg" alt="대치메카학원" style="height:56px;width:auto;object-fit:contain;border-radius:3px;display:block;margin:0 auto 14px;" />
         <span class="summer-badge">2026 Winter · 대치메카학원</span>
         <h3>Winter 문법 특강</h3>
-        <p>대치메카학원에서 진행하는 중등부 문법 특강입니다. 품사와 문장성분부터 도치까지 모든 문법을 12회에 1회독합니다.<br><strong>2027년 1월 5일(화) 개강 · 2월 25일(목) 종강</strong></p>
+        <p>대치메카학원에서 진행하는 중등부 문법 특강입니다. 품사와 문장성분부터 도치까지 모든 문법을 12회에 1회독합니다.<br><strong>2027년 1월 5일(화) 개강 · 2월 25일(목) 종강</strong><br><a href="grammar.html" class="class-info-kakao" style="display:inline-block;margin-top:12px;">📘 A to Z 문법 특강 안내 페이지</a></p>
       </div>
 
       <div class="summer-course-grid">
@@ -2714,13 +2745,13 @@
       </div>
     </div>
 
-    <!-- 2026 2학기 기말고사 내신대비 (초안 · 숨김 상태: 【입력 필요】 채운 뒤 final-draft 클래스 제거) -->
-    <div class="summer-special-wrap final-draft" style="margin-top:48px;">
+    <!-- 2026 2학기 기말고사 내신대비 (진행 중) -->
+    <div class="summer-special-wrap" style="margin-top:48px;">
       <div class="summer-special-header">
         <img src="DCS.jpeg" alt="대치에스학원" style="height:56px;width:auto;object-fit:contain;border-radius:3px;display:block;margin:0 auto 14px;" />
         <span class="summer-badge">2026 2학기 · 대치에스학원</span>
         <h3>학교별 내신대비</h3>
-        <p>【입력 필요: 소개 문구】</p>
+        <p>대치에스학원에서 진행하는 경희고·청량고 2학기 기말고사 대비 과정입니다. 학교 시험범위에 맞춘 진도와 실전모의고사로 시험 직전까지 함께합니다.<br><strong>현재 진행 중 · 중간 합류는 상담으로 안내드립니다</strong></p>
       </div>
 
       <div class="summer-course-grid">
@@ -2728,137 +2759,50 @@
         <div class="summer-course-card">
           <span class="summer-course-tag">경희고 1학년</span>
           <h4>2학기 기말고사 내신대비</h4>
-          <p class="summer-course-sub">【입력 필요: 부제 · 총 N주 과정】</p>
-          <div class="summer-start-box">
-            <div class="summer-start-item">
-              <img src="DCS.jpeg" class="summer-start-logo" alt="대치에스">
-              <div class="summer-start-text">
-                <span class="summer-start-academy">【입력 필요: 반 이름】</span>
-                <span class="summer-start-date">【입력 필요: 개강일】</span>
-              </div>
-            </div>
-            <div class="summer-start-item">
-              <img src="DCS.jpeg" class="summer-start-logo" alt="대치에스">
-              <div class="summer-start-text">
-                <span class="summer-start-academy">【입력 필요: 반 이름】</span>
-                <span class="summer-start-date">【입력 필요: 개강일】</span>
-              </div>
-            </div>
-          </div>
+          <p class="summer-course-sub">학교 시험범위 집중 대비 · 주 1회 / 주 2회 선택</p>
           <div class="summer-course-meta">
-            <div class="summer-meta-row"><span>주 1회 (일)</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>주 2회 (금·일)</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>수업 흐름</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>자료</span><span>【입력 필요】</span></div>
+            <div class="summer-meta-row"><span>주 1회 (일)</span><span>일 PM 7:00 ~ 10:00</span></div>
+            <div class="summer-meta-row"><span>주 2회 (금·일)</span><span>금 PM 8:00 ~ 10:00 · 일 PM 4:00 ~ 7:00</span></div>
+            <div class="summer-meta-row"><span>수업 흐름</span><span>주차별 진도 → 단어TEST · 실전모의고사 해설강의 → 일요일 오후 1시 Clinic</span></div>
+            <div class="summer-meta-row"><span>자료</span><span>수업자료·해설자료를 손필기와 함께 제공 · 부교재(마더텅) 해설 영상</span></div>
           </div>
-          <ul class="summer-curriculum">
-            <li>1주차 — 【입력 필요: 범위】</li>
-            <li>2주차 — 【입력 필요: 범위】</li>
-            <li>3주차 — 【입력 필요: 범위】</li>
-            <li>4주차 — 【입력 필요: 범위】</li>
-            <li>5주차 — 【입력 필요: 범위】</li>
-            <li>6주차 — 【입력 필요: 범위】</li>
-            <li>7주차 — 【입력 필요: 범위】</li>
-            <li>8주차 — 【입력 필요: 범위】</li>
-          </ul>
         </div>
+
         <!-- 경희고 2학년 -->
         <div class="summer-course-card">
           <span class="summer-course-tag">경희고 2학년</span>
           <h4>2학기 기말고사 내신대비</h4>
-          <p class="summer-course-sub">【입력 필요: 부제 · 총 N주 과정】</p>
-          <div class="summer-start-box">
-            <div class="summer-start-item">
-              <img src="DCS.jpeg" class="summer-start-logo" alt="대치에스">
-              <div class="summer-start-text">
-                <span class="summer-start-academy">【입력 필요: 반 이름】</span>
-                <span class="summer-start-date">【입력 필요: 개강일】</span>
-              </div>
-            </div>
-            <div class="summer-start-item">
-              <img src="DCS.jpeg" class="summer-start-logo" alt="대치에스">
-              <div class="summer-start-text">
-                <span class="summer-start-academy">【입력 필요: 반 이름】</span>
-                <span class="summer-start-date">【입력 필요: 개강일】</span>
-              </div>
-            </div>
-          </div>
+          <p class="summer-course-sub">학교 시험범위 집중 대비 · 화요일반 / 일요일반</p>
           <div class="summer-course-meta">
-            <div class="summer-meta-row"><span>일요일반</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>화요일반</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>수업 흐름</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>운영</span><span>【입력 필요】</span></div>
+            <div class="summer-meta-row"><span>화요일반</span><span>화 PM 7:00 ~ 10:00</span></div>
+            <div class="summer-meta-row"><span>일요일반</span><span>일 AM 9:30 ~ PM 1:00</span></div>
+            <div class="summer-meta-row"><span>수업 흐름</span><span>주간 영상시청 → 단어TEST · 실전모의고사 해설강의 → 일요일 오후 1시 Clinic</span></div>
+            <div class="summer-meta-row"><span>부교재</span><span>마더텅 01~17강 + Mini TEST 4회 해설 영상 제공</span></div>
           </div>
-          <ul class="summer-curriculum">
-            <li>1주차 — 【입력 필요: 범위】</li>
-            <li>2주차 — 【입력 필요: 범위】</li>
-            <li>3주차 — 【입력 필요: 범위】</li>
-            <li>4주차 — 【입력 필요: 범위】</li>
-            <li>5주차 — 【입력 필요: 범위】</li>
-            <li>6주차 — 【입력 필요: 범위】</li>
-            <li>7주차 — 【입력 필요: 범위】</li>
-            <li>8주차 — 【입력 필요: 범위】</li>
-          </ul>
         </div>
+
         <!-- 청량고 1학년 -->
         <div class="summer-course-card">
           <span class="summer-course-tag">청량고 1학년</span>
           <h4>2학기 기말고사 내신대비</h4>
-          <p class="summer-course-sub">【입력 필요: 부제 · 총 N주 과정】</p>
-          <div class="summer-start-box">
-            <div class="summer-start-item">
-              <img src="DCS.jpeg" class="summer-start-logo" alt="대치에스">
-              <div class="summer-start-text">
-                <span class="summer-start-academy">【입력 필요: 반 이름】</span>
-                <span class="summer-start-date">【입력 필요: 개강일】</span>
-              </div>
-            </div>
-          </div>
+          <p class="summer-course-sub">학교 시험범위 집중 대비 · 금요일반</p>
           <div class="summer-course-meta">
-            <div class="summer-meta-row"><span>요일 · 시간</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>수업 흐름</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>운영</span><span>【입력 필요】</span></div>
+            <div class="summer-meta-row"><span>요일 · 시간</span><span>금 PM 5:00 ~ 8:00</span></div>
+            <div class="summer-meta-row"><span>수업 흐름</span><span>단어TEST · 전시간 진도 · 실전모의고사 → 주차별 진도 → 일요일 오후 1시 Clinic</span></div>
+            <div class="summer-meta-row"><span>운영</span><span>주 1회 + Clinic · 수업자료 주차별 제공</span></div>
           </div>
-          <ul class="summer-curriculum">
-            <li>1주차 — 【입력 필요: 범위】</li>
-            <li>2주차 — 【입력 필요: 범위】</li>
-            <li>3주차 — 【입력 필요: 범위】</li>
-            <li>4주차 — 【입력 필요: 범위】</li>
-            <li>5주차 — 【입력 필요: 범위】</li>
-            <li>6주차 — 【입력 필요: 범위】</li>
-            <li>7주차 — 【입력 필요: 범위】</li>
-            <li>8주차 — 【입력 필요: 범위】</li>
-          </ul>
         </div>
+
         <!-- 청량고 2학년 -->
         <div class="summer-course-card">
           <span class="summer-course-tag">청량고 2학년</span>
           <h4>2학기 기말고사 내신대비</h4>
-          <p class="summer-course-sub">【입력 필요: 부제 · 총 N주 과정】</p>
-          <div class="summer-start-box">
-            <div class="summer-start-item">
-              <img src="DCS.jpeg" class="summer-start-logo" alt="대치에스">
-              <div class="summer-start-text">
-                <span class="summer-start-academy">【입력 필요: 반 이름】</span>
-                <span class="summer-start-date">【입력 필요: 개강일】</span>
-              </div>
-            </div>
-          </div>
+          <p class="summer-course-sub">학교 시험범위 집중 대비 · 화요일반</p>
           <div class="summer-course-meta">
-            <div class="summer-meta-row"><span>요일 · 시간</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>수업 흐름</span><span>【입력 필요】</span></div>
-            <div class="summer-meta-row"><span>운영</span><span>【입력 필요】</span></div>
+            <div class="summer-meta-row"><span>요일 · 시간</span><span>화 PM 4:00 ~ 7:00</span></div>
+            <div class="summer-meta-row"><span>수업 흐름</span><span>단어TEST · 전시간 진도 · 실전모의고사 → 주차별 진도 → 일요일 오후 1시 Clinic</span></div>
+            <div class="summer-meta-row"><span>운영</span><span>주 1회 + Clinic · 수업자료 주차별 제공</span></div>
           </div>
-          <ul class="summer-curriculum">
-            <li>1주차 — 【입력 필요: 범위】</li>
-            <li>2주차 — 【입력 필요: 범위】</li>
-            <li>3주차 — 【입력 필요: 범위】</li>
-            <li>4주차 — 【입력 필요: 범위】</li>
-            <li>5주차 — 【입력 필요: 범위】</li>
-            <li>6주차 — 【입력 필요: 범위】</li>
-            <li>7주차 — 【입력 필요: 범위】</li>
-            <li>8주차 — 【입력 필요: 범위】</li>
-          </ul>
         </div>
       </div>
 
@@ -2872,7 +2816,7 @@
       <div class="summer-aftercourse">
         <div class="summer-aftercourse-title">이재,영어 Promise</div>
         <ul class="summer-curriculum" style="margin-top:12px;">
-          <li>【입력 필요: 약속 문구】</li>
+          <li>학교 시험범위에 맞춰 <strong>시험 직전까지 진도를 완성</strong>합니다</li>
           <li>모든 수업은 <strong>동영상 제공</strong>됩니다</li>
           <li><strong>일요일 Clinic</strong> 시간에 강사가 직접 질의응답을 합니다</li>
           <li>단어재시험과 과제확인은 <strong>전임보조선생님이 책임</strong>지고 확인합니다</li>
