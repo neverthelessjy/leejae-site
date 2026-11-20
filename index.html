@@ -128,6 +128,9 @@
       display: block;
       margin: 0 auto 16px;
     }
+    .home-popup-logos { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0 auto 16px; }
+    .home-popup-logos img { height: 48px; width: auto; max-width: 30%; object-fit: contain; background: #fff; border-radius: 4px; }
+    .home-popup-logos img.round { width: 48px; object-fit: cover; border-radius: 50%; background: #0a0e1a; }
     .home-popup-badge {
       display: inline-block;
       background: var(--gold);
@@ -1968,10 +1971,14 @@
       <button type="button" onclick="closeHomePopup(this)">닫기</button>
     </div>
   </div>
-  <div class="home-popup" role="dialog" aria-label="대치메카학원 Winter 문법 특강 안내" data-popup-id="meca-winter-2026-v2">
+  <div class="home-popup" role="dialog" aria-label="대치메카학원·이재,영어·새움학원 Winter 문법 특강 안내" data-popup-id="meca-winter-2026-v3">
     <div class="home-popup-body">
-      <img src="meca.jpeg" alt="대치메카학원" class="home-popup-logo" />
-      <span class="home-popup-badge">대치메카학원 · Winter 특강</span>
+      <div class="home-popup-logos">
+        <img src="meca.jpeg" alt="대치메카학원" />
+        <img src="logo.png" alt="이재,영어" class="round" />
+        <img src="saeum.jpg" alt="새움학원" />
+      </div>
+      <span class="home-popup-badge">대치메카 · 이재,영어 · 새움학원 · Winter 특강</span>
       <h2>Winter 문법 특강</h2>
       <p class="home-popup-desc">2027년 1월 5일(화) 개강 · 2월 25일(목) 종강<br>품사와 문장성분부터 도치까지 모든 문법을 1회독합니다.</p>
       <div class="home-popup-courses">
