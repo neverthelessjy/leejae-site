@@ -3,112 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <title>대치에스 2027 겨울 Half Grammar — A4</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Montserrat:ital,wght@0,600;0,800;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,500&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 <style>
   @page { size: A4; margin: 0; }
   :root {
-    --blue: #0a2be8;
-    --blue2: #2a7dff;
-    --ink: #0d1530;
-    --muted: #55607a;
-    --line: #dfe5f2;
-    --soft: #f2f6ff;
+    --navy: #1f3a5f;
+    --blue: #3a74b5;
+    --sky: #8dbbe3;
+    --ice: #eaf3fb;
+    --frost: #f6fafe;
+    --muted: #6b7a8f;
+    --line: #dbe6f1;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { background: #fff; }
   body {
-    width: 210mm; height: 297mm; overflow: hidden;
-    font-family: 'Noto Sans KR', sans-serif; color: var(--ink);
+    width: 210mm; height: 297mm; overflow: hidden; position: relative;
+    font-family: 'Noto Sans KR', sans-serif; color: var(--navy);
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
     display: flex; flex-direction: column;
   }
-  .en { font-family: 'Montserrat', sans-serif; }
+  .flake { position: absolute; color: var(--sky); pointer-events: none; }
 
   /* 머리 */
-  .head {
-    position: relative; overflow: hidden;
-    background: linear-gradient(100deg, var(--blue) 0%, #1650ff 55%, var(--blue2) 100%);
-    color: #fff; padding: 8mm 14mm 7mm; flex-shrink: 0;
-  }
-  .head::after { /* 겨울 느낌의 은은한 원 */
-    content: ""; position: absolute; right: -28mm; top: -30mm; width: 110mm; height: 110mm;
-    border-radius: 50%; border: 1.2mm solid rgba(255,255,255,0.10);
-    box-shadow: 0 0 0 9mm rgba(255,255,255,0.05);
-  }
-  .head-top { display: flex; justify-content: space-between; align-items: center; }
-  .logo { height: 13mm; display: block; border-radius: 1.5mm; }
-  .season { font-size: 9pt; letter-spacing: 0.25em; font-weight: 600; opacity: .9; }
-  .eyebrow { margin-top: 4.5mm; font-size: 12pt; font-weight: 700; letter-spacing: 0.04em; }
-  .eyebrow b { background: #fff; color: var(--blue); padding: 1mm 3mm; border-radius: 1mm; margin-right: 2.5mm; }
-  h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 42pt; line-height: 1; letter-spacing: -0.01em; margin-top: 4mm; }
-  h1 small { display: block; font-size: 15pt; font-weight: 600; letter-spacing: 0.32em; opacity: .85; margin-bottom: 2mm; }
-  .sub { font-size: 15pt; font-weight: 700; margin-top: 2.5mm; }
+  .head { position: relative; flex-shrink: 0; padding: 8.5mm 14mm 5mm;
+    background: linear-gradient(180deg, var(--ice) 0%, var(--frost) 70%, #fff 100%); }
+  .brands { display: flex; align-items: center; gap: 4mm; }
+  .brands .leejae { height: 15mm; display: block; }
+  .brands .x { color: var(--sky); font-size: 13pt; font-weight: 500; }
+  .brands .dcs { height: 9.5mm; border-radius: 1.2mm; display: block; }
+  .season { position: absolute; right: 14mm; top: 11mm; font-family: 'Montserrat', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.3em; color: var(--blue); }
+  .eyebrow { margin-top: 5.5mm; font-size: 11.5pt; font-weight: 700; color: var(--blue); }
+  .eyebrow b { border: 0.35mm solid var(--sky); background: #fff; padding: 0.8mm 3.5mm; border-radius: 10mm; margin-right: 2.5mm; }
+  .kicker { margin-top: 3.5mm; font-size: 14pt; font-weight: 700; letter-spacing: 0.4em; color: var(--sky); }
+  h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 47pt; line-height: 1.02; color: var(--navy); }
+  h1 em { font-style: italic; font-weight: 500; color: var(--blue); }
+  .sub { font-size: 14.5pt; font-weight: 700; margin-top: 2.5mm; }
   .chips { display: flex; gap: 2.5mm; margin-top: 4mm; flex-wrap: wrap; }
-  .chip { border: 0.35mm solid rgba(255,255,255,.6); border-radius: 10mm; padding: 1.6mm 4.5mm; font-size: 10.5pt; font-weight: 500; }
-  .chip.on { background: #fff; color: var(--blue); border-color: #fff; font-weight: 700; }
+  .chip { background: #fff; border: 0.3mm solid var(--line); border-radius: 10mm; padding: 1.5mm 4.5mm; font-size: 10.5pt; font-weight: 500; color: var(--navy); }
+  .chip.on { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 700; }
 
-  main { flex: 1; padding: 5.5mm 14mm 4.5mm; display: flex; flex-direction: column; gap: 4.2mm; min-height: 0; }
+  main { flex: 1; padding: 3mm 14mm 4mm; display: flex; flex-direction: column; gap: 3.8mm; min-height: 0; position: relative; }
   main > * { flex-shrink: 0; }
 
-  /* 기본 정보 */
-  .facts { display: grid; grid-template-columns: 1.15fr 1fr 1fr 0.9fr; border: 0.3mm solid var(--line); border-radius: 2mm; overflow: hidden; }
-  .fact { padding: 3.6mm 4mm; }
+  .facts { display: grid; grid-template-columns: 1.15fr 1fr 1fr 0.9fr; border: 0.3mm solid var(--line); border-radius: 2.5mm; background: #fff; }
+  .fact { padding: 3.4mm 4mm; }
   .fact + .fact { border-left: 0.3mm solid var(--line); }
-  .fact dt { font-size: 8.5pt; color: var(--blue); font-weight: 700; letter-spacing: 0.05em; }
-  .fact dd { font-size: 11pt; font-weight: 700; margin-top: 1mm; line-height: 1.35; }
+  .fact dt { font-size: 8.5pt; color: var(--blue); font-weight: 700; }
+  .fact dd { font-size: 11pt; font-weight: 700; margin-top: 0.8mm; line-height: 1.35; }
   .fact dd span { display: block; font-size: 8.5pt; font-weight: 400; color: var(--muted); }
 
-  .label { font-family: 'Montserrat', sans-serif; font-size: 8.5pt; font-weight: 800; letter-spacing: 0.22em; color: var(--blue); }
+  .label { font-family: 'Montserrat', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.22em; color: var(--blue); }
   .ttl { font-size: 12.5pt; font-weight: 900; margin: 0.5mm 0 2.2mm; }
 
-  /* 목표 + 관리 */
-  .two { display: grid; grid-template-columns: 1fr 1.25fr; gap: 6mm; }
-  .box { background: var(--soft); border-radius: 2mm; padding: 3.2mm 5mm 2.4mm; }
+  .two { display: grid; grid-template-columns: 1fr 1.25fr; gap: 5mm; }
+  .box { background: var(--frost); border: 0.3mm solid var(--ice); border-radius: 2.5mm; padding: 3.2mm 5mm 2.4mm; }
   .box .label { margin-bottom: 1.2mm; }
   .box ul { list-style: none; }
-  .box li { font-size: 10pt; font-weight: 500; padding: 0.9mm 0 0.9mm 5.5mm; position: relative; }
-  .box li::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--blue); }
+  .box li { font-size: 10pt; font-weight: 500; padding: 0.9mm 0 0.9mm 5mm; position: relative; }
+  .box li::before { content: "❄"; position: absolute; left: 0; top: 0.9mm; font-size: 8pt; color: var(--sky); }
 
-  /* 커리큘럼 */
   table { width: 100%; border-collapse: collapse; font-size: 10pt; }
-  th { background: var(--ink); color: #fff; font-weight: 700; font-size: 9pt; padding: 2.2mm 3mm; text-align: left; }
-  th:first-child { border-top-left-radius: 1.5mm; }
-  th:last-child { border-top-right-radius: 1.5mm; }
+  th { background: var(--ice); color: var(--navy); font-weight: 700; font-size: 9pt; padding: 2.2mm 3mm; text-align: left; }
+  th:first-child { border-top-left-radius: 2mm; border-bottom-left-radius: 2mm; }
+  th:last-child { border-top-right-radius: 2mm; border-bottom-right-radius: 2mm; }
   td { padding: 1.45mm 3mm; border-bottom: 0.3mm solid var(--line); vertical-align: middle; }
-  td.no { width: 15mm; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue); font-size: 11pt; }
-  td.date { width: 25mm; font-weight: 500; color: var(--muted); }
+  td.no { width: 15mm; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--blue); font-size: 12pt; font-variant-numeric: lining-nums; }
+  td.date { width: 25mm; color: var(--muted); }
   td.unit b { font-weight: 700; }
   td.unit span { color: var(--muted); margin-left: 2mm; }
   td.task { width: 50mm; font-size: 8.5pt; color: var(--muted); }
-  tr.off td { background: #fafbfd; color: #9aa3b8; font-size: 9pt; padding: 1.3mm 3mm; }
-  .note { font-size: 8.5pt; color: var(--muted); margin-top: 2mm; }
+  tr.off td { color: #a7b3c2; font-size: 9pt; padding: 1.1mm 3mm; background: var(--frost); }
 
-  /* 선생님 */
   .teacher { display: grid; grid-template-columns: 22mm 1fr; gap: 5mm; align-items: center; border-top: 0.3mm solid var(--line); padding-top: 3mm; margin-top: auto; }
-  .teacher img { width: 22mm; height: 22mm; object-fit: cover; object-position: 50% 4%; border-radius: 50%; display: block; background: #000; }
+  .teacher img { width: 22mm; height: 22mm; object-fit: cover; object-position: 50% 4%; border-radius: 50%; display: block; background: #000; box-shadow: 0 0 0 1mm var(--ice); }
   .teacher h3 { font-size: 13pt; font-weight: 900; }
   .teacher h3 span { font-size: 9pt; font-weight: 500; color: var(--muted); margin-left: 2mm; }
-  .career { font-size: 8.5pt; color: var(--muted); line-height: 1.55; margin-top: 1.5mm; }
+  .career { font-size: 8.5pt; color: var(--muted); line-height: 1.55; margin-top: 1.2mm; }
   .career b { color: var(--blue); margin-right: 1.5mm; }
 
-  /* 상담 */
-  .foot { flex-shrink: 0; background: var(--ink); color: #fff; padding: 6mm 14mm; display: flex; justify-content: space-between; align-items: center; }
+  .foot { flex-shrink: 0; background: var(--ice); padding: 5.5mm 14mm; display: flex; justify-content: space-between; align-items: center; position: relative; }
   .foot .q { font-size: 12pt; font-weight: 900; }
-  .foot .q span { display: block; font-size: 8.5pt; font-weight: 400; opacity: .7; margin-top: .5mm; }
+  .foot .q span { display: block; font-size: 8.5pt; font-weight: 400; color: var(--muted); margin-top: .5mm; }
   .phones { display: flex; gap: 8mm; }
-  .phone small { display: block; font-size: 8.5pt; opacity: .75; }
-  .phone b { font-family: 'Montserrat', sans-serif; font-size: 17pt; font-weight: 800; letter-spacing: 0.01em; }
+  .phone small { display: block; font-size: 8.5pt; color: var(--blue); font-weight: 700; }
+  .phone b { font-family: 'Montserrat', sans-serif; font-size: 16.5pt; font-weight: 700; letter-spacing: 0.01em; }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="flake" viewBox="-50 -50 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+      <g id="arm"><line x1="0" y1="0" x2="0" y2="-44"/><polyline points="-10,-30 0,-21 10,-30"/><polyline points="-8,-42 0,-35 8,-42"/></g>
+      <use href="#arm" transform="rotate(60)"/><use href="#arm" transform="rotate(120)"/>
+      <use href="#arm" transform="rotate(180)"/><use href="#arm" transform="rotate(240)"/><use href="#arm" transform="rotate(300)"/>
+    </g>
+  </symbol>
+</svg>
+
 <header class="head">
-  <div class="head-top">
-    <img class="logo" src="../../DCS.jpeg" alt="대치에스학원">
-    <span class="season en">2027 WINTER SPECIAL</span>
+  <svg class="flake" style="right:12mm;top:20mm;width:40mm;height:40mm;opacity:.45"><use href="#flake"/></svg>
+  <svg class="flake" style="right:58mm;top:17mm;width:13mm;height:13mm;opacity:.5"><use href="#flake"/></svg>
+  <svg class="flake" style="right:46mm;top:60mm;width:9mm;height:9mm;opacity:.55"><use href="#flake"/></svg>
+  <svg class="flake" style="right:6mm;top:64mm;width:15mm;height:15mm;opacity:.35"><use href="#flake"/></svg>
+
+  <div class="brands">
+    <img class="leejae" src="../assets/leejae-logo-navy.png" alt="이재,영어">
+    <span class="x">×</span>
+    <img class="dcs" src="../../DCS.jpeg" alt="대치에스학원">
   </div>
+  <span class="season">2027 WINTER</span>
   <div class="eyebrow"><b>겨울방학 특강</b>이재영 T. · Killer Solution</div>
-  <h1><small>핵심 영문법</small>Half Grammar</h1>
+  <p class="kicker">핵심 영문법</p>
+  <h1>Half <em>Grammar</em></h1>
   <p class="sub">7회 수업으로 기초 영문법 한 바퀴 정리</p>
   <div class="chips">
     <span class="chip on">2027년 1월 5일(화) 개강</span>

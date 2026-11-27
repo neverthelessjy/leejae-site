@@ -3,61 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <title>대치에스 2027 겨울 Half Grammar — 카톡용</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,500&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --blue: #0a2be8; --blue2: #2a7dff; --ink: #0d1530; --muted: #55607a; --line: #dfe5f2; --soft: #f2f6ff; }
+  :root { --navy: #1f3a5f; --blue: #3a74b5; --sky: #8dbbe3; --ice: #eaf3fb; --frost: #f6fafe; --muted: #6b7a8f; --line: #dbe6f1; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { background: #fff; }
-  body { width: 1080px; height: 1350px; overflow: hidden; font-family: 'Noto Sans KR', sans-serif; color: var(--ink); display: flex; flex-direction: column; }
-  .en { font-family: 'Montserrat', sans-serif; }
+  body { width: 1080px; height: 1350px; overflow: hidden; position: relative; font-family: 'Noto Sans KR', sans-serif; color: var(--navy); display: flex; flex-direction: column; }
+  .flake { position: absolute; color: var(--sky); pointer-events: none; }
 
-  .head { position: relative; overflow: hidden; flex-shrink: 0; color: #fff; padding: 48px 72px 42px;
-    background: linear-gradient(100deg, var(--blue) 0%, #1650ff 55%, var(--blue2) 100%); }
-  .head::after { content: ""; position: absolute; right: -140px; top: -160px; width: 560px; height: 560px; border-radius: 50%;
-    border: 6px solid rgba(255,255,255,0.10); box-shadow: 0 0 0 46px rgba(255,255,255,0.05); }
-  .head-top { display: flex; justify-content: space-between; align-items: center; }
-  .logo { height: 72px; border-radius: 8px; display: block; }
-  .season { font-size: 22px; letter-spacing: 0.25em; font-weight: 600; opacity: .9; }
-  .eyebrow { margin-top: 32px; font-size: 32px; font-weight: 700; }
-  .eyebrow b { background: #fff; color: var(--blue); padding: 4px 16px; border-radius: 6px; margin-right: 14px; }
-  h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 120px; line-height: 1; letter-spacing: -0.01em; margin-top: 20px; }
-  h1 small { display: block; font-size: 38px; font-weight: 600; letter-spacing: 0.32em; opacity: .85; margin-bottom: 10px; }
-  .sub { font-size: 38px; font-weight: 700; margin-top: 14px; }
+  .head { position: relative; flex-shrink: 0; padding: 48px 72px 34px;
+    background: linear-gradient(180deg, var(--ice) 0%, var(--frost) 72%, #fff 100%); }
+  .brands { display: flex; align-items: center; gap: 20px; }
+  .brands .leejae { height: 86px; display: block; }
+  .brands .x { color: var(--sky); font-size: 34px; }
+  .brands .dcs { height: 54px; border-radius: 7px; display: block; }
+  .season { position: absolute; right: 72px; top: 58px; font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 0.3em; color: var(--blue); }
+  .eyebrow { margin-top: 34px; font-size: 32px; font-weight: 700; color: var(--blue); }
+  .eyebrow b { border: 2px solid var(--sky); background: #fff; padding: 4px 20px; border-radius: 40px; margin-right: 14px; }
+  .kicker { margin-top: 24px; font-size: 36px; font-weight: 700; letter-spacing: 0.4em; color: var(--sky); }
+  h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 136px; line-height: 1.02; }
+  h1 em { font-style: italic; font-weight: 500; color: var(--blue); }
+  .sub { font-size: 38px; font-weight: 700; margin-top: 10px; }
 
-  main { flex: 1; padding: 36px 72px 0; display: flex; flex-direction: column; gap: 28px; }
-  .facts { display: grid; grid-template-columns: 1.1fr 1fr 1fr; background: var(--soft); border-radius: 16px; }
+  main { flex: 1; padding: 20px 72px 0; display: flex; flex-direction: column; gap: 28px; }
+  .facts { display: grid; grid-template-columns: 1.1fr 1fr 1fr; background: #fff; border: 2px solid var(--line); border-radius: 18px; }
   .fact { padding: 20px 26px; }
-  .fact + .fact { border-left: 2px solid #dde5fb; }
+  .fact + .fact { border-left: 2px solid var(--line); }
   .fact dt { font-size: 22px; color: var(--blue); font-weight: 700; }
   .fact dd { font-size: 32px; font-weight: 900; margin-top: 4px; line-height: 1.3; }
   .fact dd span { display: block; font-size: 22px; font-weight: 500; color: var(--muted); }
 
-  .label { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: 0.22em; color: var(--blue); margin-bottom: 14px; }
+  .label { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 0.22em; color: var(--blue); margin-bottom: 12px; }
   .curri { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; }
-  .curri li { display: grid; grid-template-columns: 58px 1fr; align-items: baseline; border-bottom: 2px solid var(--line); padding-bottom: 8px; }
-  .curri b { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue); font-size: 28px; }
+  .curri li { display: grid; grid-template-columns: 62px 1fr; align-items: baseline; border-bottom: 2px solid var(--line); padding-bottom: 8px; }
+  .curri b { font-family: 'Playfair Display', serif; font-variant-numeric: lining-nums; font-weight: 700; color: var(--blue); font-size: 32px; }
   .curri strong { font-size: 29px; font-weight: 700; }
   .curri small { display: block; font-size: 21px; color: var(--muted); margin-top: 2px; }
-  .curri li.care { grid-template-columns: 1fr; background: var(--ink); color: #fff; border: none; border-radius: 12px; padding: 16px 22px; align-self: stretch; }
-  .curri li.care strong { font-size: 24px; }
-  .curri li.care small { color: rgba(255,255,255,.75); font-size: 20px; line-height: 1.5; word-break: keep-all; }
+  .curri li.care { grid-template-columns: 1fr; background: var(--ice); border: none; border-radius: 14px; padding: 16px 22px; }
+  .curri li.care strong { font-size: 24px; color: var(--blue); }
+  .curri li.care small { color: var(--navy); font-size: 20px; line-height: 1.5; word-break: keep-all; }
 
-  .foot { flex-shrink: 0; margin-top: 28px; background: var(--ink); color: #fff; padding: 30px 72px; display: flex; justify-content: space-between; align-items: center; }
+  .foot { flex-shrink: 0; margin-top: 28px; background: var(--navy); color: #fff; padding: 30px 72px; display: flex; justify-content: space-between; align-items: center; }
   .foot .q { font-size: 30px; font-weight: 900; }
   .phones { display: flex; gap: 48px; }
-  .phone small { display: block; font-size: 21px; opacity: .75; }
-  .phone b { font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 800; }
+  .phone small { display: block; font-size: 21px; color: var(--sky); font-weight: 700; }
+  .phone b { font-family: 'Montserrat', sans-serif; font-size: 40px; font-weight: 700; }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="flake" viewBox="-50 -50 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+      <g id="arm"><line x1="0" y1="0" x2="0" y2="-44"/><polyline points="-10,-30 0,-21 10,-30"/><polyline points="-8,-42 0,-35 8,-42"/></g>
+      <use href="#arm" transform="rotate(60)"/><use href="#arm" transform="rotate(120)"/>
+      <use href="#arm" transform="rotate(180)"/><use href="#arm" transform="rotate(240)"/><use href="#arm" transform="rotate(300)"/>
+    </g>
+  </symbol>
+</svg>
+
 <header class="head">
-  <div class="head-top">
-    <img class="logo" src="../../DCS.jpeg" alt="대치에스학원">
-    <span class="season en">2027 WINTER SPECIAL</span>
+  <svg class="flake" style="right:60px;top:120px;width:200px;height:200px;opacity:.45"><use href="#flake"/></svg>
+  <svg class="flake" style="right:290px;top:110px;width:60px;height:60px;opacity:.5"><use href="#flake"/></svg>
+  <svg class="flake" style="right:340px;top:190px;width:40px;height:40px;opacity:.55"><use href="#flake"/></svg>
+  <svg class="flake" style="right:30px;top:350px;width:70px;height:70px;opacity:.35"><use href="#flake"/></svg>
+
+  <div class="brands">
+    <img class="leejae" src="../assets/leejae-logo-navy.png" alt="이재,영어">
+    <span class="x">×</span>
+    <img class="dcs" src="../../DCS.jpeg" alt="대치에스학원">
   </div>
+  <span class="season">2027 WINTER</span>
   <div class="eyebrow"><b>겨울방학 특강</b>이재영 T.</div>
-  <h1><small>핵심 영문법</small>Half Grammar</h1>
+  <p class="kicker">핵심 영문법</p>
+  <h1>Half <em>Grammar</em></h1>
   <p class="sub">7회 수업으로 기초 영문법 한 바퀴 정리</p>
 </header>
 
@@ -78,7 +97,7 @@
       <li><b>03</b><div><strong>태의 이해</strong><small>1/19 · 능동태와 수동태</small></div></li>
       <li><b>07</b><div><strong>관계사의 이해</strong><small>2/23 · 관계대명사 · 관계부사</small></div></li>
       <li><b>04</b><div><strong>준동사의 이해 Ⅰ</strong><small>1/26 · 부정사와 동명사의 사용</small></div></li>
-      <li class="care"><div><strong>관리 프로그램</strong><small>매 시간 문법테스트 · 개별 과제와 오답노트 · 개별클리닉 · 개별단어(신청자)</small></div></li>
+      <li class="care"><div><strong>❄ 관리 프로그램</strong><small>매 시간 문법테스트 · 개별 과제와 오답노트 · 개별클리닉 · 개별단어(신청자)</small></div></li>
     </ol>
   </div>
 </main>
