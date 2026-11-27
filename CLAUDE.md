@@ -21,6 +21,7 @@ www.real-englishjy.co.kr 의 원본 저장소. 맥북 2대, 맥 1대, 윈도우 
 - `index.html` 한 파일에 모든 페이지가 들어 있다(약 250KB). 메뉴는 `showPage('아이디')`로 `<section class="page" id="...">`를 전환한다: `about`, `classes`(수업 안내), `student`(수강생전용), `data`(자료실), `qa`, `seminar`, `notice`.
 - 예외로 이벤트성 특강은 따로 링크를 걸 수 있게 별도 파일로 둔다: `grammar.html`(A to Z 문법 특강 안내, 브로슈어 내용). 대치메카 팝업과 수업 안내의 대치메카 블록에서 이 페이지로 연결한다. 특강이 끝나면 연결을 떼고 파일을 지운다.
 - 이미지는 저장소 최상위에, PDF 자료는 `materials/`에 둔다. PDF 링크는 한글 파일명을 URL 인코딩해서 건다.
+- `promo/`는 홍보물 작업 폴더다(배포 제외). 행사마다 폴더를 하나 두고 HTML로 디자인한 뒤 `promo/render.ps1`로 뽑는다(A4는 `pdf`, 카톡용은 `png 1080 1350`). 첫 결과물: `dcs-winter-2027/`(대치에스 겨울 Half Grammar 특강 A4 전단지·카톡 이미지).
 - `pdf-work/`는 PDF 재디자인 작업 폴더다(배포 제외). 원본은 `originals/`, 새로 조판한 완성본은 `output/`. 완성본을 자료실에 올릴 때만 `materials/`로 옮긴다.
 - 파일이 크므로 전체를 읽지 말고 검색으로 위치를 찾아 필요한 부분만 읽는다.
 
