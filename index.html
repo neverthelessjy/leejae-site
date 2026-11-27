@@ -959,20 +959,48 @@
     #classes.course-tabbed .summer-special-wrap { display: none; margin-top: 0 !important; }
     #classes.course-tabbed .summer-special-wrap.course-acad-active { display: block; animation: fadeIn 0.3s ease; }
 
-    .course-sub-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px; }
-    .course-sub-btn {
-      background: transparent;
+    /* 반 탭: 누르는 버튼으로 보이게 안내 문구 + 버튼형 + 선택 표시 */
+    .course-sub-wrap {
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 8px 18px;
-      font-family: inherit;
-      font-size: 0.84rem;
-      color: rgba(245,243,238,0.75);
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      background: rgba(201,168,76,0.04);
+      border-radius: 14px;
+      padding: 14px 14px 16px;
+      margin-bottom: 24px;
     }
-    .course-sub-btn:hover { border-color: var(--gold); color: var(--gold-light); }
-    .course-sub-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 700; }
+    .course-sub-hint { text-align: center; font-size: 0.82rem; color: var(--gold-light); margin: 0 0 12px; }
+    .course-sub-hint span { color: rgba(245,243,238,0.55); margin-left: 4px; }
+    .course-sub-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 8px; }
+    .course-sub-btn {
+      position: relative;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: rgba(245,243,238,0.05);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 10px;
+      padding: 12px 10px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(245,243,238,0.9);
+      cursor: pointer;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.35);
+      transition: transform 0.15s, border-color 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .course-sub-btn::after { content: '›'; color: var(--gold); font-size: 1.15em; line-height: 1; transition: transform 0.2s; }
+    .course-sub-btn:hover { transform: translateY(-2px); border-color: var(--gold); background: rgba(201,168,76,0.12); color: var(--gold-light); }
+    .course-sub-btn:hover::after { transform: translateX(3px); }
+    .course-sub-btn:active { transform: translateY(1px); box-shadow: none; }
+    .course-sub-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 700; box-shadow: 0 4px 14px rgba(201,168,76,0.35); transform: none; }
+    .course-sub-btn.active::after { content: '✓'; color: var(--navy); font-size: 0.9em; }
+    .course-sub-btn.active::before {
+      content: ''; position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%);
+      border: 8px solid transparent; border-top-color: var(--gold); border-bottom: 0;
+    }
+    /* 아직 아무 반도 누르지 않았을 때 다른 반 버튼이 몇 번 은은하게 빛난다 */
+    .course-sub-wrap.untouched .course-sub-btn:not(.active) { animation: subPulse 1.8s ease-in-out 1s 3; }
+    @keyframes subPulse {
+      0%, 100% { box-shadow: 0 2px 0 rgba(0,0,0,0.35); }
+      50% { box-shadow: 0 0 0 3px rgba(201,168,76,0.28), 0 2px 0 rgba(0,0,0,0.35); border-color: var(--gold); }
+    }
 
     #classes.course-tabbed .summer-course-grid { grid-template-columns: 1fr; }
     #classes.course-tabbed .summer-course-card { display: none; }
@@ -990,7 +1018,8 @@
       .course-acad-btn img { height: 36px; max-width: 110px; }
       .course-acad-btn img.course-acad-logo-round { width: 36px; }
       .course-acad-name { font-size: 0.9rem; }
-      .course-sub-btn { padding: 7px 14px; font-size: 0.8rem; }
+      .course-sub-tabs { grid-template-columns: 1fr 1fr; }
+      .course-sub-btn { padding: 11px 8px; font-size: 0.82rem; }
       #classes.course-tabbed .summer-course-card.course-sub-active { grid-template-columns: 1fr; }
       #classes.course-tabbed .course-card-right > div:first-child { margin-top: 18px !important; }
     }
@@ -5243,6 +5272,11 @@
         card.append(left, right);
       });
       if (cards.length > 1 && grid) {
+        const subWrap = document.createElement('div');
+        subWrap.className = 'course-sub-wrap untouched';
+        const hint = document.createElement('p');
+        hint.className = 'course-sub-hint';
+        hint.innerHTML = '👇 반을 눌러 수업 안내를 확인하세요<span>(' + cards.length + '개 반)</span>';
         const subBar = document.createElement('div');
         subBar.className = 'course-sub-tabs';
         cards.forEach((card, j) => {
@@ -5251,11 +5285,12 @@
           b.type = 'button';
           b.className = 'course-sub-btn';
           b.textContent = tag ? tag.textContent : (j + 1) + '반';
-          b.addEventListener('click', () => selectCard(j));
+          b.addEventListener('click', () => { subWrap.classList.remove('untouched'); selectCard(j); });
           subBtns.push(b);
           subBar.appendChild(b);
         });
-        grid.parentNode.insertBefore(subBar, grid);
+        subWrap.append(hint, subBar);
+        grid.parentNode.insertBefore(subWrap, grid);
       }
       selectCard(0);
     });
